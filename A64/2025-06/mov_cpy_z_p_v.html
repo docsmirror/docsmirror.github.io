@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>MOV (SIMD&amp;FP scalar, predicated) -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">MOV (SIMD&amp;FP scalar, predicated)</h2><p>Move SIMD&amp;FP scalar register to vector elements (predicated)</p>
+      <p class="aml">This instruction moves the SIMD &amp; floating-point scalar source register
+to each Active element in the destination vector. Inactive elements in the destination vector register remain unmodified.</p>
+    <p>
+        This is an alias of
+        <a href="cpy_z_p_v.html">CPY (SIMD&amp;FP scalar)</a>.
+        This means:
+      </p><ul><li>
+          The encodings in this description are named to match the encodings of
+          <a href="cpy_z_p_v.html">CPY (SIMD&amp;FP scalar)</a>.
+        </li><li>The description of <a href="cpy_z_p_v.html">CPY (SIMD&amp;FP scalar)</a> gives the operational pseudocode, any <span class="arm-defined-word">constrained unpredictable</span> behavior, and any operational information for this instruction.</li></ul>
+    <h3 class="classheading"><a id="iclass_sve"/>SVE<span style="font-size:smaller;"><br/>(FEAT_SVE || FEAT_SME)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">0</td><td>0</td><td class="r">0</td><td class="l">0</td><td>0</td><td>1</td><td class="r">0</td><td class="lr">1</td><td colspan="2" class="lr">size</td><td class="lr">1</td><td class="lr">0</td><td class="l">0</td><td>0</td><td class="r">0</td><td class="lr">0</td><td class="l">1</td><td class="r">0</td><td class="lr">0</td><td colspan="3" class="lr">Pg</td><td colspan="5" class="lr">Vn</td><td colspan="5" class="lr">Zd</td></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="mov_z_p_v__cpy_z_p_v_"/><p class="asm-code">MOV  <a href="#Zd" title="Is the name of the destination scalable vector register, encoded in the &quot;Zd&quot; field.">&lt;Zd&gt;</a>.<a href="#T__30" title="Is the size specifier, ">&lt;T&gt;</a>, <a href="#Pg" title="Is the name of the governing scalable predicate register P0-P7, encoded in the &quot;Pg&quot; field.">&lt;Pg&gt;</a>/M, <a href="#V__3" title="Is a width specifier, ">&lt;V&gt;</a><a href="#n__4" title="Is the number [0-31] of the source SIMD&amp;FP register, encoded in the &quot;Vn&quot; field.">&lt;n&gt;</a></p><p class="equivto">
+      is equivalent to
+    </p>
+          <p class="asm-code"><a href="cpy_z_p_v.html#cpy_z_p_v_">CPY</a>  <a href="cpy_z_p_v.html#Zd">&lt;Zd&gt;</a>.<a href="cpy_z_p_v.html#T__30">&lt;T&gt;</a>, <a href="cpy_z_p_v.html#Pg">&lt;Pg&gt;</a>/M, <a href="cpy_z_p_v.html#V__3">&lt;V&gt;</a><a href="cpy_z_p_v.html#n__4">&lt;n&gt;</a></p>
+          <p class="equivto">
+          and is always the preferred disassembly.
+        </p>
+        </div>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zd&gt;</td><td><a id="Zd"/>
+        
+          <p class="aml">Is the name of the destination scalable vector register, encoded in the "Zd" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;T&gt;</td><td><a id="T__30"/>
+        <p>Is the size specifier, 
+          encoded in
+          <q>size</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">size</th>
+                <th class="symbol">&lt;T&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00</td>
+                <td class="symbol">B</td>
+              </tr>
+              <tr>
+                <td class="bitfield">01</td>
+                <td class="symbol">H</td>
+              </tr>
+              <tr>
+                <td class="bitfield">10</td>
+                <td class="symbol">S</td>
+              </tr>
+              <tr>
+                <td class="bitfield">11</td>
+                <td class="symbol">D</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pg&gt;</td><td><a id="Pg"/>
+        
+          <p class="aml">Is the name of the governing scalable predicate register P0-P7, encoded in the "Pg" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;V&gt;</td><td><a id="V__3"/>
+        <p>Is a width specifier, 
+          encoded in
+          <q>size</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">size</th>
+                <th class="symbol">&lt;V&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00</td>
+                <td class="symbol">B</td>
+              </tr>
+              <tr>
+                <td class="bitfield">01</td>
+                <td class="symbol">H</td>
+              </tr>
+              <tr>
+                <td class="bitfield">10</td>
+                <td class="symbol">S</td>
+              </tr>
+              <tr>
+                <td class="bitfield">11</td>
+                <td class="symbol">D</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;n&gt;</td><td><a id="n__4"/>
+        
+          <p class="aml">Is the number [0-31] of the source SIMD&amp;FP register, encoded in the "Vn" field.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/><div class="alias_ps_section"><h3 class="pseudocode">Operation</h3><p>The description of <a href="cpy_z_p_v.html">CPY (SIMD&amp;FP scalar)</a> gives the operational pseudocode for this instruction.</p></div><div class="alias_ps_section"><h3 class="pseudocode">Operational Information</h3><p>The description of <a href="cpy_z_p_v.html">CPY (SIMD&amp;FP scalar)</a> gives the operational information for this instruction.</p></div><hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-06_rel
+
+      2025-06-23 18:22:40
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

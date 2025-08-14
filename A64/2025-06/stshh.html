@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>STSHH -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">STSHH</h2><p>Store shared hint</p>
+      <p class="aml">This instruction signals to the memory system that if the next instruction in program order generates an
+explicit write effect, then it is to a location that one or more other threads of execution will observe,
+and there is a performance benefit to ensuring that the updated value from the write to that location
+propagates to those other observers with minimal latency.</p>
+      <p class="aml">The thread of execution on the other observers might be polling the location using load or load-exclusive
+instructions, or may have executed a <span class="asm-code">PRFM IR</span> instruction targeting the location.</p>
+    
+    <h3 class="classheading"><a id="iclass_system"/>System<span style="font-size:smaller;"><br/>(FEAT_PCDPHINT)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">1</td><td>1</td><td class="r">0</td><td class="l">1</td><td>0</td><td class="r">1</td><td class="l">0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td class="r">0</td><td class="l">0</td><td>1</td><td>1</td><td class="r">0</td><td class="l">0</td><td>0</td><td class="r">x</td><td class="l">1</td><td>1</td><td>1</td><td>1</td><td class="r">1</td></tr><tr class="secondrow"><td colspan="3"/><td colspan="3"/><td colspan="14"/><td colspan="4" class="droppedname">CRm</td><td colspan="3" class="droppedname">op2</td><td colspan="5"/></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="STSHH_HI_hints"/><p class="asm-code">STSHH  <a href="#stshh_policy" title="&lt;policy&gt; is one of:&#10;&#10;KEEP&#10;: Signals to the memory system that there may be a performance benefit to retaining the updated location in the local cache of the updating PE.&#10;&#10;STRM&#10;: Signals to the memory system that there may be a performance benefit to ensuring the updated location is not retained in the local cache of the updating PE.">&lt;policy&gt;</a></p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_PCDPHINT) then <a href="shared_pseudocode.html#impl-shared.EndOfDecode.1" title="function: EndOfDecode(DecodeType reason)">EndOfDecode</a>(<a href="shared_pseudocode.html#Decode_NOP" title="enumeration DecodeType { Decode_UNDEF, Decode_NOP, Decode_OK }">Decode_NOP</a>);
+constant boolean stream = op2&lt;0&gt; == '1';</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;policy&gt;</td><td><a id="stshh_policy"/>
+        
+          <p class="aml">&lt;policy&gt; is one of:</p>
+          <dl>
+            <dt>KEEP</dt><dd>Signals to the memory system that there may be a performance benefit to retaining the updated location in the local cache of the updating PE.</dd>
+            <dt>STRM</dt><dd>Signals to the memory system that there may be a performance benefit to ensuring the updated location is not retained in the local cache of the updating PE.</dd>
+          </dl>
+        
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">op2&lt;0&gt;</th>
+                <th class="symbol">&lt;policy&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">0</td>
+                <td class="symbol">KEEP</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1</td>
+                <td class="symbol">STRM</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode"><a href="shared_pseudocode.html#impl-shared.Hint_StoreShared.1" title="function: Hint_StoreShared(boolean stream)">Hint_StoreShared</a>(stream);</p></div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-06_rel
+
+      2025-06-23 18:22:40
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

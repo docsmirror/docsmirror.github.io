@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>SQRSHR (four registers) -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">SQRSHR (four registers)</h2><p>Multi-vector signed saturating rounding shift right narrow by immediate</p>
+      <p class="aml">This instruction shifts right by an immediate value the signed integer value in each element of the
+four source vectors, and places the 
+ rounded results in the quarter-width destination
+elements. Each result element is saturated to the quarter-width
+N-bit element's signed integer range -2<sup>(N-1)</sup>
+to (2<sup>(N-1)</sup>)-1. The immediate shift amount is an unsigned value in the
+range 1 to number of bits per source element.</p>
+      <p class="aml">This instruction is unpredicated.</p>
+    
+    <h3 class="classheading"><a id="iclass_sme2"/>SME2<span style="font-size:smaller;"><br/>(FEAT_SME2)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr">1</td><td class="l">1</td><td class="r">0</td><td class="l">0</td><td>0</td><td>0</td><td class="r">0</td><td class="lr">1</td><td colspan="2" class="lr">tsize</td><td class="lr">1</td><td colspan="5" class="lr">imm5</td><td class="l">1</td><td>1</td><td class="r">0</td><td class="l">1</td><td class="r">1</td><td class="lr">0</td><td colspan="3" class="lr">Zn</td><td class="lr">0</td><td class="lr">0</td><td colspan="5" class="lr">Zd</td></tr><tr class="secondrow"><td/><td colspan="2"/><td colspan="4"/><td/><td colspan="2"/><td/><td colspan="5"/><td colspan="3"/><td colspan="2"/><td class="droppedname">N</td><td colspan="3"/><td class="droppedname">op</td><td class="droppedname">U</td><td colspan="5"/></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="sqrshr_z_mz4_"/><p class="asm-code">SQRSHR  <a href="#Zd" title="Is the name of the destination scalable vector register, encoded in the &quot;Zd&quot; field.">&lt;Zd&gt;</a>.<a href="#T__89" title="Is the size specifier, ">&lt;T&gt;</a>, { <a href="#Zn1__6" title="Is the name of the first scalable vector register of the source multi-vector group, encoded as &quot;Zn&quot; times 4.">&lt;Zn1&gt;</a>.<a href="#Tb__15" title="Is the size specifier, ">&lt;Tb&gt;</a>-<a href="#Zn4__3" title="Is the name of the fourth scalable vector register of the source multi-vector group, encoded as &quot;Zn&quot; times 4 plus 3.">&lt;Zn4&gt;</a>.<a href="#Tb__15" title="Is the size specifier, ">&lt;Tb&gt;</a> }, #<a href="#const__11" title="Is the immediate shift amount, in the range 1 to number of bits per source element, encoded in &quot;tsize:imm5&quot;.">&lt;const&gt;</a></p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_SME2) then <a href="shared_pseudocode.html#impl-shared.EndOfDecode.1" title="function: EndOfDecode(DecodeType reason)">EndOfDecode</a>(<a href="shared_pseudocode.html#Decode_UNDEF" title="enumeration DecodeType { Decode_UNDEF, Decode_NOP, Decode_OK }">Decode_UNDEF</a>);
+if tsize == '00' then <a href="shared_pseudocode.html#impl-shared.EndOfDecode.1" title="function: EndOfDecode(DecodeType reason)">EndOfDecode</a>(<a href="shared_pseudocode.html#Decode_UNDEF" title="enumeration DecodeType { Decode_UNDEF, Decode_NOP, Decode_OK }">Decode_UNDEF</a>);
+constant integer esize = 8 &lt;&lt; <a href="shared_pseudocode.html#impl-shared.HighestSetBit.1" title="function: integer HighestSetBit(bits(N) x)">HighestSetBit</a>(tsize);
+constant integer n = <a href="shared_pseudocode.html#impl-shared.UInt.1" title="function: integer UInt(bits(N) x)">UInt</a>(Zn:'00');
+constant integer d = <a href="shared_pseudocode.html#impl-shared.UInt.1" title="function: integer UInt(bits(N) x)">UInt</a>(Zd);
+constant integer shift = (8 * esize) - <a href="shared_pseudocode.html#impl-shared.UInt.1" title="function: integer UInt(bits(N) x)">UInt</a>(tsize:imm5);</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zd&gt;</td><td><a id="Zd"/>
+        
+          <p class="aml">Is the name of the destination scalable vector register, encoded in the "Zd" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;T&gt;</td><td><a id="T__89"/>
+        <p>Is the size specifier, 
+          encoded in
+          <q>tsize</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">tsize</th>
+                <th class="symbol">&lt;T&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00</td>
+                <td class="symbol">RESERVED</td>
+              </tr>
+              <tr>
+                <td class="bitfield">01</td>
+                <td class="symbol">B</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1x</td>
+                <td class="symbol">H</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zn1&gt;</td><td><a id="Zn1__6"/>
+        
+          <p class="aml">Is the name of the first scalable vector register of the source multi-vector group, encoded as "Zn" times 4.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Tb&gt;</td><td><a id="Tb__15"/>
+        <p>Is the size specifier, 
+          encoded in
+          <q>tsize</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">tsize</th>
+                <th class="symbol">&lt;Tb&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00</td>
+                <td class="symbol">RESERVED</td>
+              </tr>
+              <tr>
+                <td class="bitfield">01</td>
+                <td class="symbol">S</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1x</td>
+                <td class="symbol">D</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zn4&gt;</td><td><a id="Zn4__3"/>
+        
+          <p class="aml">Is the name of the fourth scalable vector register of the source multi-vector group, encoded as "Zn" times 4 plus 3.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;const&gt;</td><td><a id="const__11"/>
+        
+          <p class="aml">Is the immediate shift amount, in the range 1 to number of bits per source element, encoded in "tsize:imm5".</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode"><a href="shared_pseudocode.html#impl-aarch64.CheckStreamingSVEEnabled.0" title="function: CheckStreamingSVEEnabled()">CheckStreamingSVEEnabled</a>();
+constant integer VL = <a href="shared_pseudocode.html#impl-aarch64.CurrentVL.read.none" title="accessor: VecLen CurrentVL">CurrentVL</a>;
+constant integer elements = VL DIV (4 * esize);
+bits(VL) result;
+
+for r = 0 to 3
+    constant bits(VL) operand = <a href="shared_pseudocode.html#impl-aarch64.Z.read.2" title="accessor: bits(width) Z[integer n, integer width]">Z</a>[n+r, VL];
+    for e = 0 to elements-1
+        constant bits(4 * esize) element = <a href="shared_pseudocode.html#impl-shared.Elem.read.3" title="accessor: bits(size) Elem[bits(N) vector, integer e, integer size]">Elem</a>[operand, e, 4 * esize];
+        constant integer res = (<a href="shared_pseudocode.html#impl-shared.SInt.1" title="function: integer SInt(bits(N) x)">SInt</a>(element) + (1 &lt;&lt; (shift-1))) &gt;&gt; shift;
+        <a href="shared_pseudocode.html#impl-shared.Elem.write.3" title="accessor: Elem[bits(N) &amp;vector, integer e, integer size] = bits(size) value">Elem</a>[result, r*elements + e, esize] = <a href="shared_pseudocode.html#impl-shared.SignedSat.2" title="function: bits(N) SignedSat(integer i, integer N)">SignedSat</a>(res, esize);
+
+<a href="shared_pseudocode.html#impl-aarch64.Z.write.2" title="accessor: Z[integer n, integer width] = bits(width) value">Z</a>[d, VL] = result;</p></div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-06_rel
+
+      2025-06-23 18:22:40
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

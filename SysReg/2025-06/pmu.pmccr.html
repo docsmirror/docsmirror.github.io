@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>PMCCR</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">PMCCR, PMU Configuration Control Register</h1><p>The PMCCR characteristics are:</p><h2>Purpose</h2>
+        <p>Contains PMU configuration controls.</p>
+      <h2>Configuration</h2><p>This register is present only when FEAT_PMUv3_EXTPMN is implemented. Otherwise, direct accesses to PMCCR are <span class="arm-defined-word">RES0</span>.</p><h2>Attributes</h2>
+        <p>PMCCR is a 64-bit register.</p>
+      <p>This  register is part of the <a href="pmu.html">PMU</a> block.</p><h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="32"><a href="#fieldset_0-63_9">RES0</a></td></tr><tr class="firstrow"><td class="lr" colspan="23"><a href="#fieldset_0-63_9">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-8_8-1">OSLO</a></td><td class="lr" colspan="1"><a href="#fieldset_0-7_7-1">EPME</a></td><td class="lr" colspan="2"><a href="#fieldset_0-6_5">RES0</a></td><td class="lr" colspan="5"><a href="#fieldset_0-4_0-1">EPMN</a></td></tr></tbody></table><h4 id="fieldset_0-63_9">Bits [63:9]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-8_8-1">OSLO, bit [8]<span class="condition"><br/>When FEAT_PMUv3_EXTPMN is implemented:
+                        </span></h4><div class="field">
+      <p>OS Lock Override.</p>
+    <table class="valuetable"><tr><th>OSLO</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>No external access to any Performance Monitor register is affected by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>For the purpose of determining the access permissions of Performance Monitor registers, an external access that is a Most secure access ignores <a href="AArch64-oslsr_el1.html">OSLSR_EL1</a>.OSLK.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Cold reset, 
+      this field resets
+       to <span class="binarynumber">'0'</span>.
+</li></ul></div><h4 id="fieldset_0-8_8-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-7_7-1">EPME, bit [7]<span class="condition"><br/>When FEAT_PMUv3_EXTPMN is implemented:
+                        </span></h4><div class="field">
+      <p>External Enable.</p>
+    <table class="valuetable"><tr><th>EPME</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Affected counters are disabled and do not count.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Affected counters are enabled by <a href="pmu.pmcntenset_el0.html">PMCNTENSET_EL0</a>.</p>
+        </td></tr></table><p>The counters affected by this field are the event counters in the third range.</p>
+<p>Other event counters, <a href="pmu.pmccntr_el0.html">PMCCNTR_EL0</a>, and, if <span class="xref">FEAT_PMUv3_ICNTR</span> is implemented, <a href="pmu.pmicntr_el0.html">PMICNTR_EL0</a> are not affected by this field.</p>
+<p>If the Effective value of PMCCR.EPMN is equal to NUM_PMU_COUNTERS, then this field has no effect.</p><p>The reset behavior of this field is:</p><ul><li>On a Cold reset, 
+      this field resets
+       to <span class="binarynumber">'0'</span>.
+</li></ul></div><h4 id="fieldset_0-7_7-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-6_5">Bits [6:5]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-4_0-1">EPMN, bits [4:0]<span class="condition"><br/>When FEAT_PMUv3_EXTPMN is implemented:
+                        </span></h4><div class="field">
+      <p>Defines the number of event counters <a href="pmu.pmevcntrn_el0.html">PMEVCNTR&lt;n&gt;_EL0</a> and, if <span class="xref">FEAT_PMUv3_SS</span> is implemented, snapshot registers <a href="pmu.pmevcntsvrn_el1.html">PMEVCNTSVR&lt;n&gt;_EL1</a>, that are reserved for external use.</p>
+    <p>PMCCR.EPMN divides the event counters into event counters that are accessible from self-hosted software, and which might be further divided into first and second ranges by <a href="AArch64-mdcr_el2.html">MDCR_EL2</a>.HPMN, and a third range that is inaccessible from self-hosted software.</p>
+<p>If PMCCR.EPMN is not 0 and is less than the number of PMU event counters implemented by the PE, NUM_PMU_COUNTERS, then event counters [0..(PMCCR.EPMN-1)] are in the first and second ranges, and event counters [PMCCR.EPMN..(NUM_PMU_COUNTERS-1)] are in the third range.</p>
+<p>If PMCCR.EPMN is equal to NUM_PMU_COUNTERS, or FEAT_PMUv3_EXTPMN is not implemented, then all of the following apply:</p>
+<ul>
+<li>All counters are in the first and second ranges.
+</li><li>No counters are in the third range.
+</li></ul>
+<p>If PMCCR.EPMN is zero, then all of the following apply:</p>
+<ul>
+<li>No counters are in the first and second ranges.
+</li><li>All counters are in the third range.
+</li></ul>
+<p>All the following apply for an event counter <a href="pmu.pmevcntrn_el0.html">PMEVCNTR&lt;n&gt;_EL0</a> in the third range:</p>
+<ul>
+<li>The counter is accessible to a Most secure access of <a href="pmu.pmevcntrn_el0.html">PMEVCNTR&lt;n&gt;_EL0</a>. That is, an external access which is one of the following:<ul>
+<li>Root access, when FEAT_RME is implemented.
+</li><li>Secure access, when FEAT_RME is not implemented and Secure state is implemented.
+</li><li>Non-secure access, otherwise.
+</li></ul>
+
+</li><li>The counter is not accessible to other external accesses, or as the System register <a href="AArch64-pmevcntrn_el0.html">PMEVCNTR&lt;n&gt;_EL0</a> at any Exception level.
+</li><li>The counter overflow flag <a href="pmu.pmovsset_el0.html">PMOVSSET_EL0</a>[n] is set on unsigned overflow of <a href="pmu.pmevcntrn_el0.html">PMEVCNTR&lt;n&gt;_EL0</a>[63:0].
+</li><li>PMCCR.EPME and <a href="pmu.pmcntenset_el0.html">PMCNTENSET_EL0</a> enable operation of the event counter.
+</li></ul>
+<p>If <span class="xref">FEAT_PMUv3_SS</span> is implemented, then all of the following apply for an event counter snapshot register <a href="pmu.pmevcntrsvrn_el1.html">PMEVCNTSVR&lt;n&gt;_EL1</a> in the third range:</p>
+<ul>
+<li>The event counter snapshot register is accessible to a Most secure access of <a href="pmu.pmevcntsvrn_el1.html">PMEVCNTSVR&lt;n&gt;_EL1</a>.
+</li><li>The event counter snapshot register is not accessible to other external accesses, or as the System register <a href="AArch64-pmevcntsvrn_el1.html">PMEVCNTSVR&lt;n&gt;_EL1</a> at any Exception level.
+</li></ul>
+<p>For information about counters in the first and second ranges, see the description of <a href="AArch64-mdcr_el2.html">MDCR_EL2</a>.HPMN.</p>
+<p>Values greater than NUM_PMU_COUNTERS are reserved.</p>
+<p>If this field is set to a reserved value, then the following <span class="arm-defined-word">CONSTRAINED UNPREDICTABLE</span> behaviors apply:</p>
+<ul>
+<li>The value returned by an external read of PMCCR.EPMN is <span class="arm-defined-word">UNKNOWN</span> and less than or equal to 31.
+</li><li>For the purpose of indirect reads of PMCCR.EPMN as a result of the following reads, the Effective value of PMCCR.EPMN is <span class="arm-defined-word">UNKNOWN</span> and less than or equal to 31:<ul>
+<li>Direct reads of <a href="AArch64-pmcr_el0.html">PMCR_EL0</a>.N or <a href="AArch32-pmcr.html">PMCR</a>.N.
+</li><li>Direct reads of <a href="AArch64-mdcr_el2.html">MDCR_EL2</a>.HPMN.
+</li><li>External reads of <a href="pmu.pmcfgr.html">PMCFGR</a>.N.
+</li><li>If FEAT_PMUv3_ICNTR is implemented, external reads of <a href="pmu.pmcgcr0.html">PMCGCR0</a>.CG0NC.
+</li></ul>
+
+</li><li>For all other purposes the Effective value of PMCCR.EPMN is <span class="arm-defined-word">UNKNOWN</span> and less than or equal to NUM_PMU_COUNTERS.
+</li></ul>
+<p>If <span class="xref">FEAT_PMUv3_EXTPMN</span> is not implemented, then the Effective value of PMCCR.EPMN is NUM_PMU_COUNTERS.</p><p>The reset behavior of this field is:</p><ul><li>On a Cold reset, 
+      this field resets
+       to the expression <span class="pseudocode">NUM_PMU_COUNTERS</span>.</li></ul></div><h4 id="fieldset_0-4_0-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><div class="access_mechanisms"><h2>Accessing PMCCR</h2><p>Accesses to this register use the following encodings:</p><div><p>Accessible at offset <span class="hexnumber">0xE58</span> from PMU</p></div><ul><li>When DoubleLockStatus() or !IsCorePowered(), accesses to this register generate an error response.
+          </li><li>When !IsMostSecureAccess(addrdesc), accesses to this register are <span class="access_level">RAZ/WI</span>.
+          </li><li>Otherwise, accesses to this register are <span class="access_level">RW</span>.
+          </li></ul><table class="access_instructions"><tr/><tr/></table></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-06-23 17:47:32, 2025-06_rel</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

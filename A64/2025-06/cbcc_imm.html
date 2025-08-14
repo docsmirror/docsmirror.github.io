@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>CB&lt;cc&gt; (immediate) -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">CB&lt;cc&gt; (immediate)</h2><p>Compare register with immediate and branch</p>
+      <p class="aml">This instruction compares the value in a register with an immediate,
+and conditionally branches to a label at a PC-relative offset if the
+comparison is true.
+It provides a hint that this is not a subroutine call or return.
+This instruction does not affect the condition flags.</p>
+    <p class="desc">This instruction is used by the pseudo-instructions <a href="cbge_imm.html" title="Compare signed greater than or equal immediate and branch">CBGE (immediate)</a>, <a href="cbhs_imm.html" title="Compare unsigned greater than or equal immediate and branch">CBHS (immediate)</a>, <a href="cble_imm.html" title="Compare signed less than or equal immediate and branch">CBLE (immediate)</a>, and <a href="cbls_imm.html" title="Compare unsigned lower than or equal immediate and branch">CBLS (immediate)</a>.</p>
+    <h3 class="classheading"><a id="iclass_branch"/>Branch<span style="font-size:smaller;"><br/>(FEAT_CMPBR)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr">sf</td><td class="l">1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td class="r">1</td><td colspan="3" class="lr">cc</td><td colspan="6" class="lr">imm6</td><td class="lr">0</td><td colspan="9" class="lr">imm9</td><td colspan="5" class="lr">Rt</td></tr></tbody></table></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 32-bit greater than variant
+            </h4><a id="CBGT_32_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 0 &amp;&amp; cc == 000)</span><p class="asm-code">CBGT  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 32-bit less than variant
+            </h4><a id="CBLT_32_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 0 &amp;&amp; cc == 001)</span><p class="asm-code">CBLT  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 32-bit higher variant
+            </h4><a id="CBHI_32_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 0 &amp;&amp; cc == 010)</span><p class="asm-code">CBHI  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 32-bit lower variant
+            </h4><a id="CBLO_32_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 0 &amp;&amp; cc == 011)</span><p class="asm-code">CBLO  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 32-bit equal variant
+            </h4><a id="CBEQ_32_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 0 &amp;&amp; cc == 110)</span><p class="asm-code">CBEQ  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 32-bit not equal variant
+            </h4><a id="CBNE_32_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 0 &amp;&amp; cc == 111)</span><p class="asm-code">CBNE  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 64-bit greater than variant
+            </h4><a id="CBGT_64_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 1 &amp;&amp; cc == 000)</span><p class="asm-code">CBGT  <a href="#XtOrXZR" title="Is the 64-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Xt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 64-bit less than variant
+            </h4><a id="CBLT_64_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 1 &amp;&amp; cc == 001)</span><p class="asm-code">CBLT  <a href="#XtOrXZR" title="Is the 64-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Xt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 64-bit higher variant
+            </h4><a id="CBHI_64_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 1 &amp;&amp; cc == 010)</span><p class="asm-code">CBHI  <a href="#XtOrXZR" title="Is the 64-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Xt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 64-bit lower variant
+            </h4><a id="CBLO_64_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 1 &amp;&amp; cc == 011)</span><p class="asm-code">CBLO  <a href="#XtOrXZR" title="Is the 64-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Xt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 64-bit equal variant
+            </h4><a id="CBEQ_64_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 1 &amp;&amp; cc == 110)</span><p class="asm-code">CBEQ  <a href="#XtOrXZR" title="Is the 64-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Xt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the 64-bit not equal variant
+            </h4><a id="CBNE_64_imm"/>
+        Applies when
+        <span class="bitdiff"> (sf == 1 &amp;&amp; cc == 111)</span><p class="asm-code">CBNE  <a href="#XtOrXZR" title="Is the 64-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Xt&gt;</a>, #<a href="#cbr_uimm" title="Is an unsigned immediate, in the range 0 to 63, encoded in the &quot;imm6&quot; field.">&lt;imm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><h4>Decode for all variants of this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_CMPBR) then <a href="shared_pseudocode.html#impl-shared.EndOfDecode.1" title="function: EndOfDecode(DecodeType reason)">EndOfDecode</a>(<a href="shared_pseudocode.html#Decode_UNDEF" title="enumeration DecodeType { Decode_UNDEF, Decode_NOP, Decode_OK }">Decode_UNDEF</a>);
+constant integer datasize = 32 &lt;&lt; <a href="shared_pseudocode.html#impl-shared.UInt.1" title="function: integer UInt(bits(N) x)">UInt</a>(sf);
+constant integer t = <a href="shared_pseudocode.html#impl-shared.UInt.1" title="function: integer UInt(bits(N) x)">UInt</a>(Rt);
+constant bits(64) offset = <a href="shared_pseudocode.html#impl-shared.SignExtend.2" title="function: bits(N) SignExtend(bits(M) x, integer N)">SignExtend</a>(imm9:'00', 64);
+<a href="shared_pseudocode.html#CmpOp" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">CmpOp</a> op;
+boolean unsigned;
+
+case cc of
+    when '000' op = <a href="shared_pseudocode.html#Cmp_GT" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_GT</a>; unsigned = FALSE;
+    when '001' op = <a href="shared_pseudocode.html#Cmp_LT" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_LT</a>; unsigned = FALSE;
+    when '010' op = <a href="shared_pseudocode.html#Cmp_GT" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_GT</a>; unsigned = TRUE;
+    when '011' op = <a href="shared_pseudocode.html#Cmp_LT" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_LT</a>; unsigned = TRUE;
+    when '110' op = <a href="shared_pseudocode.html#Cmp_EQ" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_EQ</a>; unsigned = TRUE;
+    when '111' op = <a href="shared_pseudocode.html#Cmp_NE" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_NE</a>; unsigned = TRUE;
+    otherwise <a href="shared_pseudocode.html#impl-shared.EndOfDecode.1" title="function: EndOfDecode(DecodeType reason)">EndOfDecode</a>(<a href="shared_pseudocode.html#Decode_UNDEF" title="enumeration DecodeType { Decode_UNDEF, Decode_NOP, Decode_OK }">Decode_UNDEF</a>);
+constant integer value2 = <a href="shared_pseudocode.html#impl-shared.UInt.1" title="function: integer UInt(bits(N) x)">UInt</a>(imm6);</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Wt&gt;</td><td><a id="WtOrWZR"/>
+        
+          <p class="aml">Is the 32-bit name of the general-purpose register to be tested, encoded in the "Rt" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;imm&gt;</td><td><a id="cbr_uimm"/>
+        
+          <p class="aml">Is an unsigned immediate, in the range 0 to 63, encoded in the "imm6" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;label&gt;</td><td><a id="imm9_offset"/>
+        
+          <p class="aml">Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as "imm9" times 4.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Xt&gt;</td><td><a id="XtOrXZR"/>
+        
+          <p class="aml">Is the 64-bit name of the general-purpose register to be tested, encoded in the "Rt" field.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">constant bits(datasize) operand1 = <a href="shared_pseudocode.html#impl-aarch64.X.read.2" title="accessor: bits(width) X[integer n, integer width]">X</a>[t, datasize];
+constant boolean branch_conditional = TRUE;
+
+constant integer value1 = <a href="shared_pseudocode.html#impl-shared.Int.2" title="function: integer Int(bits(N) x, boolean unsigned)">Int</a>(operand1, unsigned);
+boolean cond;
+case op of
+    when <a href="shared_pseudocode.html#Cmp_EQ" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_EQ</a> cond = value1 == value2;
+    when <a href="shared_pseudocode.html#Cmp_NE" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_NE</a> cond = value1 != value2;
+    when <a href="shared_pseudocode.html#Cmp_GE" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_GE</a> cond = value1 &gt;= value2;
+    when <a href="shared_pseudocode.html#Cmp_LT" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_LT</a> cond = value1 &lt;  value2;
+    when <a href="shared_pseudocode.html#Cmp_GT" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_GT</a> cond = value1 &gt;  value2;
+    when <a href="shared_pseudocode.html#Cmp_LE" title="enumeration CmpOp { Cmp_EQ, Cmp_NE, Cmp_GE, Cmp_GT, Cmp_LT, Cmp_LE, Cmp_UN }">Cmp_LE</a> cond = value1 &lt;= value2;
+
+if cond then
+    <a href="shared_pseudocode.html#impl-shared.BranchTo.3" title="function: BranchTo(bits(N) target, BranchType branch_type, boolean branch_conditional)">BranchTo</a>(<a href="shared_pseudocode.html#impl-aarch64.PC64.read.none" title="accessor: bits(64) PC64">PC64</a> + offset, <a href="shared_pseudocode.html#BranchType_DIR" title="enumeration BranchType { BranchType_DIRCALL, BranchType_INDCALL, BranchType_ERET, BranchType_DBGEXIT, BranchType_RET, BranchType_DIR, BranchType_INDIR, BranchType_EXCEPTION, BranchType_TMFAIL, BranchType_RESET, BranchType_UNKNOWN}">BranchType_DIR</a>, branch_conditional);
+else
+    <a href="shared_pseudocode.html#impl-shared.BranchNotTaken.2" title="function: BranchNotTaken(BranchType branchtype, boolean branch_conditional)">BranchNotTaken</a>(<a href="shared_pseudocode.html#BranchType_DIR" title="enumeration BranchType { BranchType_DIRCALL, BranchType_INDCALL, BranchType_ERET, BranchType_DBGEXIT, BranchType_RET, BranchType_DIR, BranchType_INDIR, BranchType_EXCEPTION, BranchType_TMFAIL, BranchType_RESET, BranchType_UNKNOWN}">BranchType_DIR</a>, branch_conditional);</p></div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-06_rel
+
+      2025-06-23 18:22:40
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

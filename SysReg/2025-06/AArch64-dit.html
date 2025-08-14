@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>DIT</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">DIT, Data Independent Timing</h1><p>The DIT characteristics are:</p><h2>Purpose</h2>
+        <p>Allows access to the Data Independent Timing bit.</p>
+      <h2>Configuration</h2><p>This register is present only when FEAT_DIT is implemented and FEAT_AA64 is implemented. Otherwise, direct accesses to DIT are <span class="arm-defined-word">UNDEFINED</span>.</p><h2>Attributes</h2>
+        <p>DIT is a 64-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="32"><a href="#fieldset_0-63_25">RES0</a></td></tr><tr class="firstrow"><td class="lr" colspan="7"><a href="#fieldset_0-63_25">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-24_24">DIT</a></td><td class="lr" colspan="24"><a href="#fieldset_0-23_0">RES0</a></td></tr></tbody></table><h4 id="fieldset_0-63_25">Bits [63:25]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-24_24">DIT, bit [24]</h4><div class="field">
+      <p>Data Independent Timing.</p>
+    <table class="valuetable"><tr><th>DIT</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The architecture makes no statement about the timing properties of any instructions.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td><p>The architecture requires that:</p>
+<ul>
+<li>
+<p>The timing of every load and store instruction is insensitive to the value of the data being loaded or stored.</p>
+
+</li><li>
+<p>For certain data processing instructions, the instruction takes a time which is independent of:</p>
+<ul>
+<li>
+<p>The values of the data supplied in any of its registers.</p>
+
+</li><li>
+<p>The values of the NZCV flags.</p>
+
+</li></ul>
+
+</li><li>
+<p>For certain data processing instructions, the response of the instruction to asynchronous exceptions does not vary based on:</p>
+<ul>
+<li>
+<p>The values of the data supplied in any of its registers.</p>
+
+</li><li>
+<p>The values of the NZCV flags.</p>
+
+</li></ul>
+
+</li></ul></td></tr></table><p>The instructions affected by this bit are:</p>
+<ul>
+<li>Branches, Exception Generating and System instructions: <span class="instruction">CFINV</span>, and <span class="instruction">NOP</span>.
+</li><li>Data Processing -- Immediate: <ul>
+<li>Add/subtract (immediate): <span class="instruction">ADD</span>, <span class="instruction">ADDS</span>, <span class="instruction">SUB</span>, and <span class="instruction">SUBS</span>.
+</li><li>Bitfield: <span class="instruction">BFM</span>, <span class="instruction">SBFM</span>, and <span class="instruction">UBFM</span>.
+</li><li>Extract: <span class="instruction">EXTR</span>.
+</li><li>Logical (immediate): <span class="instruction">AND</span>, <span class="instruction">ANDS</span>, <span class="instruction">EOR</span>, and <span class="instruction">ORR</span>.
+</li><li>Min/max (immediate): <span class="instruction">SMAX</span>, <span class="instruction">SMIN</span>, <span class="instruction">UMAX</span>, and <span class="instruction">UMIN</span>.
+</li><li>Move wide (immediate): <span class="instruction">MOVK</span>, <span class="instruction">MOVN</span>, and <span class="instruction">MOVZ</span>.
+</li></ul>
+
+</li><li>Data Processing -- Register: <ul>
+<li>Add/subtract (extended register): <span class="instruction">ADD</span>, <span class="instruction">ADDS</span>, <span class="instruction">SUB</span>, and <span class="instruction">SUBS</span>.
+</li><li>Add/subtract (shifted register): <span class="instruction">ADD</span>, <span class="instruction">ADDS</span>, <span class="instruction">SUB</span>, and <span class="instruction">SUBS</span>.
+</li><li>Add/subtract (with carry): <span class="instruction">ADC</span>, <span class="instruction">ADCS</span>, <span class="instruction">SBC</span>, and <span class="instruction">SBCS</span>.
+</li><li>Conditional compare (immediate): <span class="instruction">CCMN</span>, and <span class="instruction">CCMP</span>.
+</li><li>Conditional compare (register): <span class="instruction">CCMN</span>, and <span class="instruction">CCMP</span>.
+</li><li>Conditional select: <span class="instruction">CSEL</span>, <span class="instruction">CSINC</span>, <span class="instruction">CSINV</span>, and <span class="instruction">CSNEG</span>.
+</li><li>Data-processing (1 source): <span class="instruction">ABS</span>, <span class="instruction">CLS</span>, <span class="instruction">CLZ</span>, <span class="instruction">CNT</span>, <span class="instruction">CTZ</span>, <span class="instruction">RBIT</span>, <span class="instruction">REV16</span>, <span class="instruction">REV32</span>, and <span class="instruction">REV</span>.
+</li><li>Data-processing (2 source): <span class="instruction">ASRV</span>, <span class="instruction">CRC32B</span>, <span class="instruction">CRC32CB</span>, <span class="instruction">CRC32CH</span>, <span class="instruction">CRC32CW</span>, <span class="instruction">CRC32CX</span>, <span class="instruction">CRC32H</span>, <span class="instruction">CRC32W</span>, <span class="instruction">CRC32X</span>, <span class="instruction">LSLV</span>, <span class="instruction">LSRV</span>, <span class="instruction">RORV</span>, <span class="instruction">SMAX</span>, <span class="instruction">SMIN</span>, <span class="instruction">UMAX</span>, and <span class="instruction">UMIN</span>.
+</li><li>Data-processing (3 source): <span class="instruction">MADD</span>, <span class="instruction">MSUB</span>, <span class="instruction">SMADDL</span>, <span class="instruction">SMSUBL</span>, <span class="instruction">SMULH</span>, <span class="instruction">UMADDL</span>, <span class="instruction">UMSUBL</span>, and <span class="instruction">UMULH</span>.
+</li><li>Evaluate into flags: <span class="instruction">SETF16</span>, and <span class="instruction">SETF8</span>.
+</li><li>Logical (shifted register): <span class="instruction">AND</span>, <span class="instruction">ANDS</span>, <span class="instruction">BIC</span>, <span class="instruction">BICS</span>, <span class="instruction">EON</span>, <span class="instruction">EOR</span>, <span class="instruction">ORN</span>, and <span class="instruction">ORR</span>.
+</li><li>Rotate right into flags: <span class="instruction">RMIF</span>.
+</li></ul>
+
+</li><li>Data Processing -- Scalar Floating-Point and Advanced SIMD: <ul>
+<li>Advanced SIMD across lanes: <span class="instruction">ADDV</span>, <span class="instruction">SADDLV</span>, <span class="instruction">SMAXV</span>, <span class="instruction">SMINV</span>, <span class="instruction">UADDLV</span>, <span class="instruction">UMAXV</span>, and <span class="instruction">UMINV</span>.
+</li><li>Advanced SIMD copy: <span class="instruction">DUP</span>, <span class="instruction">INS</span>, <span class="instruction">SMOV</span>, and <span class="instruction">UMOV</span>.
+</li><li>Advanced SIMD extract: <span class="instruction">EXT</span>.
+</li><li>Advanced SIMD modified immediate: <span class="instruction">BIC</span>, <span class="instruction">MOVI</span>, <span class="instruction">MVNI</span>, and <span class="instruction">ORR</span>.
+</li><li>Advanced SIMD permute: <span class="instruction">TRN1</span>, <span class="instruction">TRN2</span>, <span class="instruction">UZP1</span>, <span class="instruction">UZP2</span>, <span class="instruction">ZIP1</span>, and <span class="instruction">ZIP2</span>.
+</li><li>Advanced SIMD scalar copy: <span class="instruction">DUP</span>.
+</li><li>Advanced SIMD scalar pairwise: <span class="instruction">ADDP</span>.
+</li><li>Advanced SIMD scalar shift by immediate: Advanced SIMD scalar shift by immediate: <span class="instruction">SHL</span>, <span class="instruction">SLI</span>, <span class="instruction">SRSHR</span>, <span class="instruction">SRI</span>, <span class="instruction">SRSRA</span>, <span class="instruction">SSHR</span>, <span class="instruction">SSRA</span>, <span class="instruction">URSHR</span>, <span class="instruction">URSRA</span>, <span class="instruction">USHR</span>, and <span class="instruction">USRA</span>.
+</li><li>Advanced SIMD scalar three same: <span class="instruction">ADD</span>, <span class="instruction">CMEQ</span>, <span class="instruction">CMGE</span>, <span class="instruction">CMGT</span>, <span class="instruction">CMHI</span>, <span class="instruction">CMHS</span>, <span class="instruction">CMTST</span>, <span class="instruction">SQDMULH</span>, <span class="instruction">SQRDMULH</span>, <span class="instruction">SSHL</span>, <span class="instruction">SUB</span>, and <span class="instruction">USHL</span>.
+</li><li>Advanced SIMD scalar three same extra: <span class="instruction">SQRDMLAH</span>.
+</li><li>Advanced SIMD scalar two-register miscellaneous: <span class="instruction">ABS</span>, <span class="instruction">CMEQ</span>, <span class="instruction">CMGE</span>, <span class="instruction">CMGT</span>, <span class="instruction">CMLE</span>, <span class="instruction">CMLT</span>, and <span class="instruction">NEG</span>.
+</li><li>Advanced SIMD scalar x indexed element: <span class="instruction">SQDMULH</span>, <span class="instruction">SQRDMLAH</span>, and <span class="instruction">SQRDMULH</span>.
+</li><li>Advanced SIMD shift by immediate: <span class="instruction">RSHRN2</span>, <span class="instruction">RSHRN</span>, <span class="instruction">SHL</span>, <span class="instruction">SHRN2</span>, <span class="instruction">SHRN</span>, <span class="instruction">SLI</span>, <span class="instruction">SRI</span>, <span class="instruction">SSHLL2</span>, <span class="instruction">SSHLL</span>, <span class="instruction">SSHR</span>, <span class="instruction">SSRA</span>, <span class="instruction">USHLL2</span>, <span class="instruction">USHLL</span>, <span class="instruction">USHR</span>, and <span class="instruction">USRA</span>.
+</li><li>Advanced SIMD table lookup: <span class="instruction">LUTI2</span>, <span class="instruction">LUTI4</span>, <span class="instruction">TBL</span>, and <span class="instruction">TBX</span>.
+</li><li>Advanced SIMD three different: <span class="instruction">ADDHN2</span>, <span class="instruction">ADDHN</span>, <span class="instruction">PMULL2</span>, <span class="instruction">PMULL</span>, <span class="instruction">RADDHN2</span>, <span class="instruction">RADDHN</span>, <span class="instruction">RSUBHN2</span>, <span class="instruction">RSUBHN</span>, <span class="instruction">SABAL2</span>, <span class="instruction">SABAL</span>, <span class="instruction">SABDL2</span>, <span class="instruction">SABDL</span>, <span class="instruction">SADDL2</span>, <span class="instruction">SADDL</span>, <span class="instruction">SADDW2</span>, <span class="instruction">SADDW</span>, <span class="instruction">SMLAL2</span>, <span class="instruction">SMLAL</span>, <span class="instruction">SMLSL2</span>, <span class="instruction">SMLSL</span>, <span class="instruction">SMULL2</span>, <span class="instruction">SMULL</span>, <span class="instruction">SSUBL2</span>, <span class="instruction">SSUBL</span>, <span class="instruction">SSUBW2</span>, <span class="instruction">SSUBW</span>, <span class="instruction">SUBHN2</span>, <span class="instruction">SUBHN</span>, <span class="instruction">UABAL2</span>, <span class="instruction">UABAL</span>, <span class="instruction">UABDL2</span>, <span class="instruction">UABDL</span>, <span class="instruction">UADDL2</span>, <span class="instruction">UADDL</span>, <span class="instruction">UADDW2</span>, <span class="instruction">UADDW</span>, <span class="instruction">UMLAL2</span>, <span class="instruction">UMLAL</span>, <span class="instruction">UMLSL2</span>, <span class="instruction">UMLSL</span>, <span class="instruction">UMULL2</span>, <span class="instruction">UMULL</span>, <span class="instruction">USUBL2</span>, <span class="instruction">USUBL</span>, <span class="instruction">USUBW2</span>, and <span class="instruction">USUBW</span>.
+</li><li>Advanced SIMD three same: <span class="instruction">ADD</span>, <span class="instruction">ADDP</span>, <span class="instruction">AND</span>, <span class="instruction">BIC</span>, <span class="instruction">BIF</span>, <span class="instruction">BIT</span>, <span class="instruction">BSL</span>, <span class="instruction">CMEQ</span>, <span class="instruction">CMGE</span>, <span class="instruction">CMGT</span>, <span class="instruction">CMHI</span>, <span class="instruction">CMHS</span>, <span class="instruction">CMTST</span>, <span class="instruction">EOR</span>, <span class="instruction">MLA</span>, <span class="instruction">MLS</span>, <span class="instruction">MUL</span>, <span class="instruction">ORN</span>, <span class="instruction">ORR</span>, <span class="instruction">PMUL</span>, <span class="instruction">SABA</span>, <span class="instruction">SABD</span>, <span class="instruction">SHADD</span>, <span class="instruction">SHSUB</span>, <span class="instruction">SMAX</span>, <span class="instruction">SMAXP</span>, <span class="instruction">SMIN</span>, <span class="instruction">SMINP</span>, <span class="instruction">SQDMULH</span>, <span class="instruction">SQRDMULH</span>, <span class="instruction">SSHL</span>, <span class="instruction">SUB</span>, <span class="instruction">UABA</span>, <span class="instruction">UABD</span>, <span class="instruction">UHADD</span>, <span class="instruction">UHSUB</span>, <span class="instruction">UMAX</span>, <span class="instruction">UMAXP</span>, <span class="instruction">UMIN</span>, <span class="instruction">UMINP</span>, and <span class="instruction">USHL</span>.
+</li><li>Advanced SIMD three-register extension: <span class="instruction">SDOT</span>, <span class="instruction">SMMLA</span>, <span class="instruction">SQRDMLAH</span>, <span class="instruction">UDOT</span>, <span class="instruction">UMMLA</span>, <span class="instruction">USDOT</span>, and <span class="instruction">USMMLA</span>.
+</li><li>Advanced SIMD two-register miscellaneous: <span class="instruction">ABS</span>, <span class="instruction">CLS</span>, <span class="instruction">CLZ</span>, <span class="instruction">CMEQ</span>, <span class="instruction">CMGE</span>, <span class="instruction">CMGT</span>, <span class="instruction">CMLE</span>, <span class="instruction">CMLT</span>, <span class="instruction">CNT</span>, <span class="instruction">NEG</span>, <span class="instruction">NOT</span>, <span class="instruction">RBIT</span>, <span class="instruction">REV16</span>, <span class="instruction">REV32</span>, <span class="instruction">REV64</span>, <span class="instruction">SADALP</span>, <span class="instruction">SADDLP</span>, <span class="instruction">SHLL2</span>, <span class="instruction">SHLL</span>, <span class="instruction">UADALP</span>, <span class="instruction">UADDLP</span>, <span class="instruction">XTN2</span>, and <span class="instruction">XTN</span>.
+</li><li>Advanced SIMD vector x indexed element: <span class="instruction">MLA</span>, <span class="instruction">MLS</span>, <span class="instruction">MUL</span>, <span class="instruction">SDOT</span>, <span class="instruction">SMLAL2</span>, <span class="instruction">SMLAL</span>, <span class="instruction">SMLSL2</span>, <span class="instruction">SMLSL</span>, <span class="instruction">SMULL2</span>, <span class="instruction">SMULL</span>, <span class="instruction">SQDMULH</span>, <span class="instruction">SQRDMLAH</span>, <span class="instruction">SQRDMULH</span>, <span class="instruction">SUDOT</span>, <span class="instruction">UDOT</span>, <span class="instruction">UMLAL2</span>, <span class="instruction">UMLAL</span>, <span class="instruction">UMLSL2</span>, <span class="instruction">UMLSL</span>, <span class="instruction">UMULL2</span>, <span class="instruction">UMULL</span>, and <span class="instruction">USDOT</span>.
+</li><li>Cryptographic AES: <span class="instruction">AESD</span>, <span class="instruction">AESE</span>, <span class="instruction">AESIMC</span>, and <span class="instruction">AESMC</span>.
+</li><li>Cryptographic four-register: <span class="instruction">BCAX</span>, <span class="instruction">EOR3</span>, and <span class="instruction">SM3SS1</span>.
+</li><li>Cryptographic three-register SHA: <span class="instruction">SHA1C</span>, <span class="instruction">SHA1M</span>, <span class="instruction">SHA1P</span>, <span class="instruction">SHA1SU0</span>, <span class="instruction">SHA256H2</span>, <span class="instruction">SHA256H</span>, and <span class="instruction">SHA256SU1</span>.
+</li><li>Cryptographic three-register SHA 512: <span class="instruction">RAX1</span>, <span class="instruction">SHA512H2</span>, <span class="instruction">SHA512H</span>, <span class="instruction">SHA512SU1</span>, <span class="instruction">SM3PARTW1</span>, <span class="instruction">SM3PARTW2</span>, and <span class="instruction">SM4EKEY</span>.
+</li><li>Cryptographic three-register, imm2: <span class="instruction">SM3TT1A</span>, <span class="instruction">SM3TT1B</span>, <span class="instruction">SM3TT2A</span>, and <span class="instruction">SM3TT2B</span>.
+</li><li>Cryptographic three-register, imm6: <span class="instruction">XAR</span>.
+</li><li>Cryptographic two-register SHA: <span class="instruction">SHA1H</span>, <span class="instruction">SHA1SU1</span>, and <span class="instruction">SHA256SU0</span>.
+</li><li>Cryptographic two-register SHA 512: <span class="instruction">SHA512SU0</span>, and <span class="instruction">SM4E</span>.
+</li><li>Floating-point conditional select: <span class="instruction">FCSEL</span>.
+</li></ul>
+
+</li><li>Loads and Stores: <ul>
+<li>128-bit atomic memory operations: <span class="instruction">LDCLRP</span>, <span class="instruction">LDCLRPA</span>, <span class="instruction">LDCLRPAL</span>, <span class="instruction">LDCLRPL</span>, <span class="instruction">LDSETP</span>, <span class="instruction">LDSETPA</span>, <span class="instruction">LDSETPAL</span>, <span class="instruction">LDSETPL</span>, <span class="instruction">SWPP</span>, <span class="instruction">SWPPA</span>, <span class="instruction">SWPPAL</span>, and <span class="instruction">SWPPL</span>.
+</li><li>Advanced SIMD load/store multiple structures: <span class="instruction">LD1</span>, <span class="instruction">LD2</span>, <span class="instruction">LD3</span>, <span class="instruction">LD4</span>, <span class="instruction">ST1</span>, <span class="instruction">ST2</span>, <span class="instruction">ST3</span>, and <span class="instruction">ST4</span>.
+</li><li>Advanced SIMD load/store multiple structures (post-indexed): <span class="instruction">LD1</span>, <span class="instruction">LD2</span>, <span class="instruction">LD3</span>, <span class="instruction">LD4</span>, <span class="instruction">ST1</span>, <span class="instruction">ST2</span>, <span class="instruction">ST3</span>, and <span class="instruction">ST4</span>.
+</li><li>Advanced SIMD load/store single structure: <span class="instruction">LD1</span>, <span class="instruction">LD1R</span>, <span class="instruction">LD2</span>, <span class="instruction">LD2R</span>, <span class="instruction">LD3</span>, <span class="instruction">LD3R</span>, <span class="instruction">LD4</span>, <span class="instruction">LD4R</span>, <span class="instruction">LDAP1</span>, <span class="instruction">ST1</span>, <span class="instruction">ST2</span>, <span class="instruction">ST3</span>, <span class="instruction">ST4</span>, and <span class="instruction">STL1</span>.
+</li><li>Advanced SIMD load/store single structure (post-indexed): <span class="instruction">LD1</span>, <span class="instruction">LD1R</span>, <span class="instruction">LD2</span>, <span class="instruction">LD2R</span>, <span class="instruction">LD3</span>, <span class="instruction">LD3R</span>, <span class="instruction">LD4</span>, <span class="instruction">LD4R</span>, <span class="instruction">ST1</span>, <span class="instruction">ST2</span>, <span class="instruction">ST3</span>, and <span class="instruction">ST4</span>.
+</li><li>Atomic memory operations: <span class="instruction">LDADD</span>, <span class="instruction">LDADDA</span>, <span class="instruction">LDADDAB</span>, <span class="instruction">LDADDAH</span>, <span class="instruction">LDADDAL</span>, <span class="instruction">LDADDALB</span>, <span class="instruction">LDADDALH</span>, <span class="instruction">LDADDB</span>, <span class="instruction">LDADDH</span>, <span class="instruction">LDADDL</span>, <span class="instruction">LDADDLB</span>, <span class="instruction">LDADDLH</span>, <span class="instruction">LDAPR</span>, <span class="instruction">LDAPRB</span>, <span class="instruction">LDAPRH</span>, <span class="instruction">LDCLR</span>, <span class="instruction">LDCLRA</span>, <span class="instruction">LDCLRAB</span>, <span class="instruction">LDCLRAH</span>, <span class="instruction">LDCLRAL</span>, <span class="instruction">LDCLRALB</span>, <span class="instruction">LDCLRALH</span>, <span class="instruction">LDCLRB</span>, <span class="instruction">LDCLRH</span>, <span class="instruction">LDCLRL</span>, <span class="instruction">LDCLRLB</span>, <span class="instruction">LDCLRLH</span>, <span class="instruction">LDEOR</span>, <span class="instruction">LDEORA</span>, <span class="instruction">LDEORAB</span>, <span class="instruction">LDEORAH</span>, <span class="instruction">LDEORAL</span>, <span class="instruction">LDEORALB</span>, <span class="instruction">LDEORALH</span>, <span class="instruction">LDEORB</span>, <span class="instruction">LDEORH</span>, <span class="instruction">LDEORL</span>, <span class="instruction">LDEORLB</span>, <span class="instruction">LDEORLH</span>, <span class="instruction">LDSET</span>, <span class="instruction">LDSETA</span>, <span class="instruction">LDSETAB</span>, <span class="instruction">LDSETAH</span>, <span class="instruction">LDSETAL</span>, <span class="instruction">LDSETALB</span>, <span class="instruction">LDSETALH</span>, <span class="instruction">LDSETB</span>, <span class="instruction">LDSETH</span>, <span class="instruction">LDSETL</span>, <span class="instruction">LDSETLB</span>, <span class="instruction">LDSETLH</span>, <span class="instruction">LDSMAX</span>, <span class="instruction">LDSMAXA</span>, <span class="instruction">LDSMAXAB</span>, <span class="instruction">LDSMAXAH</span>, <span class="instruction">LDSMAXAL</span>, <span class="instruction">LDSMAXALB</span>, <span class="instruction">LDSMAXALH</span>, <span class="instruction">LDSMAXB</span>, <span class="instruction">LDSMAXH</span>, <span class="instruction">LDSMAXL</span>, <span class="instruction">LDSMAXLB</span>, <span class="instruction">LDSMAXLH</span>, <span class="instruction">LDSMIN</span>, <span class="instruction">LDSMINA</span>, <span class="instruction">LDSMINAB</span>, <span class="instruction">LDSMINAH</span>, <span class="instruction">LDSMINAL</span>, <span class="instruction">LDSMINALB</span>, <span class="instruction">LDSMINALH</span>, <span class="instruction">LDSMINB</span>, <span class="instruction">LDSMINH</span>, <span class="instruction">LDSMINL</span>, <span class="instruction">LDSMINLB</span>, <span class="instruction">LDSMINLH</span>, <span class="instruction">LDUMAX</span>, <span class="instruction">LDUMAXA</span>, <span class="instruction">LDUMAXAB</span>, <span class="instruction">LDUMAXAH</span>, <span class="instruction">LDUMAXAL</span>, <span class="instruction">LDUMAXALB</span>, <span class="instruction">LDUMAXALH</span>, <span class="instruction">LDUMAXB</span>, <span class="instruction">LDUMAXH</span>, <span class="instruction">LDUMAXL</span>, <span class="instruction">LDUMAXLB</span>, <span class="instruction">LDUMAXLH</span>, <span class="instruction">LDUMIN</span>, <span class="instruction">LDUMINA</span>, <span class="instruction">LDUMINAB</span>, <span class="instruction">LDUMINAH</span>, <span class="instruction">LDUMINAL</span>, <span class="instruction">LDUMINALB</span>, <span class="instruction">LDUMINALH</span>, <span class="instruction">LDUMINB</span>, <span class="instruction">LDUMINH</span>, <span class="instruction">LDUMINL</span>, <span class="instruction">LDUMINLB</span>, and <span class="instruction">LDUMINLH</span>.
+</li><li>LDAPR/STLR (SIMD&amp;FP): <span class="instruction">LDAPUR</span>, and <span class="instruction">STLUR</span>.
+</li><li>LDAPR/STLR (unscaled immediate): <span class="instruction">LDAPUR</span>, <span class="instruction">LDAPURB</span>, <span class="instruction">LDAPURH</span>, <span class="instruction">LDAPURSB</span>, <span class="instruction">LDAPURSH</span>, <span class="instruction">LDAPURSW</span>, <span class="instruction">STLUR</span>, <span class="instruction">STLURB</span>, and <span class="instruction">STLURH</span>.
+</li><li>LDAPR/STLR (writeback): <span class="instruction">LDAPR</span>, and <span class="instruction">STLR</span>.
+</li><li>LDIAPP/STILP: <span class="instruction">LDIAPP</span>, and <span class="instruction">STILP</span>.
+</li><li>Load register (literal): <span class="instruction">LDR</span>, and <span class="instruction">LDRSW</span>.
+</li><li>Load/store exclusive pair: <span class="instruction">LDAXP</span>, <span class="instruction">LDXP</span>, <span class="instruction">STLXP</span>, and <span class="instruction">STXP</span>.
+</li><li>Load/store exclusive register: <span class="instruction">LDAXR</span>, <span class="instruction">LDAXRB</span>, <span class="instruction">LDAXRH</span>, <span class="instruction">LDXR</span>, <span class="instruction">LDXRB</span>, <span class="instruction">LDXRH</span>, <span class="instruction">STLXR</span>, <span class="instruction">STLXRB</span>, <span class="instruction">STLXRH</span>, <span class="instruction">STXR</span>, <span class="instruction">STXRB</span> and <span class="instruction">STXRH</span>.
+</li><li>Load/store no-allocate pair (offset): <span class="instruction">LDNP</span>, and <span class="instruction">STNP</span>.
+</li><li>Load/store ordered: <span class="instruction">LDAR</span>, <span class="instruction">LDARB</span>, <span class="instruction">LDARH</span>, <span class="instruction">LDLAR</span>, <span class="instruction">LDLARB</span>, <span class="instruction">LDLARH</span>, <span class="instruction">STLLR</span>, <span class="instruction">STLLRB</span>, <span class="instruction">STLLRH</span>, <span class="instruction">STLR</span>, <span class="instruction">STLRB</span>, and <span class="instruction">STLRH</span>.
+</li><li>Load/store register (immediate post-indexed): <span class="instruction">LDR</span>, <span class="instruction">LDRB</span>, <span class="instruction">LDRH</span>, <span class="instruction">LDRSB</span>, <span class="instruction">LDRSH</span>, <span class="instruction">LDRSW</span>, <span class="instruction">STR</span>, <span class="instruction">STRB</span>, and <span class="instruction">STRH</span>.
+</li><li>Load/store register (immediate pre-indexed): <span class="instruction">LDR</span>, <span class="instruction">LDRB</span>, <span class="instruction">LDRH</span>, <span class="instruction">LDRSB</span>, <span class="instruction">LDRSH</span>, <span class="instruction">LDRSW</span>, <span class="instruction">STR</span>, <span class="instruction">STRB</span>, and <span class="instruction">STRH</span>.
+</li><li>Load/store register (pac): <span class="instruction">LDRAA</span>, and <span class="instruction">LDRAB</span>.
+</li><li>Load/store register (register offset): <span class="instruction">LDR</span>, <span class="instruction">LDRB</span>, <span class="instruction">LDRH</span>, <span class="instruction">LDRSB</span>, <span class="instruction">LDRSH</span>, <span class="instruction">LDRSW</span>, <span class="instruction">STR</span>, <span class="instruction">STRB</span>, and <span class="instruction">STRH</span>.
+</li><li>Load/store register (unprivileged): <span class="instruction">LDTR</span>, <span class="instruction">LDTRB</span>, <span class="instruction">LDTRH</span>, <span class="instruction">LDTRSB</span>, <span class="instruction">LDTRSH</span>, <span class="instruction">LDTRSW</span>, <span class="instruction">STTR</span>, <span class="instruction">STTRB</span>, and <span class="instruction">STTRH</span>.
+</li><li>Load/store register (unscaled immediate): <span class="instruction">LDUR</span>, <span class="instruction">LDURB</span>, <span class="instruction">LDURH</span>, <span class="instruction">LDURSB</span>, <span class="instruction">LDURSH</span>, <span class="instruction">LDURSW</span>, <span class="instruction">STUR</span>, <span class="instruction">STURB</span>, and <span class="instruction">STURH</span>.
+</li><li>Load/store register (unsigned immediate): <span class="instruction">LDR</span>, <span class="instruction">LDRB</span>, <span class="instruction">LDRH</span>, <span class="instruction">LDRSB</span>, <span class="instruction">LDRSH</span>, <span class="instruction">LDRSW</span>, <span class="instruction">STR</span>, <span class="instruction">STRB</span>, and <span class="instruction">STRH</span>.
+</li><li>Load/store register pair (offset): <span class="instruction">LDP</span>, <span class="instruction">LDPSW</span>, and <span class="instruction">STP</span>.
+</li><li>Load/store register pair (post-indexed): <span class="instruction">LDP</span>, <span class="instruction">LDPSW</span>, and <span class="instruction">STP</span>.
+</li><li>Load/store register pair (pre-indexed): <span class="instruction">LDP</span>, <span class="instruction">LDPSW</span>, and <span class="instruction">STP</span>.
+</li></ul>
+
+</li><li>SME encodings: <ul>
+<li>SME Add Vector to Array: <span class="instruction">ADDHA</span>, and <span class="instruction">ADDVA</span>.
+</li><li>SME Integer Outer Product - 32 bit: <span class="instruction">SMOPA</span>, <span class="instruction">SMOPS</span>, <span class="instruction">SUMOPA</span>, <span class="instruction">SUMOPS</span>, <span class="instruction">UMOPA</span>, <span class="instruction">UMOPS</span>, <span class="instruction">USMOPA</span>, and <span class="instruction">USMOPS</span>.
+</li><li>SME Memory: <span class="instruction">LD1B</span>, <span class="instruction">LD1D</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1Q</span>, <span class="instruction">LD1W</span>, <span class="instruction">LDR</span>, <span class="instruction">ST1B</span>, <span class="instruction">ST1D</span>, <span class="instruction">ST1H</span>, <span class="instruction">ST1Q</span>, <span class="instruction">ST1W</span>, and <span class="instruction">STR</span>.
+</li><li>SME Move from Array: <span class="instruction">MOVA</span>, and <span class="instruction">MOVAZ</span>.
+</li><li>SME Move into Array: <span class="instruction">MOVA</span>.
+</li><li>SME Outer Product - 64 bit: <ul>
+<li>SME Int16 outer product: <span class="instruction">SMOPA</span>, <span class="instruction">SMOPS</span>, <span class="instruction">SUMOPA</span>, <span class="instruction">SUMOPS</span>, <span class="instruction">UMOPA</span>, <span class="instruction">UMOPS</span>, <span class="instruction">USMOPA</span>, and <span class="instruction">USMOPS</span>.
+</li></ul>
+
+</li><li>SME zero array: <span class="instruction">ZERO</span>.
+</li><li>SME2 Expand Lookup Table (Contiguous): <span class="instruction">LUTI2</span>, and <span class="instruction">LUTI4</span>.
+</li><li>SME2 Expand Lookup Table (Non-contiguous): <span class="instruction">LUTI2</span>, and <span class="instruction">LUTI4</span>.
+</li><li>SME2 Move Lookup Table: <span class="instruction">MOVT</span>.
+</li><li>SME2 Multi-vector - Indexed (Four registers): <ul>
+<li>SME2 multi-vec indexed long MLA four sources: <span class="instruction">SMLAL</span>, <span class="instruction">SMLSL</span>, <span class="instruction">UMLAL</span>, and <span class="instruction">UMLSL</span>.
+</li><li>SME2 multi-vec indexed long long MLA four sources 32-bit: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">SUMLALL</span>, <span class="instruction">UMLALL</span>, <span class="instruction">UMLSLL</span>, and <span class="instruction">USMLALL</span>.
+</li><li>SME2 multi-vec indexed long long MLA four sources 64-bit: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">UMLALL</span>, and <span class="instruction">UMLSLL</span>.
+</li><li>SME2 multi-vec ternary indexed four registers 32-bit: <span class="instruction">SDOT</span>, <span class="instruction">SUDOT</span>, <span class="instruction">SUVDOT</span>, <span class="instruction">SVDOT</span>, <span class="instruction">UDOT</span>, <span class="instruction">USDOT</span>, <span class="instruction">USVDOT</span>, and <span class="instruction">UVDOT</span>.
+</li><li>SME2 multi-vec ternary indexed four registers 64-bit: <span class="instruction">SDOT</span>, <span class="instruction">SVDOT</span>, <span class="instruction">UDOT</span>, and <span class="instruction">UVDOT</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - Indexed (One register): <ul>
+<li>SME2 multi-vec indexed long MLA one source: <span class="instruction">SMLAL</span>, <span class="instruction">SMLSL</span>, <span class="instruction">UMLAL</span>, and <span class="instruction">UMLSL</span>.
+</li><li>SME2 multi-vec indexed long long MLA one source 32-bit: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">SUMLALL</span>, <span class="instruction">UMLALL</span>, <span class="instruction">UMLSLL</span>, and <span class="instruction">USMLALL</span>.
+</li><li>SME2 multi-vec indexed long long MLA one source 64-bit: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">UMLALL</span>, and <span class="instruction">UMLSLL</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - Indexed (Two registers): <ul>
+<li>SME2 multi-vec indexed long MLA two sources: <span class="instruction">SMLAL</span>, <span class="instruction">SMLSL</span>, <span class="instruction">UMLAL</span>, and <span class="instruction">UMLSL</span>.
+</li><li>SME2 multi-vec indexed long long MLA two sources 32-bit: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">SUMLALL</span>, <span class="instruction">UMLALL</span>, <span class="instruction">UMLSLL</span>, and <span class="instruction">USMLALL</span>.
+</li><li>SME2 multi-vec indexed long long MLA two sources 64-bit: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">UMLALL</span>, and <span class="instruction">UMLSLL</span>.
+</li><li>SME2 multi-vec ternary indexed two registers 32-bit: <span class="instruction">SDOT</span>, <span class="instruction">SUDOT</span>, <span class="instruction">SVDOT</span>, <span class="instruction">UDOT</span>, <span class="instruction">USDOT</span>, and <span class="instruction">UVDOT</span>.
+</li><li>SME2 multi-vec ternary indexed two registers 64-bit: <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - Memory (Contiguous): <span class="instruction">LD1B</span>, <span class="instruction">LD1D</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1W</span>, <span class="instruction">LDNT1B</span>, <span class="instruction">LDNT1D</span>, <span class="instruction">LDNT1H</span>, <span class="instruction">LDNT1W</span>, <span class="instruction">ST1B</span>, <span class="instruction">ST1D</span>, <span class="instruction">ST1H</span>, <span class="instruction">ST1W</span>, <span class="instruction">STNT1B</span>, <span class="instruction">STNT1D</span>, <span class="instruction">STNT1H</span>, and <span class="instruction">STNT1W</span>.
+</li><li>SME2 Multi-vector - Memory (Strided): <span class="instruction">LD1B</span>, <span class="instruction">LD1D</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1W</span>, <span class="instruction">LDNT1B</span>, <span class="instruction">LDNT1D</span>, <span class="instruction">LDNT1H</span>, <span class="instruction">LDNT1W</span>, <span class="instruction">ST1B</span>, <span class="instruction">ST1D</span>, <span class="instruction">ST1H</span>, <span class="instruction">ST1W</span>, <span class="instruction">STNT1B</span>, <span class="instruction">STNT1D</span>, <span class="instruction">STNT1H</span>, and <span class="instruction">STNT1W</span>.
+</li><li>SME2 Multi-vector - Multiple Array Vectors (Four registers): <ul>
+<li>SME2 multiple vectors binary int four registers: <span class="instruction">ADD</span>, and <span class="instruction">SUB</span>.
+</li><li>SME2 multiple vectors four-way dot product four registers: <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li><li>SME2 multiple vectors long MLA four sources: <span class="instruction">SMLAL</span>, <span class="instruction">SMLSL</span>, <span class="instruction">UMLAL</span>, and <span class="instruction">UMLSL</span>.
+</li><li>SME2 multiple vectors long long MLA four sources: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">UMLALL</span>, <span class="instruction">UMLSLL</span>, and <span class="instruction">USMLALL</span>.
+</li><li>SME2 multiple vectors mixed dot product four registers: <span class="instruction">USDOT</span>.
+</li><li>SME2 multiple vectors ternary int four registers: <span class="instruction">ADD</span>, and <span class="instruction">SUB</span>.
+</li><li>SME2 multiple vectors two-way dot product four registers: <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - Multiple Array Vectors (Two registers): <ul>
+<li>SME2 multiple vectors binary int two registers: <span class="instruction">ADD</span>, and <span class="instruction">SUB</span>.
+</li><li>SME2 multiple vectors four-way dot product two registers: <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li><li>SME2 multiple vectors long MLA two sources: <span class="instruction">SMLAL</span>, <span class="instruction">SMLSL</span>, <span class="instruction">UMLAL</span>, and <span class="instruction">UMLSL</span>.
+</li><li>SME2 multiple vectors long long MLA two sources: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">UMLALL</span>, <span class="instruction">UMLSLL</span>, and <span class="instruction">USMLALL</span>.
+</li><li>SME2 multiple vectors mixed dot product two registers: <span class="instruction">USDOT</span>.
+</li><li>SME2 multiple vectors ternary int two registers: <span class="instruction">ADD</span>, and <span class="instruction">SUB</span>.
+</li><li>SME2 multiple vectors two-way dot product two registers: <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - Multiple Vectors SVE Destructive (Four registers): <ul>
+<li>SME2 multiple vectors int min/max four registers: <span class="instruction">SMAX</span>, <span class="instruction">SMIN</span>, <span class="instruction">UMAX</span>, and <span class="instruction">UMIN</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - Multiple Vectors SVE Destructive (Two registers): <ul>
+<li>SME2 multiple vectors int min/max two registers: <span class="instruction">SMAX</span>, <span class="instruction">SMIN</span>, <span class="instruction">UMAX</span>, and <span class="instruction">UMIN</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - Multiple Vectors SVE Saturating Multiply (Four registers): <span class="instruction">SQDMULH</span>.
+</li><li>SME2 Multi-vector - Multiple Vectors SVE Saturating Multiply (Two registers): <span class="instruction">SQDMULH</span>.
+</li><li>SME2 Multi-vector - Multiple and Single Array Vectors (Four registers): <ul>
+<li>SME2 single-multi four-way dot product four registers: <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li><li>SME2 single-multi long MLA four sources: <span class="instruction">SMLAL</span>, <span class="instruction">SMLSL</span>, <span class="instruction">UMLAL</span>, and <span class="instruction">UMLSL</span>.
+</li><li>SME2 single-multi long long MLA four sources: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">SUMLALL</span>, <span class="instruction">UMLALL</span>, <span class="instruction">UMLSLL</span>, and <span class="instruction">USMLALL</span>.
+</li><li>SME2 single-multi mixed dot product four registers: <span class="instruction">SUDOT</span>, and <span class="instruction">USDOT</span>.
+</li><li>SME2 single-multi ternary int four registers: <span class="instruction">ADD</span>, and <span class="instruction">SUB</span>.
+</li><li>SME2 single-multi two-way dot product four registers: <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - Multiple and Single Array Vectors (Two registers): <ul>
+<li>SME2 multiple and single vector long MLA one source: <span class="instruction">SMLAL</span>, <span class="instruction">SMLSL</span>, <span class="instruction">UMLAL</span>, and <span class="instruction">UMLSL</span>.
+</li><li>SME2 multiple and single vector long long FMA one source: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">UMLALL</span>, <span class="instruction">UMLSLL</span>, and <span class="instruction">USMLALL</span>.
+</li><li>SME2 single-multi four-way dot product two registers: <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li><li>SME2 single-multi long MLA two sources: <span class="instruction">SMLAL</span>, <span class="instruction">SMLSL</span>, <span class="instruction">UMLAL</span>, and <span class="instruction">UMLSL</span>.
+</li><li>SME2 single-multi long long MLA two sources: <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">SUMLALL</span>, <span class="instruction">UMLALL</span>, <span class="instruction">UMLSLL</span>, and <span class="instruction">USMLALL</span>.
+</li><li>SME2 single-multi mixed dot product two registers: <span class="instruction">SUDOT</span>, and <span class="instruction">USDOT</span>.
+</li><li>SME2 single-multi ternary int two registers: <span class="instruction">ADD</span>, and <span class="instruction">SUB</span>.
+</li><li>SME2 single-multi two-way dot product two registers: <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - Multiple and Single SVE Destructive (Four registers): <ul>
+<li>SME2 single-multi add four registers: <span class="instruction">ADD</span>.
+</li><li>SME2 single-multi int min/max four registers: <span class="instruction">SMAX</span>, <span class="instruction">SMIN</span>, <span class="instruction">UMAX</span>, and <span class="instruction">UMIN</span>.
+</li><li>SME2 single-multi signed saturating doubling multiply high four registers: <span class="instruction">SQDMULH</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - Multiple and Single SVE Destructive (Two registers): <ul>
+<li>SME2 single-multi add two registers: <span class="instruction">ADD</span>.
+</li><li>SME2 single-multi int min/max two registers: <span class="instruction">SMAX</span>, <span class="instruction">SMIN</span>, <span class="instruction">UMAX</span>, and <span class="instruction">UMIN</span>.
+</li><li>SME2 single-multi signed saturating doubling multiply high two registers: <span class="instruction">SQDMULH</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - SVE Constructive Binary: <ul>
+<li>SME2 multi-vec CLAMP four registers: <span class="instruction">SCLAMP</span>, and <span class="instruction">UCLAMP</span>.
+</li><li>SME2 multi-vec CLAMP two registers: <span class="instruction">SCLAMP</span>, and <span class="instruction">UCLAMP</span>.
+</li><li>SME2 multi-vec ZIP two registers: <span class="instruction">UZP</span>, and <span class="instruction">ZIP</span>.
+</li><li>SME2 multi-vec quadwords ZIP two registers: <span class="instruction">UZP</span>, and <span class="instruction">ZIP</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - SVE Constructive Unary: <ul>
+<li>SME2 multi-vec ZIP four registers: <span class="instruction">UZP</span>, and <span class="instruction">ZIP</span>.
+</li><li>SME2 multi-vec quadwords ZIP four registers: <span class="instruction">UZP</span>, and <span class="instruction">ZIP</span>.
+</li><li>SME2 multi-vec unpack four registers: <span class="instruction">SUNPK</span>, and <span class="instruction">UUNPK</span>.
+</li><li>SME2 multi-vec unpack two registers: <span class="instruction">SUNPK</span>, and <span class="instruction">UUNPK</span>.
+</li></ul>
+
+</li><li>SME2 Multi-vector - SVE Select: <span class="instruction">SEL</span>.
+</li><li>SME2 Multiple Zero: <span class="instruction">ZERO</span>.
+</li><li>SME2 Outer Product - Misc: <ul>
+<li>SME2 32-bit binary outer product: <span class="instruction">BMOPA</span>, and <span class="instruction">BMOPS</span>.
+</li></ul>
+
+</li><li>SME2 zero lookup table: <span class="instruction">ZERO</span>.
+</li></ul>
+
+</li><li>SVE encodings: <ul>
+<li>SVE Address Generation: <span class="instruction">ADR</span>.
+</li><li>SVE Bitwise Immediate: <span class="instruction">AND</span>, <span class="instruction">DUPM</span>, <span class="instruction">EOR</span>, and <span class="instruction">ORR</span>.
+</li><li>SVE Bitwise Logical - Unpredicated: <span class="instruction">AND</span>, <span class="instruction">BCAX</span>, <span class="instruction">BIC</span>, <span class="instruction">BSL1N</span>, <span class="instruction">BSL2N</span>, <span class="instruction">BSL</span>, <span class="instruction">EOR3</span>, <span class="instruction">EOR</span>, <span class="instruction">NBSL</span>, <span class="instruction">ORR</span>, and <span class="instruction">XAR</span>.
+</li><li>SVE Bitwise Shift - Predicated: <ul>
+<li>SVE bitwise shift by immediate (predicated): <span class="instruction">ASR</span>, <span class="instruction">ASRD</span>, <span class="instruction">LSL</span>, <span class="instruction">LSR</span>, <span class="instruction">SRSHR</span>, and <span class="instruction">URSHR</span>.
+</li><li>SVE bitwise shift by vector (predicated): <span class="instruction">ASR</span>, <span class="instruction">ASRR</span>, <span class="instruction">LSL</span>, <span class="instruction">LSLR</span>, <span class="instruction">LSR</span>, and <span class="instruction">LSRR</span>.
+</li><li>SVE bitwise shift by wide elements (predicated): <span class="instruction">ASR</span>, <span class="instruction">LSL</span>, and <span class="instruction">LSR</span>.
+</li></ul>
+
+</li><li>SVE Bitwise Shift - Unpredicated: <span class="instruction">ASR</span>, <span class="instruction">LSL</span>, and <span class="instruction">LSR</span>.
+</li><li>SVE Element Count: <ul>
+<li>SVE element count: <span class="instruction">CNTB</span>, <span class="instruction">CNTD</span>, <span class="instruction">CNTH</span>, and <span class="instruction">CNTW</span>.
+</li><li>SVE inc/dec register by element count: <span class="instruction">DECB</span>, <span class="instruction">DECD</span>, <span class="instruction">DECH</span>, <span class="instruction">DECW</span>, <span class="instruction">INCB</span>, <span class="instruction">INCD</span>, <span class="instruction">INCH</span>, and <span class="instruction">INCW</span>.
+</li><li>SVE inc/dec vector by element count: <span class="instruction">DECD</span>, <span class="instruction">DECH</span>, <span class="instruction">DECW</span>, <span class="instruction">INCD</span>, <span class="instruction">INCH</span>, and <span class="instruction">INCW</span>.
+</li></ul>
+
+</li><li>SVE Index Generation: <span class="instruction">INDEX</span>.
+</li><li>SVE Integer Arithmetic - Unpredicated: <ul>
+<li>SVE integer add/subtract vectors (unpredicated): <span class="instruction">ADD</span>, and <span class="instruction">SUB</span>.
+</li></ul>
+
+</li><li>SVE Integer Binary Arithmetic - Predicated: <ul>
+<li>SVE bitwise logical operations (predicated): <span class="instruction">AND</span>, <span class="instruction">BIC</span>, <span class="instruction">EOR</span>, and <span class="instruction">ORR</span>.
+</li><li>SVE integer add/subtract vectors (predicated): <span class="instruction">ADD</span>, <span class="instruction">SUB</span>, and <span class="instruction">SUBR</span>.
+</li><li>SVE integer min/max/difference (predicated): <span class="instruction">SABD</span>, <span class="instruction">SMAX</span>, <span class="instruction">SMIN</span>, <span class="instruction">UABD</span>, <span class="instruction">UMAX</span>, and <span class="instruction">UMIN</span>.
+</li><li>SVE integer multiply vectors (predicated): <span class="instruction">MUL</span>, <span class="instruction">SMULH</span>, and <span class="instruction">UMULH</span>.
+</li></ul>
+
+</li><li>SVE Integer Compare - Scalars: <span class="instruction">CTERMEQ</span>, and <span class="instruction">CTERMNE</span>.
+</li><li>SVE Integer Compare - Signed Immediate: <span class="instruction">CMP&lt;cc&gt;</span>.
+</li><li>SVE Integer Compare - Unsigned Immediate: <span class="instruction">CMP&lt;cc&gt;</span>.
+</li><li>SVE Integer Compare - Vectors: <span class="instruction">CMP&lt;cc&gt;</span>.
+</li><li>SVE Integer Misc - Unpredicated: <span class="instruction">MOVPRFX</span>.
+</li><li>SVE Integer Multiply-Add - Predicated: <span class="instruction">MAD</span>, <span class="instruction">MLA</span>, <span class="instruction">MLS</span>, and <span class="instruction">MSB</span>.
+</li><li>SVE Integer Multiply-Add - Unpredicated: <ul>
+<li>SVE integer dot product (unpredicated): <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li><li>SVE mixed sign dot product: <span class="instruction">USDOT</span>.
+</li><li>SVE2 complex integer multiply-add: <span class="instruction">CMLA</span>.
+</li><li>SVE2 integer multiply-add long: <span class="instruction">SMLALB</span>, <span class="instruction">SMLALT</span>, <span class="instruction">SMLSLB</span>, <span class="instruction">SMLSLT</span>, <span class="instruction">UMLALB</span>, <span class="instruction">UMLALT</span>, <span class="instruction">UMLSLB</span>, and <span class="instruction">UMLSLT</span>.
+</li><li>SVE2 saturating multiply-add high: <span class="instruction">SQRDMLAH</span>.
+</li></ul>
+
+</li><li>SVE Integer Reduction: <span class="instruction">ADDQV</span>, <span class="instruction">ANDQV</span>, <span class="instruction">ANDV</span>, <span class="instruction">EORQV</span>, <span class="instruction">EORV</span>, <span class="instruction">MOVPRFX</span>, <span class="instruction">ORQV</span>, <span class="instruction">ORV</span>, <span class="instruction">SADDV</span>, <span class="instruction">SMAXQV</span>, <span class="instruction">SMAXV</span>, <span class="instruction">SMINQV</span>, <span class="instruction">SMINV</span>, <span class="instruction">UADDV</span>, <span class="instruction">UMAXQV</span>, <span class="instruction">UMAXV</span>, <span class="instruction">UMINQV</span>, and <span class="instruction">UMINV</span>.
+</li><li>SVE Integer Unary Arithmetic - Predicated: <ul>
+<li>SVE bitwise unary operations (predicated): <span class="instruction">CLS</span>, <span class="instruction">CLZ</span>, <span class="instruction">CNOT</span>, <span class="instruction">CNT</span>, and <span class="instruction">NOT</span>.
+</li><li>SVE integer unary operations (predicated): <span class="instruction">ABS</span>, <span class="instruction">NEG</span>, <span class="instruction">SXTB</span>, <span class="instruction">SXTH</span>, <span class="instruction">SXTW</span>, <span class="instruction">UXTB</span>, <span class="instruction">UXTH</span>, and <span class="instruction">UXTW</span>.
+</li></ul>
+
+</li><li>SVE Integer Wide Immediate - Predicated: <ul>
+<li>SVE copy integer immediate (predicated): <span class="instruction">CPY</span>.
+</li></ul>
+
+</li><li>SVE Integer Wide Immediate - Unpredicated: <ul>
+<li>SVE broadcast integer immediate (unpredicated): <span class="instruction">DUP</span>.
+</li><li>SVE integer add/subtract immediate (unpredicated): <span class="instruction">ADD</span>, <span class="instruction">SUB</span>, and <span class="instruction">SUBR</span>.
+</li><li>SVE integer min/max immediate (unpredicated): <span class="instruction">SMAX</span>, <span class="instruction">SMIN</span>, <span class="instruction">UMAX</span>, and <span class="instruction">UMIN</span>.
+</li><li>SVE integer multiply immediate (unpredicated): <span class="instruction">MUL</span>.
+</li></ul>
+
+</li><li>SVE Memory - 32-bit Gather and Unsized Contiguous: <ul>
+<li>SVE 32-bit gather load (scalar plus 32-bit unscaled offsets): <span class="instruction">LD1B</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1SB</span>, <span class="instruction">LD1SH</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE 32-bit gather load (vector plus immediate): <span class="instruction">LD1B</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1SB</span>, <span class="instruction">LD1SH</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE 32-bit gather load halfwords (scalar plus 32-bit scaled offsets): <span class="instruction">LD1H</span>, and <span class="instruction">LD1SH</span>.
+</li><li>SVE 32-bit gather load words (scalar plus 32-bit scaled offsets): <span class="instruction">LD1W</span>.
+</li><li>SVE load and broadcast element: <span class="instruction">LD1RB</span>, <span class="instruction">LD1RD</span>, <span class="instruction">LD1RH</span>, <span class="instruction">LD1RSB</span>, <span class="instruction">LD1RSH</span>, <span class="instruction">LD1RSW</span>, and <span class="instruction">LD1RW</span>.
+</li><li>SVE load predicate register: <span class="instruction">LDR</span>.
+</li><li>SVE load vector register: <span class="instruction">LDR</span>.
+</li><li>SVE2 32-bit gather non-temporal load (vector plus scalar): <span class="instruction">LDNT1B</span>, <span class="instruction">LDNT1H</span>, <span class="instruction">LDNT1SB</span>, <span class="instruction">LDNT1SH</span>, and <span class="instruction">LDNT1W</span>.
+</li></ul>
+
+</li><li>SVE Memory - 64-bit Gather: <ul>
+<li>SVE 64-bit gather load (scalar plus 32-bit unpacked scaled offsets): <span class="instruction">LD1D</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1SH</span>, <span class="instruction">LD1SW</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE 64-bit gather load (scalar plus 64-bit scaled offsets): <span class="instruction">LD1D</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1SH</span>, <span class="instruction">LD1SW</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE 64-bit gather load (scalar plus 64-bit unscaled offsets): <span class="instruction">LD1B</span>, <span class="instruction">LD1D</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1SB</span>, <span class="instruction">LD1SH</span>, <span class="instruction">LD1SW</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE 64-bit gather load (scalar plus unpacked 32-bit unscaled offsets): <span class="instruction">LD1B</span>, <span class="instruction">LD1D</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1SB</span>, <span class="instruction">LD1SH</span>, <span class="instruction">LD1SW</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE 64-bit gather load (vector plus immediate): <span class="instruction">LD1B</span>, <span class="instruction">LD1D</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1SB</span>, <span class="instruction">LD1SH</span>, <span class="instruction">LD1SW</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE2 128-bit gather load (vector plus scalar): <span class="instruction">LD1Q</span>.
+</li><li>SVE2 64-bit gather non-temporal load (vector plus scalar): <span class="instruction">LDNT1B</span>, <span class="instruction">LDNT1D</span>, <span class="instruction">LDNT1H</span>, <span class="instruction">LDNT1SB</span>, <span class="instruction">LDNT1SH</span>, <span class="instruction">LDNT1SW</span>, and <span class="instruction">LDNT1W</span>.
+</li></ul>
+
+</li><li>SVE Memory - Contiguous Load: <ul>
+<li>SVE contiguous load (quadwords, scalar plus immediate): <span class="instruction">LD1D</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE contiguous load (quadwords, scalar plus scalar): <span class="instruction">LD1D</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE contiguous load (scalar plus immediate): <span class="instruction">LD1B</span>, <span class="instruction">LD1D</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1SB</span>, <span class="instruction">LD1SH</span>, <span class="instruction">LD1SW</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE contiguous load (scalar plus scalar): <span class="instruction">LD1B</span>, <span class="instruction">LD1D</span>, <span class="instruction">LD1H</span>, <span class="instruction">LD1SB</span>, <span class="instruction">LD1SH</span>, <span class="instruction">LD1SW</span>, and <span class="instruction">LD1W</span>.
+</li><li>SVE contiguous non-temporal load (scalar plus immediate): <span class="instruction">LDNT1B</span>, <span class="instruction">LDNT1D</span>, <span class="instruction">LDNT1H</span>, and <span class="instruction">LDNT1W</span>.
+</li><li>SVE contiguous non-temporal load (scalar plus scalar): <span class="instruction">LDNT1B</span>, <span class="instruction">LDNT1D</span>, <span class="instruction">LDNT1H</span>, and <span class="instruction">LDNT1W</span>.
+</li><li>SVE load and broadcast quadword (scalar plus immediate): <span class="instruction">LD1ROB</span>, <span class="instruction">LD1ROD</span>, <span class="instruction">LD1ROH</span>, <span class="instruction">LD1ROW</span>, <span class="instruction">LD1RQB</span>, <span class="instruction">LD1RQD</span>, <span class="instruction">LD1RQH</span>, and <span class="instruction">LD1RQW</span>.
+</li><li>SVE load and broadcast quadword (scalar plus scalar): <span class="instruction">LD1ROB</span>, <span class="instruction">LD1ROD</span>, <span class="instruction">LD1ROH</span>, <span class="instruction">LD1ROW</span>, <span class="instruction">LD1RQB</span>, <span class="instruction">LD1RQD</span>, <span class="instruction">LD1RQH</span>, and <span class="instruction">LD1RQW</span>.
+</li><li>SVE load multiple structures (quadwords, scalar plus immediate): <span class="instruction">LD2Q</span>, <span class="instruction">LD3Q</span>, and <span class="instruction">LD4Q</span>.
+</li><li>SVE load multiple structures (quadwords, scalar plus scalar): <span class="instruction">LD2Q</span>, <span class="instruction">LD3Q</span>, and <span class="instruction">LD4Q</span>.
+</li><li>SVE load multiple structures (scalar plus immediate): <span class="instruction">LD2B</span>, <span class="instruction">LD2D</span>, <span class="instruction">LD2H</span>, <span class="instruction">LD2W</span>, <span class="instruction">LD3B</span>, <span class="instruction">LD3D</span>, <span class="instruction">LD3H</span>, <span class="instruction">LD3W</span>, <span class="instruction">LD4B</span>, <span class="instruction">LD4D</span>, <span class="instruction">LD4H</span>, and <span class="instruction">LD4W</span>.
+</li><li>SVE load multiple structures (scalar plus scalar): <span class="instruction">LD2B</span>, <span class="instruction">LD2D</span>, <span class="instruction">LD2H</span>, <span class="instruction">LD2W</span>, <span class="instruction">LD3B</span>, <span class="instruction">LD3D</span>, <span class="instruction">LD3H</span>, <span class="instruction">LD3W</span>, <span class="instruction">LD4B</span>, <span class="instruction">LD4D</span>, <span class="instruction">LD4H</span>, and <span class="instruction">LD4W</span>.
+</li></ul>
+
+</li><li>SVE Memory - Contiguous Store and Unsized Contiguous: <span class="instruction">ST1B</span>, <span class="instruction">ST1D</span>, <span class="instruction">ST1H</span>, <span class="instruction">ST1W</span>, <span class="instruction">ST2Q</span>, <span class="instruction">ST3Q</span>, <span class="instruction">ST4Q</span>, and <span class="instruction">STR</span>.
+</li><li>SVE Memory - Contiguous Store with Immediate Offset: <span class="instruction">ST1B</span>, <span class="instruction">ST1D</span>, <span class="instruction">ST1H</span>, <span class="instruction">ST1W</span>, <span class="instruction">ST2B</span>, <span class="instruction">ST2D</span>, <span class="instruction">ST2H</span>, <span class="instruction">ST2W</span>, <span class="instruction">ST3B</span>, <span class="instruction">ST3D</span>, <span class="instruction">ST3H</span>, <span class="instruction">ST3W</span>, <span class="instruction">ST4B</span>, <span class="instruction">ST4D</span>, <span class="instruction">ST4H</span>, <span class="instruction">ST4W</span>, <span class="instruction">STNT1B</span>, <span class="instruction">STNT1D</span>, <span class="instruction">STNT1H</span>, and <span class="instruction">STNT1W</span>.
+</li><li>SVE Memory - Non-temporal and Multi-register Contiguous Store: <span class="instruction">ST2B</span>, <span class="instruction">ST2D</span>, <span class="instruction">ST2H</span>, <span class="instruction">ST2W</span>, <span class="instruction">ST3B</span>, <span class="instruction">ST3D</span>, <span class="instruction">ST3H</span>, <span class="instruction">ST3W</span>, <span class="instruction">ST4B</span>, <span class="instruction">ST4D</span>, <span class="instruction">ST4H</span>, <span class="instruction">ST4W</span>, <span class="instruction">STNT1B</span>, <span class="instruction">STNT1D</span>, <span class="instruction">STNT1H</span>, and <span class="instruction">STNT1W</span>.
+</li><li>SVE Memory - Non-temporal and Quadword Scatter Store: <span class="instruction">ST1Q</span>, <span class="instruction">STNT1B</span>, <span class="instruction">STNT1D</span>, <span class="instruction">STNT1H</span>, and <span class="instruction">STNT1W</span>.
+</li><li>SVE Memory - Scatter: <span class="instruction">ST1B</span>, <span class="instruction">ST1D</span>, <span class="instruction">ST1H</span>, and <span class="instruction">ST1W</span>.
+</li><li>SVE Memory - Scatter with Optional Sign Extend: <span class="instruction">ST1B</span>, <span class="instruction">ST1D</span>, <span class="instruction">ST1H</span>, and <span class="instruction">ST1W</span>.
+</li><li>SVE Misc: <span class="instruction">BDEP</span>, <span class="instruction">BEXT</span>, <span class="instruction">BGRP</span>, <span class="instruction">EORBT</span>, <span class="instruction">EORTB</span>, <span class="instruction">SADDLBT</span>, <span class="instruction">SMMLA</span>, <span class="instruction">SSHLLB</span>, <span class="instruction">SSHLLT</span>, <span class="instruction">SSUBLBT</span>, <span class="instruction">SSUBLTB</span>, <span class="instruction">UMMLA</span>, <span class="instruction">USHLLB</span>, <span class="instruction">USHLLT</span>, and <span class="instruction">USMMLA</span>.
+</li><li>SVE Multiply - Indexed: <ul>
+<li>SVE integer dot product (indexed): <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li><li>SVE mixed sign dot product (indexed): <span class="instruction">SUDOT</span>, and <span class="instruction">USDOT</span>.
+</li><li>SVE2 complex integer multiply-add (indexed): <span class="instruction">CMLA</span>.
+</li><li>SVE2 integer multiply (indexed): <span class="instruction">MUL</span>.
+</li><li>SVE2 integer multiply long (indexed): <span class="instruction">SMULLB</span>, <span class="instruction">SMULLT</span>, <span class="instruction">UMULLB</span>, and <span class="instruction">UMULLT</span>.
+</li><li>SVE2 integer multiply-add (indexed): <span class="instruction">MLA</span>, and <span class="instruction">MLS</span>.
+</li><li>SVE2 integer multiply-add long (indexed): <span class="instruction">SMLALB</span>, <span class="instruction">SMLALT</span>, <span class="instruction">SMLSLB</span>, <span class="instruction">SMLSLT</span>, <span class="instruction">UMLALB</span>, <span class="instruction">UMLALT</span>, <span class="instruction">UMLSLB</span>, and <span class="instruction">UMLSLT</span>.
+</li><li>SVE2 saturating multiply high (indexed): <span class="instruction">SQDMULH</span>, and <span class="instruction">SQRDMULH</span>.
+</li><li>SVE2 saturating multiply-add high (indexed): <span class="instruction">SQRDMLAH</span>.
+</li></ul>
+
+</li><li>SVE Permute Predicate: <ul>
+<li>SVE permute predicate elements: <span class="instruction">TRN1</span>, <span class="instruction">TRN2</span>, <span class="instruction">UZP1</span>, <span class="instruction">UZP2</span>, <span class="instruction">ZIP1</span>, and <span class="instruction">ZIP2</span>.
+</li><li>SVE reverse predicate elements: <span class="instruction">REV</span>.
+</li></ul>
+
+</li><li>SVE Permute Vector - Extract: <span class="instruction">EXT</span>.
+</li><li>SVE Permute Vector - Indexed DUP: <span class="instruction">DUP</span>.
+</li><li>SVE Permute Vector - Interleaving: <span class="instruction">TRN1</span>, <span class="instruction">TRN2</span>, <span class="instruction">UZP1</span>, <span class="instruction">UZP2</span>, <span class="instruction">ZIP1</span>, and <span class="instruction">ZIP2</span>.
+</li><li>SVE Permute Vector - One Source Quadwords: <span class="instruction">DUPQ</span>, and <span class="instruction">EXTQ</span>.
+</li><li>SVE Permute Vector - Predicated: <ul>
+<li>SVE copy SIMD&amp;FP scalar register to vector (predicated): <span class="instruction">CPY</span>.
+</li><li>SVE copy general register to vector (predicated): <span class="instruction">CPY</span>.
+</li><li>SVE reverse doublewords: <span class="instruction">REVD</span>.
+</li><li>SVE reverse within elements: <span class="instruction">RBIT</span>, <span class="instruction">REVB</span>, <span class="instruction">REVH</span>, and <span class="instruction">REVW</span>.
+</li></ul>
+
+</li><li>SVE Permute Vector - Segments: <span class="instruction">TRN1</span>, <span class="instruction">TRN2</span>, <span class="instruction">UZP1</span>, <span class="instruction">UZP2</span>, <span class="instruction">ZIP1</span>, and <span class="instruction">ZIP2</span>.
+</li><li>SVE Permute Vector - TBXQ: <span class="instruction">TBXQ</span>.
+</li><li>SVE Permute Vector - Three Sources TBL: <span class="instruction">TBL</span>, and <span class="instruction">TBX</span>.
+</li><li>SVE Permute Vector - Two Sources Quadwords: <span class="instruction">TBLQ</span>, <span class="instruction">UZPQ1</span>, <span class="instruction">UZPQ2</span>, <span class="instruction">ZIPQ1</span>, and <span class="instruction">ZIPQ2</span>.
+</li><li>SVE Permute Vector - Two Sources TBL: <span class="instruction">TBL</span>.
+</li><li>SVE Permute Vector - Unpredicated: <ul>
+<li>SVE broadcast general register: <span class="instruction">DUP</span>.
+</li><li>SVE insert SIMD&amp;FP scalar register: <span class="instruction">INSR</span>.
+</li><li>SVE insert general register: <span class="instruction">INSR</span>.
+</li><li>SVE reverse vector elements: <span class="instruction">REV</span>.
+</li><li>SVE unpack vector elements: <span class="instruction">SUNPKHI</span>, <span class="instruction">SUNPKLO</span>, <span class="instruction">UUNPKHI</span>, and <span class="instruction">UUNPKLO</span>.
+</li></ul>
+
+</li><li>SVE Predicate Logical Operations: <span class="instruction">AND</span>, <span class="instruction">ANDS</span>, <span class="instruction">BIC</span>, <span class="instruction">BICS</span>, <span class="instruction">EOR</span>, <span class="instruction">EORS</span>, <span class="instruction">NAND</span>, <span class="instruction">NANDS</span>, <span class="instruction">NOR</span>, <span class="instruction">NORS</span>, <span class="instruction">ORN</span>, <span class="instruction">ORNS</span>, <span class="instruction">ORR</span>, <span class="instruction">ORRS</span>, and <span class="instruction">SEL</span>.
+</li><li>SVE Predicate Misc: <ul>
+<li>SVE predicate initialize: <span class="instruction">PTRUE</span>, and <span class="instruction">PTRUES</span>.
+</li><li>SVE predicate read from FFR (predicated): <span class="instruction">RDFFR</span>, and <span class="instruction">RDFFRS</span>.
+</li><li>SVE predicate read from FFR (unpredicated): <span class="instruction">RDFFR</span>.
+</li><li>SVE predicate test: <span class="instruction">PTEST</span>.
+</li><li>SVE predicate zero: <span class="instruction">PFALSE</span>.
+</li></ul>
+
+</li><li>SVE Predicate Select: <span class="instruction">PSEL</span>.
+</li><li>SVE Scalar Integer Compare - Predicate-as-counter: <span class="instruction">PTRUE</span>.
+</li><li>SVE Stack Allocation: <span class="instruction">ADDPL</span>, <span class="instruction">ADDSPL</span>, <span class="instruction">ADDSVL</span>, <span class="instruction">ADDVL</span>, <span class="instruction">RDSVL</span>, and <span class="instruction">RDVL</span>.
+</li><li>SVE Vector Select: <span class="instruction">SEL</span>.
+</li><li>SVE Write FFR: <span class="instruction">SETFFR</span>, and <span class="instruction">WRFFR</span>.
+</li><li>SVE integer clamp: <span class="instruction">SCLAMP</span>, and <span class="instruction">UCLAMP</span>.
+</li><li>SVE two-way dot product: <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li><li>SVE two-way dot product (indexed): <span class="instruction">SDOT</span>, and <span class="instruction">UDOT</span>.
+</li><li>SVE2 Accumulate: <ul>
+<li>SVE2 bitwise shift and insert: <span class="instruction">SLI</span>, and <span class="instruction">SRI</span>.
+</li><li>SVE2 bitwise shift right and accumulate: <span class="instruction">SRSRA</span>, <span class="instruction">SSRA</span>, <span class="instruction">URSRA</span>, and <span class="instruction">USRA</span>.
+</li><li>SVE2 complex integer add: <span class="instruction">CADD</span>.
+</li><li>SVE2 integer absolute difference and accumulate: <span class="instruction">SABA</span>, and <span class="instruction">UABA</span>.
+</li><li>SVE2 integer absolute difference and accumulate long: <span class="instruction">SABALB</span>, <span class="instruction">SABALT</span>, <span class="instruction">UABALB</span>, and <span class="instruction">UABALT</span>.
+</li><li>SVE2 integer add/subtract long with carry: <span class="instruction">ADCLB</span>, <span class="instruction">ADCLT</span>, <span class="instruction">SBCLB</span>, and <span class="instruction">SBCLT</span>.
+</li></ul>
+
+</li><li>SVE2 Crypto Extensions: <span class="instruction">AESD</span>, <span class="instruction">AESE</span>, <span class="instruction">AESIMC</span>, <span class="instruction">AESMC</span>, <span class="instruction">RAX1</span>, <span class="instruction">SM4E</span>, and <span class="instruction">SM4EKEY</span>.
+</li><li>SVE2 Histogram Computation (Segment) and Lookup Table: <span class="instruction">LUTI2</span>, and <span class="instruction">LUTI4</span>.
+</li><li>SVE2 Integer - Predicated: <ul>
+<li>SVE2 integer halving add/subtract (predicated): <span class="instruction">SHADD</span>, <span class="instruction">SHSUB</span>, <span class="instruction">SHSUBR</span>, <span class="instruction">UHADD</span>, <span class="instruction">UHSUB</span> ,and <span class="instruction">UHSUBR</span>.
+</li><li>SVE2 integer pairwise add and accumulate long: <span class="instruction">SADALP</span>, and <span class="instruction">UADALP</span>.
+</li><li>SVE2 integer pairwise arithmetic: <span class="instruction">ADDP</span>, <span class="instruction">SMAXP</span>, <span class="instruction">SMINP</span>, <span class="instruction">UMAXP</span>, and <span class="instruction">UMINP</span>.
+</li></ul>
+
+</li><li>SVE2 Integer Multiply - Unpredicated: <span class="instruction">MUL</span>, <span class="instruction">PMUL</span>, <span class="instruction">SMULH</span>, <span class="instruction">SQDMULH</span>, <span class="instruction">SQRDMULH</span>, and <span class="instruction">UMULH</span>.
+</li><li>SVE2 Narrowing: <ul>
+<li>SVE2 bitwise shift right narrow: <span class="instruction">RSHRNB</span>, <span class="instruction">RSHRNT</span>, <span class="instruction">SHRNB</span>, and <span class="instruction">SHRNT</span>.
+</li><li>SVE2 integer add/subtract narrow high part: <span class="instruction">ADDHNB</span>, <span class="instruction">ADDHNT</span>, <span class="instruction">RADDHNB</span>, <span class="instruction">RADDHNT</span>, <span class="instruction">RSUBHNB</span>, <span class="instruction">RSUBHNT</span>, <span class="instruction">SUBHNB</span>, and <span class="instruction">SUBHNT</span>.
+</li></ul>
+
+</li><li>SVE2 Widening Integer Arithmetic: <ul>
+<li>SVE2 integer add/subtract long: <span class="instruction">SABDLB</span>, <span class="instruction">SABDLT</span>, <span class="instruction">SADDLB</span>, <span class="instruction">SADDLT</span>, <span class="instruction">SSUBLB</span>, <span class="instruction">SSUBLT</span>, <span class="instruction">UABDLB</span>, <span class="instruction">UABDLT</span>, <span class="instruction">UADDLB</span>, <span class="instruction">UADDLT</span>, <span class="instruction">USUBLB</span>, and <span class="instruction">USUBLT</span>.
+</li><li>SVE2 integer add/subtract wide: <span class="instruction">SADDWB</span>, <span class="instruction">SADDWT</span>, <span class="instruction">SSUBWB</span>, <span class="instruction">SSUBWT</span>, <span class="instruction">UADDWB</span>, <span class="instruction">UADDWT</span>, <span class="instruction">USUBWB</span>, and <span class="instruction">USUBWT</span>.
+</li><li>SVE2 integer multiply long: <span class="instruction">PMULLB</span>, <span class="instruction">PMULLT</span>, <span class="instruction">SMULLB</span>, <span class="instruction">SMULLT</span>, <span class="instruction">UMULLB</span>, and <span class="instruction">UMULLT</span>.
+</li></ul>
+
+</li></ul>
+
+</li></ul>
+<div class="note"><span class="note-header">Note</span><p>The architecture makes no statement about the timing properties when the PSTATE.DIT bit is not set. However, it is likely that many of these instructions have timing that is invariant of the data in many situations.</p><p>In particular, Arm strongly recommends that the Armv8.3 pointer authentication instructions do not have their timing dependent on the key value used in the pointer authentication in all cases, regardless of the PSTATE.DIT bit.</p></div><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to <span class="binarynumber">'0'</span>.
+</li></ul></div><h4 id="fieldset_0-23_0">Bits [23:0]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><div class="access_mechanisms"><h2>Accessing DIT</h2><p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRS &lt;Xt&gt;, DIT</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b011</td><td>0b0100</td><td>0b0010</td><td>0b101</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_DIT) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    UNDEFINED;
+elsif PSTATE.EL == EL0 then
+    X[t, 64] = Zeros(39):PSTATE.DIT:Zeros(24);
+elsif PSTATE.EL == EL1 then
+    X[t, 64] = Zeros(39):PSTATE.DIT:Zeros(24);
+elsif PSTATE.EL == EL2 then
+    X[t, 64] = Zeros(39):PSTATE.DIT:Zeros(24);
+elsif PSTATE.EL == EL3 then
+    X[t, 64] = Zeros(39):PSTATE.DIT:Zeros(24);
+                </p><div><h4 class="assembler">MSR DIT, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b011</td><td>0b0100</td><td>0b0010</td><td>0b101</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_DIT) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    UNDEFINED;
+elsif PSTATE.EL == EL0 then
+    PSTATE.DIT = X[t, 64]&lt;24&gt;;
+elsif PSTATE.EL == EL1 then
+    PSTATE.DIT = X[t, 64]&lt;24&gt;;
+elsif PSTATE.EL == EL2 then
+    PSTATE.DIT = X[t, 64]&lt;24&gt;;
+elsif PSTATE.EL == EL3 then
+    PSTATE.DIT = X[t, 64]&lt;24&gt;;
+                </p><div><h4 class="assembler">MSR DIT, #&lt;imm&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>op2</th></tr><tr><td>0b00</td><td>0b011</td><td>0b0100</td><td>0b010</td></tr></table></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-06-23 17:47:32, 2025-06_rel</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>
