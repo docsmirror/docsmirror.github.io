@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>UMOPA (2-way) -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">UMOPA (2-way)</h2><p>Unsigned 16-bit integer sum of outer products to 32-bit integer, accumulating</p>
+      <p class="aml">This instruction works with a 32-bit element ZA tile.</p>
+      <p class="aml">This instruction multiplies the sub-matrix in the first source vector by the
+sub-matrix in the second source vector.
+The first source holds SVL<sub>S</sub>×2
+sub-matrix of unsigned 16-bit integer values, and the second source holds
+2×SVL<sub>S</sub> sub-matrix of unsigned 16-bit integer values.</p>
+      <p class="aml">Each source vector is independently predicated by a corresponding
+governing predicate.
+When a 16-bit source element is inactive, it is treated as having the value 0.</p>
+      <p class="aml">The resulting SVL<sub>S</sub>×SVL<sub>S</sub> widened 32-bit integer sum of outer products
+is then destructively added to the 32-bit integer
+destination tile.
+This is equivalent to performing a 2-way dot product and accumulate to
+each of the destination tile elements.</p>
+      <p class="aml">Each 32-bit container of the first source
+vector holds 2 consecutive column elements of each row of a SVL<sub>S</sub>×2
+sub-matrix, and each 32-bit container of the second source vector holds
+2 consecutive row elements of each column of a 2×SVL<sub>S</sub> sub-matrix.</p>
+    
+    <h3 class="classheading"><a id="iclass_sme2"/>SME2<span style="font-size:smaller;"><br/>(FEAT_SME2)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr">1</td><td class="l">0</td><td class="r">1</td><td class="l">0</td><td>0</td><td>0</td><td class="r">0</td><td class="lr">1</td><td class="l">1</td><td class="r">0</td><td class="lr">0</td><td colspan="5" class="lr">Zm</td><td colspan="3" class="lr">Pm</td><td colspan="3" class="lr">Pn</td><td colspan="5" class="lr">Zn</td><td class="lr">0</td><td class="lr">1</td><td class="lr">0</td><td colspan="2" class="lr">ZAda</td></tr><tr class="secondrow"><td/><td colspan="2"/><td colspan="4"/><td class="droppedname">u0</td><td colspan="2"/><td/><td colspan="5"/><td colspan="3"/><td colspan="3"/><td colspan="5"/><td class="droppedname">S</td><td/><td/><td colspan="2"/></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="umopa_za32_pp_zz_16"/><p class="asm-code">UMOPA  <a href="#ZAda" title="For the &quot;32-bit&quot; variant: is the name of the ZA tile ZA0-ZA3, encoded in the &quot;ZAda&quot; field.">&lt;ZAda&gt;</a>.S, <a href="#Pn" title="Is the name of the first governing scalable predicate register P0-P7, encoded in the &quot;Pn&quot; field.">&lt;Pn&gt;</a>/M, <a href="#Pm" title="Is the name of the second governing scalable predicate register P0-P7, encoded in the &quot;Pm&quot; field.">&lt;Pm&gt;</a>/M, <a href="#Zn__2" title="Is the name of the first source scalable vector register, encoded in the &quot;Zn&quot; field.">&lt;Zn&gt;</a>.H, <a href="#Zm" title="Is the name of the second source scalable vector register, encoded in the &quot;Zm&quot; field.">&lt;Zm&gt;</a>.H</p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_SME2) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+let esize : integer{} = 32;
+let a : integer = UInt(Pn);
+let b : integer = UInt(Pm);
+let n : integer = UInt(Zn);
+let m : integer = UInt(Zm);
+let da : integer = UInt(ZAda);
+let unsigned : boolean = TRUE;</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;ZAda&gt;</td><td><a id="ZAda"/>
+        
+          <p class="aml">Is the name of the ZA tile ZA0-ZA3, encoded in the "ZAda" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pn&gt;</td><td><a id="Pn"/>
+        
+          <p class="aml">Is the name of the first governing scalable predicate register P0-P7, encoded in the "Pn" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pm&gt;</td><td><a id="Pm"/>
+        
+          <p class="aml">Is the name of the second governing scalable predicate register P0-P7, encoded in the "Pm" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zn&gt;</td><td><a id="Zn__2"/>
+        
+          <p class="aml">Is the name of the first source scalable vector register, encoded in the "Zn" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zm&gt;</td><td><a id="Zm"/>
+        
+          <p class="aml">Is the name of the second source scalable vector register, encoded in the "Zm" field.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">CheckStreamingSVEAndZAEnabled();
+let VL : integer{} = CurrentVL();
+let PL : integer{} = VL DIV 8;
+let dim : integer{} = VL DIV esize;
+let mask1 : bits(PL) = P{}(a);
+let mask2 : bits(PL) = P{}(b);
+let operand1 : bits(VL) = Z{}(n);
+let operand2 : bits(VL) = Z{}(m);
+let operand3 : bits(dim*dim*esize) = ZAtile{}(da, esize);
+var result : bits(dim*dim*esize);
+var prod : integer;
+
+for row = 0 to dim-1 do
+    for col = 0 to dim-1 do
+        var sum : bits(esize) = operand3[(row*dim+col)*:esize];
+        for k = 0 to 1 do
+            if (<a href="shared_pseudocode.html#func_ActivePredicateElement_4" title="">ActivePredicateElement</a>{PL}(mask1, 2*row + k, esize DIV 2) &amp;&amp;
+                  <a href="shared_pseudocode.html#func_ActivePredicateElement_4" title="">ActivePredicateElement</a>{PL}(mask2, 2*col + k, esize DIV 2)) then
+                let op1elt : bits(esize DIV 2) = operand1[(2*row + k)*:(esize DIV 2)];
+                let op2elt : bits(esize DIV 2) = operand2[(2*col + k)*:(esize DIV 2)];
+                let element1 : integer = if unsigned then UInt(op1elt) else SInt(op1elt);
+                let element2 : integer = if unsigned then UInt(op2elt) else SInt(op2elt);
+                prod = element1 * element2;
+                sum = sum + prod;
+            end;
+        end;
+        result[(row*dim+col)*:esize] = sum;
+    end;
+end;
+
+ZAtile{dim*dim*esize}(da, esize) = result;</p>
+    </div>
+  <h3>Operational information</h3>
+    
+      
+        <p class="aml">This instruction is a data-independent-time instruction as described in <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_BEICCDDAB3">About PSTATE.DIT</a>.</p>
+      
+    
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

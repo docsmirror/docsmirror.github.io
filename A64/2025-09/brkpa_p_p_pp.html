@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>BRKPA -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">BRKPA</h2><p>Break after first true condition, propagating from previous partition</p>
+      <p class="aml">This instruction breaks after first true condition, propagating from previous partition. If the Last active element of the first source predicate is false, then
+the destination predicate is set to all-false.
+Otherwise, the destination predicate elements up to and including
+the first active and true source element are set to true, then the
+subsequent elements are set to false. Inactive elements in the destination predicate register are set to zero. This instruction does not set the condition flags.</p>
+    
+    <h3 class="classheading"><a id="iclass_not_setting_the_condition_flags"/>Not setting the condition flags<span style="font-size:smaller;"><br/>(FEAT_SVE || FEAT_SME)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">0</td><td>0</td><td class="r">1</td><td class="l">0</td><td>0</td><td>1</td><td class="r">0</td><td class="lr">1</td><td class="lr">0</td><td class="lr">0</td><td class="l">0</td><td class="r">0</td><td colspan="4" class="lr">Pm</td><td class="l">1</td><td class="r">1</td><td colspan="4" class="lr">Pg</td><td class="lr">0</td><td colspan="4" class="lr">Pn</td><td class="lr">0</td><td colspan="4" class="lr">Pd</td></tr><tr class="secondrow"><td colspan="3"/><td colspan="4"/><td/><td class="droppedname">op</td><td class="droppedname">S</td><td colspan="2"/><td colspan="4"/><td colspan="2"/><td colspan="4"/><td/><td colspan="4"/><td class="droppedname">B</td><td colspan="4"/></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="brkpa_p_p_pp_"/><p class="asm-code">BRKPA  <a href="#Pd" title="Is the name of the destination scalable predicate register, encoded in the &quot;Pd&quot; field.">&lt;Pd&gt;</a>.B, <a href="#Pg__2" title="Is the name of the governing scalable predicate register, encoded in the &quot;Pg&quot; field.">&lt;Pg&gt;</a>/Z, <a href="#Pn__2" title="Is the name of the first source scalable predicate register, encoded in the &quot;Pn&quot; field.">&lt;Pn&gt;</a>.B, <a href="#Pm__2" title="Is the name of the second source scalable predicate register, encoded in the &quot;Pm&quot; field.">&lt;Pm&gt;</a>.B</p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_SVE) &amp;&amp; !IsFeatureImplemented(FEAT_SME) then
+    EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>);
+end;
+let esize : integer{} = 8;
+let g : integer = UInt(Pg);
+let n : integer = UInt(Pn);
+let m : integer = UInt(Pm);
+let d : integer = UInt(Pd);
+let setflags : boolean = FALSE;</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pd&gt;</td><td><a id="Pd"/>
+        
+          <p class="aml">Is the name of the destination scalable predicate register, encoded in the "Pd" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pg&gt;</td><td><a id="Pg__2"/>
+        
+          <p class="aml">Is the name of the governing scalable predicate register, encoded in the "Pg" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pn&gt;</td><td><a id="Pn__2"/>
+        
+          <p class="aml">Is the name of the first source scalable predicate register, encoded in the "Pn" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pm&gt;</td><td><a id="Pm__2"/>
+        
+          <p class="aml">Is the name of the second source scalable predicate register, encoded in the "Pm" field.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">CheckSVEEnabled();
+let VL : integer{} = CurrentVL();
+let PL : integer{} = VL DIV 8;
+let elements : integer = VL DIV esize;
+let mask : bits(PL) = P{}(g);
+let operand1 : bits(PL) = P{}(n);
+let operand2 : bits(PL) = P{}(m);
+var result : bits(PL);
+var last : boolean = (<a href="shared_pseudocode.html#func_LastActive_4" title="">LastActive</a>{PL}(mask, operand1, 8) == '1');
+
+for e = 0 to elements-1 do
+    if <a href="shared_pseudocode.html#func_ActivePredicateElement_4" title="">ActivePredicateElement</a>{PL}(mask, e, 8) then
+        let pbit : bit = if last then '1' else '0';
+        result[e*:1] = ZeroExtend{1}(pbit);
+        last = last &amp;&amp; (!<a href="shared_pseudocode.html#func_ActivePredicateElement_4" title="">ActivePredicateElement</a>{PL}(operand2, e, 8));
+    else
+        result[e*:1] = ZeroExtend{1}('0');
+    end;
+end;
+
+if setflags then
+    PSTATE.[N,Z,C,V] = <a href="shared_pseudocode.html#func_PredTest_4" title="">PredTest</a>{PL}(mask, result, esize);
+end;
+<a href="shared_pseudocode.html#accessor_P_2" title="">P</a>{PL}(d) = result;</p>
+    </div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>TCR2MASK_EL1</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">TCR2MASK_EL1, Extended Translation Control Masking Register (EL1)</h1><p>The TCR2MASK_EL1 characteristics are:</p><h2>Purpose</h2>
+        <p>Mask register to prevent updates of fields in <a href="AArch64-tcr2_el1.html">TCR2_EL1</a> on writes to <a href="AArch64-tcr2_el1.html">TCR2_EL1</a> or TCR2ALIAS_EL1.</p>
+      <h2>Configuration</h2><p>This register is present only when FEAT_SRMASK is implemented and FEAT_AA64 is implemented. Otherwise, direct accesses to TCR2MASK_EL1 are <span class="arm-defined-word">UNDEFINED</span>.</p><h2>Attributes</h2>
+        <p>TCR2MASK_EL1 is a 64-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="32"><a href="#fieldset_0-63_22">RES0</a></td></tr><tr class="firstrow"><td class="lr" colspan="10"><a href="#fieldset_0-63_22">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-21_21-1">FNGNA1</a></td><td class="lr" colspan="1"><a href="#fieldset_0-20_20-1">FNGNA0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-19_19">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-18_18-1">FNG1</a></td><td class="lr" colspan="1"><a href="#fieldset_0-17_17-1">FNG0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-16_16-1">A2</a></td><td class="lr" colspan="1"><a href="#fieldset_0-15_15-1">DisCH1</a></td><td class="lr" colspan="1"><a href="#fieldset_0-14_14-1">DisCH0</a></td><td class="lr" colspan="2"><a href="#fieldset_0-13_12">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-11_11-1">HAFT</a></td><td class="lr" colspan="1"><a href="#fieldset_0-10_10-1">PTTWI</a></td><td class="lr" colspan="4"><a href="#fieldset_0-9_6">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-5_5-1">D128</a></td><td class="lr" colspan="1"><a href="#fieldset_0-4_4-1">AIE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-3_3-1">POE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-2_2-1">E0POE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-1_1-1">PIE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-0_0-1">PnCH</a></td></tr></tbody></table><h4 id="fieldset_0-63_22">Bits [63:22]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-21_21-1">FNGNA1, bit [21]<span class="condition"><br/>When FEAT_THE is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for FNGNA1.</p>
+    <table class="valuetable"><tr><th>FNGNA1</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.FNGNA1 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.FNGNA1 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-21_21-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-20_20-1">FNGNA0, bit [20]<span class="condition"><br/>When FEAT_THE is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for FNGNA0.</p>
+    <table class="valuetable"><tr><th>FNGNA0</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.FNGNA0 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.FNGNA0 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-20_20-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-19_19">Bit [19]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-18_18-1">FNG1, bit [18]<span class="condition"><br/>When FEAT_ASID2 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for FNG1.</p>
+    <table class="valuetable"><tr><th>FNG1</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.FNG1 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.FNG1 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-18_18-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-17_17-1">FNG0, bit [17]<span class="condition"><br/>When FEAT_ASID2 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for FNG0.</p>
+    <table class="valuetable"><tr><th>FNG0</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.FNG0 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.FNG0 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-17_17-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-16_16-1">A2, bit [16]<span class="condition"><br/>When FEAT_ASID2 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for A2.</p>
+    <table class="valuetable"><tr><th>A2</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.A2 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.A2 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-16_16-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-15_15-1">DisCH1, bit [15]<span class="condition"><br/>When FEAT_D128 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for DisCH1.</p>
+    <table class="valuetable"><tr><th>DisCH1</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.DisCH1 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.DisCH1 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-15_15-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-14_14-1">DisCH0, bit [14]<span class="condition"><br/>When FEAT_D128 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for DisCH0.</p>
+    <table class="valuetable"><tr><th>DisCH0</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.DisCH0 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.DisCH0 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-14_14-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-13_12">Bits [13:12]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-11_11-1">HAFT, bit [11]<span class="condition"><br/>When FEAT_HAFT is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for HAFT.</p>
+    <table class="valuetable"><tr><th>HAFT</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.HAFT is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.HAFT is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-11_11-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-10_10-1">PTTWI, bit [10]<span class="condition"><br/>When FEAT_THE is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for PTTWI.</p>
+    <table class="valuetable"><tr><th>PTTWI</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.PTTWI is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.PTTWI is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-10_10-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-9_6">Bits [9:6]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-5_5-1">D128, bit [5]<span class="condition"><br/>When FEAT_D128 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for D128.</p>
+    <table class="valuetable"><tr><th>D128</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.D128 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.D128 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-5_5-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-4_4-1">AIE, bit [4]<span class="condition"><br/>When FEAT_AIE is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for AIE.</p>
+    <table class="valuetable"><tr><th>AIE</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.AIE is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.AIE is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-4_4-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-3_3-1">POE, bit [3]<span class="condition"><br/>When FEAT_S1POE is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for POE.</p>
+    <table class="valuetable"><tr><th>POE</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.POE is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.POE is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-3_3-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-2_2-1">E0POE, bit [2]<span class="condition"><br/>When FEAT_S1POE is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for E0POE.</p>
+    <table class="valuetable"><tr><th>E0POE</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.E0POE is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.E0POE is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-2_2-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-1_1-1">PIE, bit [1]<span class="condition"><br/>When FEAT_S1PIE is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for PIE.</p>
+    <table class="valuetable"><tr><th>PIE</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.PIE is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.PIE is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-1_1-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-0_0-1">PnCH, bit [0]<span class="condition"><br/>When FEAT_THE is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for PnCH.</p>
+    <table class="valuetable"><tr><th>PnCH</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.PnCH is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-tcr2_el1.html">TCR2_EL1</a>.PnCH is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL1,
+            this field resets to
+            <span class="binarynumber">'0'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-0_0-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><div class="access_mechanisms"><h2>Accessing TCR2MASK_EL1</h2>
+        <p>When the Effective value of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.E2H is 1, without explicit synchronization, accesses from EL3 using the accessor name TCR2MASK_EL1 or TCR2MASK_EL12 are not guaranteed to be ordered with respect to accesses using the other accessor name.</p>
+      <p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRS &lt;Xt&gt;, TCR2MASK_EL1</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b000</td><td>0b0010</td><td>0b0111</td><td>0b011</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_SRMASK) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_FGT2) &amp;&amp; ((HaveEL(EL3) &amp;&amp; SCR_EL3().FGTEn2 == '0') || HFGRTR2_EL2().nTCR2MASK_EL1 == '0') then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif EL2Enabled() &amp;&amp; (!IsHCRXEL2Enabled() || HCRX_EL2().SRMASKEn == '0') then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif HaveEL(EL3) &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif EffectiveHCR_EL2_NVx() IN {'111'} then
+        X{64}(t) = NVMem(0x338);
+    else
+        X{64}(t) = TCR2MASK_EL1();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif ELIsInHost(EL2) then
+        X{64}(t) = TCR2MASK_EL2();
+    else
+        X{64}(t) = TCR2MASK_EL1();
+    end;
+elsif PSTATE.EL == EL3 then
+    X{64}(t) = TCR2MASK_EL1();
+end;
+                </p><div><h4 class="assembler">MSR TCR2MASK_EL1, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b000</td><td>0b0010</td><td>0b0111</td><td>0b011</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_SRMASK) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_FGT2) &amp;&amp; ((HaveEL(EL3) &amp;&amp; SCR_EL3().FGTEn2 == '0') || HFGWTR2_EL2().nTCR2MASK_EL1 == '0') then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif EL2Enabled() &amp;&amp; (!IsHCRXEL2Enabled() || HCRX_EL2().SRMASKEn == '0') then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif HaveEL(EL3) &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif EffectiveHCR_EL2_NVx() IN {'111'} then
+        NVMem(0x338) = X{64}(t);
+    elsif !IsZero(EffectiveTCR2MASK_EL1()) then
+        Undefined();
+    else
+        TCR2MASK_EL1() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif ELIsInHost(EL2) then
+        if !IsZero(EffectiveTCR2MASK_EL2()) then
+            Undefined();
+        else
+            TCR2MASK_EL2() = X{64}(t);
+        end;
+    else
+        TCR2MASK_EL1() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL3 then
+    TCR2MASK_EL1() = X{64}(t);
+end;
+                </p><div><h4 class="condition">
+When FEAT_VHE is implemented
+            </h4><h4 class="assembler">MRS &lt;Xt&gt;, TCR2MASK_EL12</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b101</td><td>0b0010</td><td>0b0111</td><td>0b011</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_SRMASK) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EffectiveHCR_EL2_NVx() == '101' then
+        X{64}(t) = NVMem(0x338);
+    elsif EffectiveHCR_EL2_NVx() IN {'xx1'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL2 then
+    if ELIsInHost(EL2) then
+        if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+            Undefined();
+        elsif HaveEL(EL3) &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+            if EL3SDDUndef() then
+                Undefined();
+            else
+                AArch64_SystemAccessTrap(EL3, 0x18);
+            end;
+        else
+            X{64}(t) = TCR2MASK_EL1();
+        end;
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL3 then
+    if ELIsInHost(EL2) then
+        X{64}(t) = TCR2MASK_EL1();
+    else
+        Undefined();
+    end;
+end;
+                </p><div><h4 class="condition">
+When FEAT_VHE is implemented
+            </h4><h4 class="assembler">MSR TCR2MASK_EL12, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b101</td><td>0b0010</td><td>0b0111</td><td>0b011</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_SRMASK) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EffectiveHCR_EL2_NVx() == '101' then
+        NVMem(0x338) = X{64}(t);
+    elsif EffectiveHCR_EL2_NVx() IN {'xx1'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL2 then
+    if ELIsInHost(EL2) then
+        if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+            Undefined();
+        elsif HaveEL(EL3) &amp;&amp; SCR_EL3().SRMASKEn == '0' then
+            if EL3SDDUndef() then
+                Undefined();
+            else
+                AArch64_SystemAccessTrap(EL3, 0x18);
+            end;
+        else
+            TCR2MASK_EL1() = X{64}(t);
+        end;
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL3 then
+    if ELIsInHost(EL2) then
+        TCR2MASK_EL1() = X{64}(t);
+    else
+        Undefined();
+    end;
+end;
+                </p></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

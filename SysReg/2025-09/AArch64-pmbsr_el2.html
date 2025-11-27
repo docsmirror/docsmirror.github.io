@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>PMBSR_EL2</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">PMBSR_EL2, Profiling Buffer Syndrome Register (EL2)</h1><p>The PMBSR_EL2 characteristics are:</p><h2>Purpose</h2>
+        <p>Provides syndrome information to software for a Profiling Buffer management event.</p>
+      <h2>Configuration</h2><p>This register is present only when FEAT_SPE_EXC is implemented. Otherwise, direct accesses to PMBSR_EL2 are <span class="arm-defined-word">UNDEFINED</span>.</p>
+        <p>If EL2 is not implemented, this register is <span class="arm-defined-word">RES0</span> from EL3.</p>
+      <h2>Attributes</h2>
+        <p>PMBSR_EL2 is a 64-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="8"><a href="#fieldset_0-63_56">RES0</a></td><td class="lr" colspan="24"><a href="#fieldset_0-55_32">MSS2</a></td></tr><tr class="firstrow"><td class="lr" colspan="6"><a href="#fieldset_0-31_26">EC</a></td><td class="lr" colspan="6"><a href="#fieldset_0-25_20">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-19_19">DL</a></td><td class="lr" colspan="1"><a href="#fieldset_0-18_18">EA</a></td><td class="lr" colspan="1"><a href="#fieldset_0-17_17">S</a></td><td class="lr" colspan="1"><a href="#fieldset_0-16_16">COLL</a></td><td class="lr" colspan="16"><a href="#fieldset_0-15_0">MSS</a></td></tr></tbody></table><h4 id="fieldset_0-63_56">Bits [63:56]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-55_32">MSS2, bits [55:32]</h4><div class="field"><p>Management event Specific Syndrome 2. Contains syndrome specific to the management event.</p>
+<p>The syndrome contents for each management event are described in the following sections.</p><div class="partial_fieldset"><h3 id="fieldset_0-55_32_0">MSS2 encoding for other Profiling Buffer management events</h3><table class="regdiagram" id="fieldset_0-55_32_0"><thead><tr><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="24"><a href="#fieldset_0-55_32_0-23_0">RES0</a></td></tr></tbody></table><h4 id="fieldset_0-55_32_0-23_0">Bits [23:0]</h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div></div><div class="partial_fieldset"><h3 id="fieldset_0-55_32_1">MSS2 encoding for stage 1 or stage 2 Data Aborts on write to Profiling Buffer</h3><table class="regdiagram" id="fieldset_0-55_32_1"><thead><tr><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="15"><a href="#fieldset_0-55_32_1-23_9">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-55_32_1-8_8-1">TopLevel</a></td><td class="lr" colspan="1"><a href="#fieldset_0-55_32_1-7_7-1">AssuredOnly</a></td><td class="lr" colspan="1"><a href="#fieldset_0-55_32_1-6_6-1">Overlay</a></td><td class="lr" colspan="1"><a href="#fieldset_0-55_32_1-5_5-1">DirtyBit</a></td><td class="lr" colspan="5"><a href="#fieldset_0-55_32_1-4_0">RES0</a></td></tr></tbody></table><h4 id="fieldset_0-55_32_1-23_9">Bits [23:9]</h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div><h4 id="fieldset_0-55_32_1-8_8-1">TopLevel, bit [8]<span class="condition"><br/>When FEAT_THE is implemented:
+                        </span></h4><div class="field">
+            <p>TopLevel. Indicates if the fault was due to TopLevel.</p>
+          <table class="valuetable"><tr><th>TopLevel</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+                <p>Fault is not due to TopLevel.</p>
+              </td></tr><tr><td class="bitfield">0b1</td><td>
+                <p>Fault is due to TopLevel.</p>
+              </td></tr></table></div><h4 id="fieldset_0-55_32_1-8_8-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div><h4 id="fieldset_0-55_32_1-7_7-1">AssuredOnly, bit [7]<span class="condition"><br/>When FEAT_THE is implemented, PMBSR_EL2.EC == 0b100101, and GetPMBSR_EL2_FSC() IN {0b0011xx}:
+                        </span></h4><div class="field">
+            <p>AssuredOnly flag. If a memory access generates a stage 2 Data Abort, then this field holds information about the fault.</p>
+          <table class="valuetable"><tr><th>AssuredOnly</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+                <p>Data Abort is not due to AssuredOnly.</p>
+              </td></tr><tr><td class="bitfield">0b1</td><td>
+                <p>Data Abort is due to AssuredOnly.</p>
+              </td></tr></table></div><h4 id="fieldset_0-55_32_1-7_7-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div><h4 id="fieldset_0-55_32_1-6_6-1">Overlay, bit [6]<span class="condition"><br/>When (FEAT_S1POE is implemented or FEAT_S2POE is implemented) and GetPMBSR_EL2_FSC() IN {0b0011xx}:
+                        </span></h4><div class="field">
+            <p>Overlay flag. If a memory access generates a Data Abort for a Permission fault, then this field holds information about the fault.</p>
+          <table class="valuetable"><tr><th>Overlay</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+                <p>Data Abort is not due to Overlay Permissions.</p>
+              </td></tr><tr><td class="bitfield">0b1</td><td>
+                <p>Data Abort is due to Overlay Permissions.</p>
+              </td></tr></table></div><h4 id="fieldset_0-55_32_1-6_6-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div><h4 id="fieldset_0-55_32_1-5_5-1">DirtyBit, bit [5]<span class="condition"><br/>When (FEAT_S1PIE is implemented or FEAT_S2PIE is implemented) and GetPMBSR_EL2_FSC() IN {0b0011xx}:
+                        </span></h4><div class="field">
+            <p>DirtyBit flag. If a write access to memory generates a Data Abort for a Permission fault using Indirect Permission, then this field holds information about the fault.</p>
+          <table class="valuetable"><tr><th>DirtyBit</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+                <p>Permission Fault is not due to dirty state.</p>
+              </td></tr><tr><td class="bitfield">0b1</td><td>
+                <p>Permission Fault is due to dirty state.</p>
+              </td></tr></table></div><h4 id="fieldset_0-55_32_1-5_5-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div><h4 id="fieldset_0-55_32_1-4_0">Bits [4:0]</h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div></div><div class="partial_fieldset"><h3 id="fieldset_0-55_32_2">MSS2 encoding for Granule Protection Check faults on write to Profiling Buffer</h3><table class="regdiagram" id="fieldset_0-55_32_2"><thead><tr><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="24"><a href="#fieldset_0-55_32_2-23_0">RES0</a></td></tr></tbody></table><h4 id="fieldset_0-55_32_2-23_0">Bits [23:0]</h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div></div><div class="partial_fieldset"><h3 id="fieldset_0-55_32_3">MSS2 encoding for Profiling Buffer management event for an IMPLEMENTATION DEFINED reason</h3><table class="regdiagram" id="fieldset_0-55_32_3"><thead><tr><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="24"><a href="#fieldset_0-55_32_3-23_0">IMPLEMENTATION DEFINED</a></td></tr></tbody></table><h4 id="fieldset_0-55_32_3-23_0">IMPLEMENTATION DEFINED, bits [23:0]</h4><div class="field">
+            <p><span class="arm-defined-word">IMPLEMENTATION DEFINED</span>.</p>
+          </div></div></div><h4 id="fieldset_0-31_26">EC, bits [31:26]</h4><div class="field">
+      <p>Event class. Top-level description of the cause of the Profiling Buffer management event.</p>
+    <table class="valuetable"><tr><th>EC</th><th>Meaning</th><th>MSS</th><th>MSS2</th><th>Applies when</th></tr><tr><td class="bitfield">0b000000</td><td>
+          <p>Other Profiling Buffer management event. All Profiling Buffer management events other than those described by the other defined Event class codes.</p>
+        </td><td><a href="#fieldset_0-15_0_0">MSS encoding for other Profiling Buffer management events</a></td><td><a href="#fieldset_0-55_32_0">MSS2 encoding for other Profiling Buffer management events</a></td></tr><tr><td class="bitfield">0b011110</td><td><p>Granule Protection Check fault on write to Profiling Buffer, other than Granule Protection Fault (GPF). That is, any of the following:</p>
+<ul>
+<li>Granule Protection Table (GPT) address size fault.
+</li><li>GPT walk fault.
+</li><li>Synchronous External abort on GPT fetch.
+</li></ul>
+<p>A GPF on translation table walk or update is reported as either a Stage 1 or Stage 2 Data Abort, as appropriate. Other GPFs are reported as a Stage 1 Data Abort.</p></td><td><a href="#fieldset_0-15_0_2">MSS encoding for Granule Protection Check faults on write to Profiling Buffer</a></td><td><a href="#fieldset_0-55_32_2">MSS2 encoding for Granule Protection Check faults on write to Profiling Buffer</a></td><td>When FEAT_RME is implemented</td></tr><tr><td class="bitfield">0b011111</td><td>
+          <p>Profiling Buffer management event for an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> reason.</p>
+        </td><td><a href="#fieldset_0-15_0_3">MSS encoding for Profiling Buffer management event for an IMPLEMENTATION DEFINED reason</a></td><td><a href="#fieldset_0-55_32_3">MSS2 encoding for Profiling Buffer management event for an IMPLEMENTATION DEFINED reason</a></td></tr><tr><td class="bitfield">0b100100</td><td>
+          <p>Stage 1 Data Abort on write to Profiling Buffer.</p>
+        </td><td><a href="#fieldset_0-15_0_1">MSS encoding for stage 1 or stage 2 Data Aborts on write to Profiling Buffer</a></td><td><a href="#fieldset_0-55_32_1">MSS2 encoding for stage 1 or stage 2 Data Aborts on write to Profiling Buffer</a></td></tr><tr><td class="bitfield">0b100101</td><td>
+          <p>Stage 2 Data Abort on write to Profiling Buffer.</p>
+        </td><td><a href="#fieldset_0-15_0_1">MSS encoding for stage 1 or stage 2 Data Aborts on write to Profiling Buffer</a></td><td><a href="#fieldset_0-55_32_1">MSS2 encoding for stage 1 or stage 2 Data Aborts on write to Profiling Buffer</a></td></tr></table>
+      <p>All other values are reserved.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-25_20">Bits [25:20]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-19_19">DL, bit [19]</h4><div class="field">
+      <p>Partial record lost. Following a buffer management event other than an asynchronous External abort, indicates whether the last record written to the Profiling Buffer is complete.</p>
+    <table class="valuetable"><tr><th>DL</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-pmbptr_el1.html">PMBPTR_EL1</a> points to the first byte after the last complete record written to the Profiling Buffer.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Part of a record was lost because of a buffer management event or synchronous External abort. <a href="AArch64-pmbptr_el1.html">PMBPTR_EL1</a> might not point to the first byte after the last complete record written to the buffer, and so restarting collection might result in a data record stream that software cannot parse.</p>
+        </td></tr></table><p>When the buffer management event was because of an asynchronous External abort, this bit is set to 1 and software must not assume that any valid data has been written to the Profiling Buffer.</p>
+<p>This bit is <span class="arm-defined-word">RES0</span> if the PE never sets this bit as a result of a buffer management event caused by an asynchronous External abort.</p><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-18_18">EA, bit [18]</h4><div class="field">
+      <p>External abort.</p>
+    <table class="valuetable"><tr><th>EA</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>An External abort has not been asserted.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>An External abort has been asserted and detected by the Statistical Profiling Unit.</p>
+        </td></tr></table>
+      <p>This bit is <span class="arm-defined-word">RES0</span> if the PE never sets this bit as the result of an External abort.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-17_17">S, bit [17]</h4><div class="field">
+      <p>Service. Indicates that a Profiling Buffer management event has been recorded.</p>
+    <table class="valuetable"><tr><th>S</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>No Profiling Buffer management event for EL2 has been recorded.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>A Profiling Buffer management event for EL2 has been recorded.</p>
+        </td></tr></table><p>When FEAT_SPE_EXC is implemented, this field indicates a management event for EL2.</p>
+<p>If the SPE Profiling exception for EL2 is enabled, then when this field is 1, an SPE Profiling exception for EL2 is pending</p><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-16_16">COLL, bit [16]</h4><div class="field">
+      <p>Collision detected.</p>
+    <table class="valuetable"><tr><th>COLL</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>No collision events detected.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>At least one collision event was recorded.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-15_0">MSS, bits [15:0]</h4><div class="field"><p>Management Event Specific Syndrome. Contains syndrome specific to the Profiling Buffer management event.</p>
+<p>The syndrome contents for each Profiling Buffer management event are described in the following sections.</p><div class="partial_fieldset"><h3 id="fieldset_0-15_0_0">MSS encoding for other Profiling Buffer management events</h3><table class="regdiagram" id="fieldset_0-15_0_0"><thead><tr><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="10"><a href="#fieldset_0-15_0_0-15_6">RES0</a></td><td class="lr" colspan="6"><a href="#fieldset_0-15_0_0-5_0">BSC</a></td></tr></tbody></table><h4 id="fieldset_0-15_0_0-15_6">Bits [15:6]</h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div><h4 id="fieldset_0-15_0_0-5_0">BSC, bits [5:0]</h4><div class="field">
+            <p>Profiling Buffer status code</p>
+          <table class="valuetable"><tr><th>BSC</th><th>Meaning</th></tr><tr><td class="bitfield">0b000000</td><td>
+                <p>Collection not stopped, or access not allowed.</p>
+              </td></tr><tr><td class="bitfield">0b000001</td><td>
+                <p>Profiling Buffer filled.</p>
+              </td></tr><tr><td class="bitfield">0b000100</td><td>
+                <p>Buffer size. The requested Profiling Buffer size was too large.</p>
+              </td></tr></table>
+            <p>All other values are reserved.</p>
+          </div></div><div class="partial_fieldset"><h3 id="fieldset_0-15_0_1">MSS encoding for stage 1 or stage 2 Data Aborts on write to Profiling Buffer</h3><table class="regdiagram" id="fieldset_0-15_0_1"><thead><tr><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="10"><a href="#fieldset_0-15_0_1-15_6">RES0</a></td><td class="lr" colspan="6"><a href="#fieldset_0-15_0_1-5_0">FSC</a></td></tr></tbody></table><h4 id="fieldset_0-15_0_1-15_6">Bits [15:6]</h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div><h4 id="fieldset_0-15_0_1-5_0">FSC, bits [5:0]</h4><div class="field">
+            <p>Fault status code</p>
+          <table class="valuetable"><tr><th>FSC</th><th>Meaning</th><th>Applies when</th></tr><tr><td class="bitfield">0b000000</td><td>
+                <p>Address size fault, level 0 of translation or translation table base register.</p>
+              </td></tr><tr><td class="bitfield">0b000001</td><td>
+                <p>Address size fault, level 1.</p>
+              </td></tr><tr><td class="bitfield">0b000010</td><td>
+                <p>Address size fault, level 2.</p>
+              </td></tr><tr><td class="bitfield">0b000011</td><td>
+                <p>Address size fault, level 3.</p>
+              </td></tr><tr><td class="bitfield">0b000100</td><td>
+                <p>Translation fault, level 0.</p>
+              </td></tr><tr><td class="bitfield">0b000101</td><td>
+                <p>Translation fault, level 1.</p>
+              </td></tr><tr><td class="bitfield">0b000110</td><td>
+                <p>Translation fault, level 2.</p>
+              </td></tr><tr><td class="bitfield">0b000111</td><td>
+                <p>Translation fault, level 3.</p>
+              </td></tr><tr><td class="bitfield">0b001001</td><td>
+                <p>Access flag fault, level 1.</p>
+              </td></tr><tr><td class="bitfield">0b001010</td><td>
+                <p>Access flag fault, level 2.</p>
+              </td></tr><tr><td class="bitfield">0b001011</td><td>
+                <p>Access flag fault, level 3.</p>
+              </td></tr><tr><td class="bitfield">0b001000</td><td>
+                <p>Access flag fault, level 0.</p>
+              </td><td>When FEAT_LPA2 is implemented</td></tr><tr><td class="bitfield">0b001100</td><td>
+                <p>Permission fault, level 0.</p>
+              </td><td>When FEAT_LPA2 is implemented</td></tr><tr><td class="bitfield">0b001101</td><td>
+                <p>Permission fault, level 1.</p>
+              </td></tr><tr><td class="bitfield">0b001110</td><td>
+                <p>Permission fault, level 2.</p>
+              </td></tr><tr><td class="bitfield">0b001111</td><td>
+                <p>Permission fault, level 3.</p>
+              </td></tr><tr><td class="bitfield">0b010000</td><td>
+                <p>Synchronous External abort, not on translation table walk or hardware update of translation table.</p>
+              </td></tr><tr><td class="bitfield">0b010001</td><td>
+                <p>Asynchronous External abort.</p>
+              </td></tr><tr><td class="bitfield">0b010010</td><td>
+                <p>Synchronous External abort on translation table walk or hardware update of translation table, level -2.</p>
+              </td><td>When FEAT_D128 is implemented</td></tr><tr><td class="bitfield">0b010011</td><td>
+                <p>Synchronous External abort on translation table walk or hardware update of translation table, level -1.</p>
+              </td><td>When FEAT_LPA2 is implemented</td></tr><tr><td class="bitfield">0b010100</td><td>
+                <p>Synchronous External abort on translation table walk or hardware update of translation table, level 0.</p>
+              </td></tr><tr><td class="bitfield">0b010101</td><td>
+                <p>Synchronous External abort on translation table walk or hardware update of translation table, level 1.</p>
+              </td></tr><tr><td class="bitfield">0b010110</td><td>
+                <p>Synchronous External abort on translation table walk or hardware update of translation table, level 2.</p>
+              </td></tr><tr><td class="bitfield">0b010111</td><td>
+                <p>Synchronous External abort on translation table walk or hardware update of translation table, level 3.</p>
+              </td></tr><tr><td class="bitfield">0b011011</td><td>
+                <p>Synchronous parity or ECC error on memory access on translation table walk or hardware update of translation table, level -1.</p>
+              </td><td>When FEAT_LPA2 is implemented and FEAT_RAS is not implemented</td></tr><tr><td class="bitfield">0b100001</td><td>
+                <p>Alignment fault.</p>
+              </td></tr><tr><td class="bitfield">0b100010</td><td>
+                <p>Granule Protection Fault on translation table walk or hardware update of translation table, level -2.</p>
+              </td><td>When FEAT_D128 is implemented and FEAT_RME is implemented</td></tr><tr><td class="bitfield">0b100011</td><td>
+                <p>Granule Protection Fault on translation table walk or hardware update of translation table, level -1.</p>
+              </td><td>When FEAT_RME is implemented and FEAT_LPA2 is implemented</td></tr><tr><td class="bitfield">0b100100</td><td>
+                <p>Granule Protection Fault on translation table walk or hardware update of translation table, level 0.</p>
+              </td><td>When FEAT_RME is implemented</td></tr><tr><td class="bitfield">0b100101</td><td>
+                <p>Granule Protection Fault on translation table walk or hardware update of translation table, level 1.</p>
+              </td><td>When FEAT_RME is implemented</td></tr><tr><td class="bitfield">0b100110</td><td>
+                <p>Granule Protection Fault on translation table walk or hardware update of translation table, level 2.</p>
+              </td><td>When FEAT_RME is implemented</td></tr><tr><td class="bitfield">0b100111</td><td>
+                <p>Granule Protection Fault on translation table walk or hardware update of translation table, level 3.</p>
+              </td><td>When FEAT_RME is implemented</td></tr><tr><td class="bitfield">0b101000</td><td>
+                <p>Granule Protection Fault, not on translation table walk or hardware update of translation table.</p>
+              </td><td>When FEAT_RME is implemented</td></tr><tr><td class="bitfield">0b101001</td><td>
+                <p>Address size fault, level -1.</p>
+              </td><td>When FEAT_LPA2 is implemented</td></tr><tr><td class="bitfield">0b101010</td><td>
+                <p>Translation fault, level -2.</p>
+              </td><td>When FEAT_D128 is implemented</td></tr><tr><td class="bitfield">0b101011</td><td>
+                <p>Translation fault, level -1.</p>
+              </td><td>When FEAT_LPA2 is implemented</td></tr><tr><td class="bitfield">0b101100</td><td>
+                <p>Address Size fault, level -2.</p>
+              </td><td>When FEAT_D128 is implemented</td></tr><tr><td class="bitfield">0b110000</td><td>
+                <p>TLB conflict abort.</p>
+              </td></tr><tr><td class="bitfield">0b110001</td><td>
+                <p>Unsupported atomic hardware update fault.</p>
+              </td><td>When FEAT_HAFDBS is implemented</td></tr></table><p>All other values are reserved.</p>
+<p>It is <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> whether each of the Access Flag fault, asynchronous External abort and synchronous External abort, Alignment fault, and TLB Conflict abort values can be generated by the PE. For more information see <span class="xref">'Faults and Watchpoints'</span>.</p><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div></div><div class="partial_fieldset"><h3 id="fieldset_0-15_0_2">MSS encoding for Granule Protection Check faults on write to Profiling Buffer</h3><table class="regdiagram" id="fieldset_0-15_0_2"><thead><tr><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="16"><a href="#fieldset_0-15_0_2-15_0">RES0</a></td></tr></tbody></table><h4 id="fieldset_0-15_0_2-15_0">Bits [15:0]</h4><div class="field">
+            <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+          </div></div><div class="partial_fieldset"><h3 id="fieldset_0-15_0_3">MSS encoding for Profiling Buffer management event for an IMPLEMENTATION DEFINED reason</h3><table class="regdiagram" id="fieldset_0-15_0_3"><thead><tr><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="16"><a href="#fieldset_0-15_0_3-15_0">IMPLEMENTATION DEFINED</a></td></tr></tbody></table><h4 id="fieldset_0-15_0_3-15_0">IMPLEMENTATION DEFINED, bits [15:0]</h4><div class="field">
+            <p><span class="arm-defined-word">IMPLEMENTATION DEFINED</span>.</p>
+          </div></div></div><div class="access_mechanisms"><h2>Accessing PMBSR_EL2</h2>
+        <p>When the Effective value of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.E2H is 1 and FEAT_SPE_EXC is implemented, without explicit synchronization, accesses from EL2 using the accessor name PMBSR_EL2 or PMBSR_EL1 are not guaranteed to be ordered with respect to accesses using the other accessor name.</p>
+      <p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRS &lt;Xt&gt;, PMBSR_EL2</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b100</td><td>0b1001</td><td>0b1010</td><td>0b011</td></tr></table><p class="pseudocode">
+if !IsFeatureImplemented(FEAT_SPE_EXC) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EffectiveHCR_EL2_NVx() IN {'xx1'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; MDCR_EL3().PMSEE == '00' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif HaveEL(EL3) &amp;&amp; MDCR_EL3().PMSEE == '00' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    else
+        X{64}(t) = PMBSR_EL2();
+    end;
+elsif PSTATE.EL == EL3 then
+    X{64}(t) = PMBSR_EL2();
+end;
+                </p><div><h4 class="assembler">MSR PMBSR_EL2, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b100</td><td>0b1001</td><td>0b1010</td><td>0b011</td></tr></table><p class="pseudocode">
+if !IsFeatureImplemented(FEAT_SPE_EXC) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EffectiveHCR_EL2_NVx() IN {'xx1'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; MDCR_EL3().PMSEE == '00' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif HaveEL(EL3) &amp;&amp; MDCR_EL3().PMSEE == '00' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    else
+        PMBSR_EL2() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL3 then
+    PMBSR_EL2() = X{64}(t);
+end;
+                </p><div><h4 class="assembler">MRS &lt;Xt&gt;, PMBSR_EL1</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b000</td><td>0b1001</td><td>0b1010</td><td>0b011</td></tr></table><p class="pseudocode">
+if !IsFeatureImplemented(FEAT_SPE) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_FGT) &amp;&amp; (!HaveEL(EL3) || SCR_EL3().FGTEn == '1') &amp;&amp; HDFGRTR_EL2().PMBSR_EL1 == '1' then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif EL2Enabled() &amp;&amp; MDCR_EL2().E2PB IN {'x0'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif HaveEL(EL3) &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif EffectiveHCR_EL2_NVx() IN {'1x1'} &amp;&amp; (EffectivePMSCR_EL2_EE() == '00' || PMSCR_EL1().EE == '00' || EffectiveHCR_EL2_NVx() == '111') then
+        X{64}(t) = NVMem(0x820);
+    else
+        X{64}(t) = PMBSR_EL1();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif EffectivePMSCR_EL2_EE() != '00' &amp;&amp; ELIsInHost(EL2) then
+        X{64}(t) = PMBSR_EL2();
+    else
+        X{64}(t) = PMBSR_EL1();
+    end;
+elsif PSTATE.EL == EL3 then
+    X{64}(t) = PMBSR_EL1();
+end;
+                </p><div><h4 class="assembler">MSR PMBSR_EL1, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b000</td><td>0b1001</td><td>0b1010</td><td>0b011</td></tr></table><p class="pseudocode">
+if !IsFeatureImplemented(FEAT_SPE) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_FGT) &amp;&amp; (!HaveEL(EL3) || SCR_EL3().FGTEn == '1') &amp;&amp; HDFGWTR_EL2().PMBSR_EL1 == '1' then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif EL2Enabled() &amp;&amp; MDCR_EL2().E2PB IN {'x0'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif HaveEL(EL3) &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif EffectiveHCR_EL2_NVx() IN {'1x1'} &amp;&amp; (EffectivePMSCR_EL2_EE() == '00' || PMSCR_EL1().EE == '00' || EffectiveHCR_EL2_NVx() == '111') then
+        NVMem(0x820) = X{64}(t);
+    else
+        PMBSR_EL1() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; CheckMDCR_EL3_NSPBTrap() then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif EffectivePMSCR_EL2_EE() != '00' &amp;&amp; ELIsInHost(EL2) then
+        PMBSR_EL2() = X{64}(t);
+    else
+        PMBSR_EL1() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL3 then
+    PMBSR_EL1() = X{64}(t);
+end;
+                </p></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

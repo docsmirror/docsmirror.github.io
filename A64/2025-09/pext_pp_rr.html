@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>PEXT (predicate pair) -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">PEXT (predicate pair)</h2><p>Predicate extract pair from predicate-as-counter</p>
+      <p class="aml">This instruction converts the source predicate-as-counter into a four register wide predicate-as-mask, and
+copies the two portions of the mask value selected by the portion index to the two
+destination predicate registers. A portion corresponds to a one predicate register fraction
+of the wider predicate-as-mask value.</p>
+    
+    <h3 class="classheading"><a id="iclass_sve2"/>SVE2<span style="font-size:smaller;"><br/>(FEAT_SME2 || FEAT_SVE2p1)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">0</td><td>0</td><td class="r">1</td><td class="l">0</td><td>0</td><td>1</td><td class="r">0</td><td class="lr">1</td><td colspan="2" class="lr">size</td><td class="lr">1</td><td class="l">0</td><td>0</td><td>0</td><td>0</td><td class="r">0</td><td class="l">0</td><td class="r">1</td><td class="l">1</td><td>1</td><td class="r">0</td><td class="l">1</td><td class="r">0</td><td class="lr">i1</td><td colspan="3" class="lr">PNn</td><td class="lr">1</td><td colspan="4" class="lr">Pd</td></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="pext_pp_rr_"/><p class="asm-code">PEXT  { <a href="#Pd1" title="Is the name of the first destination scalable predicate register, encoded in the &quot;Pd&quot; field.">&lt;Pd1&gt;</a>.<a href="#T__67" title="Is the size specifier, ">&lt;T&gt;</a>, <a href="#Pd2" title="Is the name of the second destination scalable predicate register, encoded in the &quot;Pd&quot; field.">&lt;Pd2&gt;</a>.<a href="#T__67" title="Is the size specifier, ">&lt;T&gt;</a> }, <a href="#PNn__2" title="Is the name of the first source scalable predicate register PN8-PN15, with predicate-as-counter encoding, encoded in the &quot;PNn&quot; field.">&lt;PNn&gt;</a>[<a href="#imm__82" title="Is the portion index, in the range 0 to 1, encoded in the &quot;i1&quot; field.">&lt;imm&gt;</a>]</p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_SME2) &amp;&amp; !IsFeatureImplemented(FEAT_SVE2p1) then
+    EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>);
+end;
+let esize : integer{} = 8 &lt;&lt; UInt(size);
+let n : integer = UInt('1'::PNn);
+let d0 : integer = UInt(Pd);
+let d1 : integer = (UInt(Pd) + 1) MOD 16;
+let part : integer = UInt(i1);</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pd1&gt;</td><td><a id="Pd1"/>
+        
+          <p class="aml">Is the name of the first destination scalable predicate register, encoded in the "Pd" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;T&gt;</td><td><a id="T__67"/>
+        <p>Is the size specifier, 
+          encoded in
+          <q>size</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">size</th>
+                <th class="symbol">&lt;T&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00</td>
+                <td class="symbol">B</td>
+              </tr>
+              <tr>
+                <td class="bitfield">01</td>
+                <td class="symbol">H</td>
+              </tr>
+              <tr>
+                <td class="bitfield">10</td>
+                <td class="symbol">S</td>
+              </tr>
+              <tr>
+                <td class="bitfield">11</td>
+                <td class="symbol">D</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pd2&gt;</td><td><a id="Pd2"/>
+        
+          <p class="aml">Is the name of the second destination scalable predicate register, encoded in the "Pd" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;PNn&gt;</td><td><a id="PNn__2"/>
+        
+          <p class="aml">Is the name of the first source scalable predicate register PN8-PN15, with predicate-as-counter encoding, encoded in the "PNn" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;imm&gt;</td><td><a id="imm__82"/>
+        
+          <p class="aml">Is the portion index, in the range 0 to 1, encoded in the "i1" field.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">if IsFeatureImplemented(FEAT_SVE2p1) then CheckSVEEnabled(); else CheckStreamingSVEEnabled(); end;
+let VL : integer{} = CurrentVL();
+let PL : integer{} = VL DIV 8;
+let elements : integer = VL DIV esize;
+let pred : bits(PL) = P{}(n);
+let mask : bits(PL*4) = CounterToPredicate{}(pred[15:0]);
+var result0 : bits(PL);
+var result1 : bits(PL);
+let psize : integer{} = esize DIV 8;
+
+for e = 0 to elements-1 do
+    let pbit : bit = <a href="shared_pseudocode.html#func_PredicateElement_4" title="">PredicateElement</a>{PL*4}(mask, part * 2 * elements + e, esize);
+    result0[e*:psize] = ZeroExtend{psize}(pbit);
+end;
+
+for e = 0 to elements-1 do
+    let pbit : bit = <a href="shared_pseudocode.html#func_PredicateElement_4" title="">PredicateElement</a>{PL*4}(mask, part * 2 * elements + elements + e, esize);
+    result1[e*:psize] = ZeroExtend{psize}(pbit);
+end;
+
+<a href="shared_pseudocode.html#accessor_P_2" title="">P</a>{PL}(d0) = result0;
+<a href="shared_pseudocode.html#accessor_P_2" title="">P</a>{PL}(d1) = result1;</p>
+    </div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

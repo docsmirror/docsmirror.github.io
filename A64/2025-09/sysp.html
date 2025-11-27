@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>SYSP -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">SYSP</h2><p>128-bit system instruction</p>
+      <p class="aml">128-bit system instruction.</p>
+    <p class="desc">This instruction is used by the alias <a href="tlbip_sysp.html" title="TLB invalidate pair operation">TLBIP</a>.</p>
+    <h3 class="classheading"><a id="iclass_system"/>System<span style="font-size:smaller;"><br/>(FEAT_SYSINSTR128)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">1</td><td>1</td><td class="r">0</td><td class="l">1</td><td>0</td><td class="r">1</td><td class="l">0</td><td>1</td><td>0</td><td class="r">1</td><td class="lr">0</td><td class="l">0</td><td class="r">1</td><td colspan="3" class="lr">op1</td><td colspan="4" class="lr">CRn</td><td colspan="4" class="lr">CRm</td><td colspan="3" class="lr">op2</td><td colspan="5" class="lr">Rt</td></tr><tr class="secondrow"><td colspan="3"/><td colspan="3"/><td colspan="4"/><td class="droppedname">L</td><td colspan="2"/><td colspan="3"/><td colspan="4"/><td colspan="4"/><td colspan="3"/><td colspan="5"/></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="SYSP_CR_syspairinstrs"/><p class="asm-code">SYSP  #<a href="#op1__2" title="Is a 3-bit unsigned immediate, in the range 0 to 6, encoded in the &quot;op1&quot; field.">&lt;op1&gt;</a>, <a href="#Cn__2" title="Is a name 'Cn', with 'n' in the range 8 to 9, encoded in the &quot;CRn&quot; field.">&lt;Cn&gt;</a>, <a href="#Cm__2" title="Is a name 'Cm', with 'm' in the range 0 to 7, encoded in the &quot;CRm&quot; field.">&lt;Cm&gt;</a>, #<a href="#op2" title="Is a 3-bit unsigned immediate, in the range 0 to 7, encoded in the &quot;op2&quot; field.">&lt;op2&gt;</a>{, <a href="#Xt1_register" title="Is the 64-bit name of the first optional general-purpose source register, defaulting to '11111', encoded in the &quot;Rt&quot; field.">&lt;Xt1&gt;</a>, <a href="#Xt2" title="Is the 64-bit name of the second optional general-purpose source register, defaulting to '11111', encoded as &quot;Rt&quot; +1. Defaults to '11111' if &quot;Rt&quot; = '11111'.">&lt;Xt2&gt;</a>}</p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_SYSINSTR128) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+if Rt[0] == '1' &amp;&amp; Rt != '11111' then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+
+let t : integer       = UInt(Rt);
+let t2 : integer      = if t == 31 then 31 else t + 1;
+let sys_L : bits(1)   = L;
+let sys_op0 : bits(2) = '01';
+let sys_op1 : bits(3) = op1;
+let sys_op2 : bits(3) = op2;
+let sys_crn : bits(4) = CRn;
+let sys_crm : bits(4) = CRm;</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;op1&gt;</td><td><a id="op1__2"/>
+        
+          <p class="aml">Is a 3-bit unsigned immediate, in the range 0 to 6, encoded in the "op1" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Cn&gt;</td><td><a id="Cn__2"/>
+        
+          <p class="aml">Is a name 'Cn', with 'n' in the range 8 to 9, encoded in the "CRn" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Cm&gt;</td><td><a id="Cm__2"/>
+        
+          <p class="aml">Is a name 'Cm', with 'm' in the range 0 to 7, encoded in the "CRm" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;op2&gt;</td><td><a id="op2"/>
+        
+          <p class="aml">Is a 3-bit unsigned immediate, in the range 0 to 7, encoded in the "op2" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Xt1&gt;</td><td><a id="Xt1_register"/>
+        
+          <p class="aml">Is the 64-bit name of the first optional general-purpose source register, defaulting to '11111', encoded in the "Rt" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Xt2&gt;</td><td><a id="Xt2"/>
+        
+          <p class="aml">Is the 64-bit name of the second optional general-purpose source register, defaulting to '11111', encoded as "Rt" +1. Defaults to '11111' if "Rt" = '11111'.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/><h3 class="aliastable" id="">Alias Conditions</h3><table class="aliastable"><thead><tr><th>Alias</th><th>Is preferred when</th></tr></thead><tbody><tr><td><a href="tlbip_sysp.html" title="TLB invalidate pair operation">TLBIP</a></td><td class="notfirst"><span class="pseudocode">CRn IN {'100x'} &amp;&amp; SysOp128(op1, CRn, CRm, op2) == Sys_TLBIP</span></td></tr></tbody></table>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">AArch64_SysInstr128(sys_op0, sys_op1, sys_crn, sys_crm, sys_op2, t, t2);</p>
+    </div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

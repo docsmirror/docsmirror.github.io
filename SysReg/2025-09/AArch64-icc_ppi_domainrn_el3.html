@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>ICC_PPI_DOMAINR&lt;n&gt;_EL3</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">ICC_PPI_DOMAINR&lt;n&gt;_EL3, Interrupt Controller PPI Domain Registers, n = 0 - 3</h1><p>The ICC_PPI_DOMAINR&lt;n&gt;_EL3 characteristics are:</p><h2>Purpose</h2>
+        <p>Controls which Interrupt Domain PPI sources are assigned to.</p>
+      <h2>Configuration</h2><p>This register is present only when FEAT_GCIE is implemented, EL3 is implemented, and FEAT_AA64 is implemented. Otherwise, direct accesses to ICC_PPI_DOMAINR&lt;n&gt;_EL3 are <span class="arm-defined-word">UNDEFINED</span>.</p><h2>Attributes</h2>
+        <p>ICC_PPI_DOMAINR&lt;n&gt;_EL3 is a 64-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM31</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM30</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM29</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM28</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM27</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM26</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM25</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM24</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM23</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM22</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM21</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM20</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM19</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM18</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM17</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM16</a></td></tr><tr class="firstrow"><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM15</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM14</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM13</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM12</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM11</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM10</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM9</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM8</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM7</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM6</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM5</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM4</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM3</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM2</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM1</a></td><td class="lr" colspan="2"><a href="#fieldset_0-63_0">DOM0</a></td></tr></tbody></table><h4 id="fieldset_0-63_0">DOM&lt;x&gt;, bits [2x+1:2x], for x = 31 to 0</h4><div class="field"><p>Controls the Physical Interrupt Domain that a PPI is assigned to.</p>
+<p>If a physical PPI is assigned to an unimplemented Interrupt Domain, all of the following are true:</p>
+<ul>
+<li>The physical PPI is not selected as the candidate HPPI in any Interrupt Domain.
+</li><li>Access to the state and configuration of the PPI using an ICC_PPI_ System register is only permitted at EL3.
+</li><li>Attempts to deactivate the PPI by executing a GIC xDDI System instruction are treated as NOPs.
+</li></ul><table class="valuetable"><tr><th>DOM&lt;x&gt;</th><th>Meaning</th></tr><tr><td class="bitfield">0b00</td><td>
+          <p>Secure</p>
+        </td></tr><tr><td class="bitfield">0b01</td><td>
+          <p>Non-secure</p>
+        </td></tr><tr><td class="bitfield">0b10</td><td>
+          <p>EL3</p>
+        </td></tr><tr><td class="bitfield">0b11</td><td>
+          <p>Realm</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">UNKNOWN</span> value.</li></ul><p>Accessing this field has the following behavior:</p><ul><li>When !IsPPIImplemented((n * 32) + x), access to this field
+                            is <span class="access_level">
+          <span class="arm-defined-word">RES0</span>
+        </span>.
+                        </li><li>
+                  Otherwise,
+                  
+                  access to this field
+                  is <span class="access_level">RW</span>.
+                </li></ul></div><div class="access_mechanisms"><h2>Accessing ICC_PPI_DOMAINR&lt;n&gt;_EL3</h2><p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRS &lt;Xt&gt;, ICC_PPI_DOMAINR&lt;n&gt;_EL3
+      ; Where n = 0-3</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b110</td><td>0b1100</td><td>0b1000</td><td>0b1:n[1:0]</td></tr></table><p class="pseudocode">
+let n:integer = UInt(op2[1:0]);
+
+if !(IsFeatureImplemented(FEAT_GCIE) &amp;&amp; HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    Undefined();
+elsif PSTATE.EL == EL2 then
+    Undefined();
+elsif PSTATE.EL == EL3 then
+    X{64}(t) = ICC_PPI_DOMAINR_EL3(n);
+end;
+                </p><div><h4 class="assembler">MSR ICC_PPI_DOMAINR&lt;n&gt;_EL3, &lt;Xt&gt;
+      ; Where n = 0-3</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b110</td><td>0b1100</td><td>0b1000</td><td>0b1:n[1:0]</td></tr></table><p class="pseudocode">
+let n:integer = UInt(op2[1:0]);
+
+if !(IsFeatureImplemented(FEAT_GCIE) &amp;&amp; HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    Undefined();
+elsif PSTATE.EL == EL2 then
+    Undefined();
+elsif PSTATE.EL == EL3 then
+    ICC_PPI_DOMAINR_EL3(n) = X{64}(t);
+end;
+                </p></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

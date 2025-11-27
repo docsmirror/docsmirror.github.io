@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>ICC_CR0_EL1</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">ICC_CR0_EL1, Interrupt Controller Physical Control Register (EL1)</h1><p>The ICC_CR0_EL1 characteristics are:</p><h2>Purpose</h2>
+        <p>Controls behavior of the physical CPU interface for the Non-secure, Realm, and Secure Interrupt Domains.</p>
+      <h2>Configuration</h2><p>This register is banked between ICC_CR0_EL1 and ICC_CR0_EL1_NS and ICC_CR0_EL1_RL and ICC_CR0_EL1_S.<br/></p><p>AArch64 System register ICC_CR0_EL1 bits [2:1] are architecturally mapped to AArch64 System register <a href="AArch64-icc_cr0_el3.html">ICC_CR0_EL3[2:1]</a> when EL3 is implemented.</p><p>This register is present only when FEAT_GCIE is implemented and FEAT_AA64 is implemented. Otherwise, direct accesses to ICC_CR0_EL1 are <span class="arm-defined-word">UNDEFINED</span>.</p>
+        <p>There are separate banked copies of this register for Non-secure, Realm and Secure state.</p>
+      <h2>Attributes</h2>
+        <p>ICC_CR0_EL1 is a 64-bit register.</p>
+
+      
+        <p>This register has the following instances:</p>
+
+      
+        <ul>
+<li>ICC_CR0_EL1, when EL3 is not implemented.
+</li><li>ICC_CR0_EL1_NS, when EL3 is implemented.
+</li><li>ICC_CR0_EL1_RL, when FEAT_RME is implemented.
+</li><li>ICC_CR0_EL1_S, when (EL3 is implemented and FEAT_RME is not implemented) or (FEAT_RME is implemented and FEAT_SEL2 is implemented).
+</li></ul>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="25"><a href="#fieldset_0-63_39">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-38_38-1">PID</a></td><td class="lr" colspan="6"><a href="#fieldset_0-37_32-1">IPPT</a></td></tr><tr class="firstrow"><td class="lr" colspan="29"><a href="#fieldset_0-31_3">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-2_2">LINK_IDLE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-1_1">LINK</a></td><td class="lr" colspan="1"><a href="#fieldset_0-0_0">EN</a></td></tr></tbody></table><h4 id="fieldset_0-63_39">Bits [63:39]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-38_38-1">PID, bit [38]<span class="condition"><br/>When EL3 is implemented:
+                        </span></h4><div class="field">
+      <p>Preemptive Interrupt Domain. Indicates whether the Interrupt Domain associated with the Security state selected by SCR_EL3.{NSE,NS} is the Preemptive Interrupt Domain.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-38_38-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, RAZ/WI.</p>
+    </div><h4 id="fieldset_0-37_32-1">IPPT, bits [37:32]<span class="condition"><br/>When ICC_CR0_EL1.PID == 1:
+                        </span></h4><div class="field"><p>Interrupt Preemptive Priority Threshold value for the Preemptive Interrupt Domain.</p>
+<div class="note"><span class="note-header">Note</span><p><a href="AArch64-icc_cr0_el1.html">ICC_CR0_EL1</a>.IPPT is a 6 bits field to ensure it can be strictly higher than the interrupt priority, which is a 5-bit unsigned value.</p></div><p>See 'Preemptive interrupts' in Arm® Generic Interrupt Controller Architecture Specification, GIC architecture version 5 (ARM AES 0070) for more information.</p><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-37_32-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-31_3">Bits [31:3]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-2_2">LINK_IDLE, bit [2]</h4><div class="field">
+      <p>Whether the link between the CPU interface and the IRI is in the process of connecting or disconnecting.</p>
+    <table class="valuetable"><tr><th>LINK_IDLE</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The link between the CPU interface and the IRI is in the process of connecting or disconnecting.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The link between the CPU interface and the IRI is not in the process of connecting or disconnecting.</p>
+        </td></tr></table>
+      <p>When this field is 0, if the system has been properly configured and a connection can be made between the CPU interface and the IRI, the field will become 1 in finite time.
+If the system has not been properly configured and an attempt to connect the CPU interface to the IRI is made, this field may remain 0 indefinitely.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> value.</li></ul><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-1_1">LINK, bit [1]</h4><div class="field">
+      <p>Whether the link between the CPU interface and the IRI is connected.</p>
+    <table class="valuetable"><tr><th>LINK</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The link between the CPU interface and the IRI is disconnected.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The link between the CPU interface and the IRI is connected.</p>
+        </td></tr></table><p>On a read, all of the following are true:</p>
+<ul>
+<li>
+<p>If LINK_IDLE is 1, LINK indicates whether the link is connected.</p>
+
+</li><li>
+<p>If LINK_IDLE is 0 and LINK is 0, the link is in the process of disconnecting.</p>
+
+</li><li>
+<p>If LINK_IDLE is 0 and LINK is 1, the link is in the process of connecting.</p>
+
+</li></ul>
+<p>On a write, all of the following are true:</p>
+<ul>
+<li>
+<p>Writing 1 connects the link.</p>
+
+</li><li>
+<p>Writing 0 disconnects the link.</p>
+
+</li><li>
+<p>The process of connecting or disconnecting the link is complete when LINK_IDLE is 1.</p>
+
+</li><li>
+<p>A write that does not change the value of this field has no effect.</p>
+
+</li></ul><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> value.</li></ul><p>Accessing this field has the following behavior:</p><ul><li>Access to this field is <span class="access_level">RO</span> if any the following are true:<ul><li>EL3 is implemented.</li><li>ICC_CR0_EL1.LINK_IDLE == 0.</li></ul></li><li>
+                  Otherwise,
+                  
+                  access to this field
+                  is <span class="access_level">RW</span>.
+                </li></ul></div><h4 id="fieldset_0-0_0">EN, bit [0]</h4><div class="field"><p>Enable interrupts for the Interrupt Domain.</p>
+<p>When this field is 0, there is no HPPI of Sufficient priority for the Interrupt Domain.</p><table class="valuetable"><tr><th>EN</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Disabled.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Enabled.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to <span class="binarynumber">'0'</span>.
+</li></ul></div><div class="access_mechanisms"><h2>Accessing ICC_CR0_EL1</h2><p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRS &lt;Xt&gt;, ICC_CR0_EL1</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b001</td><td>0b1100</td><td>0b0000</td><td>0b001</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_GCIE) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EL2Enabled() &amp;&amp; HCR_EL2().IMO == '1' &amp;&amp; IsFeatureImplemented(FEAT_GCIE_LEGACY) &amp;&amp; ICH_VCTLR_EL2().V3 == '1' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; ICH_HFGRTR_EL2().ICC_CR0_EL1 == '0' then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif EL2Enabled() &amp;&amp; HCR_EL2().IMO == '1' then
+        X{64}(t) = ICV_CR0_EL1();
+    elsif HaveEL(EL3) then
+        if SCR_EL3().NS == '0' then
+            X{64}(t) = ICC_CR0_EL1_S();
+        elsif IsFeatureImplemented(FEAT_RME) &amp;&amp; SCR_EL3().NSE == '1' &amp;&amp; SCR_EL3().NS == '1' then
+            X{64}(t) = ICC_CR0_EL1_RL();
+        elsif SCR_EL3().NSE == '0' &amp;&amp; SCR_EL3().NS == '1' then
+            X{64}(t) = ICC_CR0_EL1_NS();
+        else
+            Undefined();
+        end;
+    else
+        X{64}(t) = ICC_CR0_EL1();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) then
+        if SCR_EL3().NS == '0' then
+            X{64}(t) = ICC_CR0_EL1_S();
+        elsif IsFeatureImplemented(FEAT_RME) &amp;&amp; SCR_EL3().NSE == '1' &amp;&amp; SCR_EL3().NS == '1' then
+            X{64}(t) = ICC_CR0_EL1_RL();
+        elsif SCR_EL3().NSE == '0' &amp;&amp; SCR_EL3().NS == '1' then
+            X{64}(t) = ICC_CR0_EL1_NS();
+        else
+            Undefined();
+        end;
+    else
+        X{64}(t) = ICC_CR0_EL1();
+    end;
+elsif PSTATE.EL == EL3 then
+    if SCR_EL3().NS == '0' then
+        X{64}(t) = ICC_CR0_EL1_S();
+    elsif IsFeatureImplemented(FEAT_RME) &amp;&amp; SCR_EL3().NSE == '1' &amp;&amp; SCR_EL3().NS == '1' then
+        X{64}(t) = ICC_CR0_EL1_RL();
+    elsif SCR_EL3().NSE == '0' &amp;&amp; SCR_EL3().NS == '1' then
+        X{64}(t) = ICC_CR0_EL1_NS();
+    else
+        Undefined();
+    end;
+end;
+                </p><div><h4 class="assembler">MSR ICC_CR0_EL1, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b001</td><td>0b1100</td><td>0b0000</td><td>0b001</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_GCIE) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EL2Enabled() &amp;&amp; HCR_EL2().IMO == '1' &amp;&amp; IsFeatureImplemented(FEAT_GCIE_LEGACY) &amp;&amp; ICH_VCTLR_EL2().V3 == '1' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; ICH_HFGWTR_EL2().ICC_CR0_EL1 == '0' then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif EL2Enabled() &amp;&amp; HCR_EL2().IMO == '1' then
+        ICV_CR0_EL1() = X{64}(t);
+    elsif HaveEL(EL3) then
+        if SCR_EL3().NS == '0' then
+            ICC_CR0_EL1_S() = X{64}(t);
+        elsif IsFeatureImplemented(FEAT_RME) &amp;&amp; SCR_EL3().NSE == '1' &amp;&amp; SCR_EL3().NS == '1' then
+            ICC_CR0_EL1_RL() = X{64}(t);
+        elsif SCR_EL3().NSE == '0' &amp;&amp; SCR_EL3().NS == '1' then
+            ICC_CR0_EL1_NS() = X{64}(t);
+        else
+            Undefined();
+        end;
+    else
+        ICC_CR0_EL1() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) then
+        if SCR_EL3().NS == '0' then
+            ICC_CR0_EL1_S() = X{64}(t);
+        elsif IsFeatureImplemented(FEAT_RME) &amp;&amp; SCR_EL3().NSE == '1' &amp;&amp; SCR_EL3().NS == '1' then
+            ICC_CR0_EL1_RL() = X{64}(t);
+        elsif SCR_EL3().NSE == '0' &amp;&amp; SCR_EL3().NS == '1' then
+            ICC_CR0_EL1_NS() = X{64}(t);
+        else
+            Undefined();
+        end;
+    else
+        ICC_CR0_EL1() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL3 then
+    if SCR_EL3().NS == '0' then
+        ICC_CR0_EL1_S() = X{64}(t);
+    elsif IsFeatureImplemented(FEAT_RME) &amp;&amp; SCR_EL3().NSE == '1' &amp;&amp; SCR_EL3().NS == '1' then
+        ICC_CR0_EL1_RL() = X{64}(t);
+    elsif SCR_EL3().NSE == '0' &amp;&amp; SCR_EL3().NS == '1' then
+        ICC_CR0_EL1_NS() = X{64}(t);
+    else
+        Undefined();
+    end;
+end;
+                </p></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

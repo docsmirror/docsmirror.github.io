@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>DSB -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">DSB</h2><p>Data synchronization barrier</p>
+      <p class="aml">This instruction is a memory barrier that ensures the completion
+of memory accesses, see <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_BEICEFJH">Data Synchronization Barrier</a>.</p>
+    <p class="desc">This instruction is used by the aliases <a href="pssbb_dsb.html" title="Physical speculative store bypass barrier">PSSBB</a>, and <a href="ssbb_dsb.html" title="Speculative store bypass barrier">SSBB</a>.</p>
+    <p class="desc">
+      It has encodings from 2 classes:
+      <a href="#iclass_memory_barrier">Memory barrier</a>
+       and 
+      <a href="#iclass_memory_nxs_barrier">Memory nXS barrier</a>
+    </p>
+    <h3 class="classheading"><a id="iclass_memory_barrier"/>Memory barrier</h3><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">1</td><td>1</td><td class="r">0</td><td class="l">1</td><td>0</td><td class="r">1</td><td class="l">0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td class="r">1</td><td colspan="4" class="lr">CRm</td><td class="lr">1</td><td class="l">0</td><td class="r">0</td><td class="l">1</td><td>1</td><td>1</td><td>1</td><td class="r">1</td></tr><tr class="secondrow"><td colspan="3"/><td colspan="3"/><td colspan="14"/><td colspan="4"/><td/><td colspan="2" class="droppedname">opc</td><td colspan="5" class="droppedname">Rt</td></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="DSB_BO_barriers"/><p class="asm-code">DSB  (<a href="#CRm_option__2" title="For the &quot;Memory barrier&quot; variant: specifies the limitation on the barrier operation. Values are:">&lt;option&gt;</a>|#<a href="#option__2" title="Is a 4-bit unsigned immediate, in the range 0 to 15, encoded in the &quot;CRm&quot; field.">&lt;imm&gt;</a>)</p></div><h4>Decode for this encoding</h4><p class="pseudocode">var nXS : boolean = FALSE;
+
+var alias : DSBAlias;
+case CRm of
+    when '0000' =&gt; alias = DSBAlias_SSBB;
+    when '0100' =&gt; alias = DSBAlias_PSSBB;
+    otherwise =&gt;   alias = DSBAlias_DSB;
+end;
+
+var domain : <a href="shared_pseudocode.html#type_MBReqDomain" title="">MBReqDomain</a>;
+case CRm[3:2] of
+    when '00' =&gt; domain = <a href="shared_pseudocode.html#enum_MBReqDomain_OuterShareable" title="">MBReqDomain_OuterShareable</a>;
+    when '01' =&gt; domain = <a href="shared_pseudocode.html#enum_MBReqDomain_Nonshareable" title="">MBReqDomain_Nonshareable</a>;
+    when '10' =&gt; domain = <a href="shared_pseudocode.html#enum_MBReqDomain_InnerShareable" title="">MBReqDomain_InnerShareable</a>;
+    when '11' =&gt; domain = <a href="shared_pseudocode.html#enum_MBReqDomain_FullSystem" title="">MBReqDomain_FullSystem</a>;
+end;
+
+var types : MBReqTypes;
+case CRm[1:0] of
+    when '00' =&gt; types = MBReqTypes_All; domain = <a href="shared_pseudocode.html#enum_MBReqDomain_FullSystem" title="">MBReqDomain_FullSystem</a>;
+    when '01' =&gt; types = MBReqTypes_Reads;
+    when '10' =&gt; types = MBReqTypes_Writes;
+    when '11' =&gt; types = MBReqTypes_All;
+end;</p>
+    <h3 class="classheading"><a id="iclass_memory_nxs_barrier"/>Memory nXS barrier<span style="font-size:smaller;"><br/>(FEAT_XS)
+          </span></h3><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">1</td><td>1</td><td class="r">0</td><td class="l">1</td><td>0</td><td class="r">1</td><td class="l">0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td class="r">1</td><td colspan="2" class="lr">imm2</td><td class="l">1</td><td class="r">0</td><td class="l">0</td><td>0</td><td class="r">1</td><td class="l">1</td><td>1</td><td>1</td><td>1</td><td class="r">1</td></tr><tr class="secondrow"><td colspan="3"/><td colspan="3"/><td colspan="14"/><td colspan="2"/><td colspan="2"/><td colspan="3" class="droppedname">op2</td><td colspan="5" class="droppedname">Rt</td></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="DSB_BOn_barriers"/><p class="asm-code">DSB  <a href="#imm2_option" title="For the &quot;Memory nXS barrier&quot; variant: specifies the limitation on the barrier operation. Values are:">&lt;option&gt;</a>nXS</p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_XS) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+let types : MBReqTypes = MBReqTypes_All;
+var nXS : boolean = TRUE;
+let alias : DSBAlias = DSBAlias_DSB;
+var domain : <a href="shared_pseudocode.html#type_MBReqDomain" title="">MBReqDomain</a>;
+
+case imm2 of
+    when '00' =&gt; domain = <a href="shared_pseudocode.html#enum_MBReqDomain_OuterShareable" title="">MBReqDomain_OuterShareable</a>;
+    when '01' =&gt; domain = <a href="shared_pseudocode.html#enum_MBReqDomain_Nonshareable" title="">MBReqDomain_Nonshareable</a>;
+    when '10' =&gt; domain = <a href="shared_pseudocode.html#enum_MBReqDomain_InnerShareable" title="">MBReqDomain_InnerShareable</a>;
+    when '11' =&gt; domain = <a href="shared_pseudocode.html#enum_MBReqDomain_FullSystem" title="">MBReqDomain_FullSystem</a>;
+end;</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;option&gt;</td><td><a id="CRm_option__2"/>
+        
+          <p class="aml">For the "Memory barrier" variant: specifies the limitation on the barrier operation. Values are:</p>
+          <dl>
+            <dt>SY</dt><dd>Full system is the required shareability domain, reads and writes are the required access types, both before and after the barrier instruction. This option is referred to as the full system barrier. Encoded as CRm = 0b1111.</dd>
+            <dt>ST</dt><dd>Full system is the required shareability domain, writes are the required access type, both before and after the barrier instruction. Encoded as CRm = 0b1110.</dd>
+            <dt>LD</dt><dd>Full system is the required shareability domain, reads are the required access type before the barrier instruction, and reads and writes are the required access types after the barrier instruction. Encoded as CRm = 0b1101.</dd>
+            <dt>ISH</dt><dd>Inner Shareable is the required shareability domain, reads and writes are the required access types, both before and after the barrier instruction. Encoded as CRm = 0b1011.</dd>
+            <dt>ISHST</dt><dd>Inner Shareable is the required shareability domain, writes are the required access type, both before and after the barrier instruction. Encoded as CRm = 0b1010.</dd>
+            <dt>ISHLD</dt><dd>Inner Shareable is the required shareability domain, reads are the required access type before the barrier instruction, and reads and writes are the required access types after the barrier instruction. Encoded as CRm = 0b1001.</dd>
+            <dt>NSH</dt><dd>Non-shareable is the required shareability domain, reads and writes are the required access, both before and after the barrier instruction. Encoded as CRm = 0b0111.</dd>
+            <dt>NSHST</dt><dd>Non-shareable is the required shareability domain, writes are the required access type, both before and after the barrier instruction. Encoded as CRm = 0b0110.</dd>
+            <dt>NSHLD</dt><dd>Non-shareable is the required shareability domain, reads are the required access type before the barrier instruction, and reads and writes are the required access types after the barrier instruction. Encoded as CRm = 0b0101.</dd>
+            <dt>OSH</dt><dd>Outer Shareable is the required shareability domain, reads and writes are the required access types, both before and after the barrier instruction. Encoded as CRm = 0b0011.</dd>
+            <dt>OSHST</dt><dd>Outer Shareable is the required shareability domain, writes are the required access type, both before and after the barrier instruction. Encoded as CRm = 0b0010.</dd>
+            <dt>OSHLD</dt><dd>Outer Shareable is the required shareability domain, reads are the required access type before the barrier instruction, and reads and writes are the required access types after the barrier instruction. Encoded as CRm = 0b0001.</dd>
+          </dl>
+          <p class="aml">All other encodings of "CRm" that are not listed, other than the values 0b0000 and 0b0100, are reserved and can be encoded using the #&lt;imm&gt; syntax. All unsupported and reserved options must execute as a full system barrier operation, but software must not rely on this behavior. For more information on whether an access is before or after a barrier instruction, see <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="BEIIECBH">Data Memory Barrier (DMB)</a> or see <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="BEICEFJH">Data Synchronization Barrier (DSB)</a>.</p>
+          <div class="note"><hr class="note"/><h4>Note</h4>
+            <p class="aml">The value 0b0000 is used to encode <span class="asm-code">SSBB</span> and the value 0b0100 is used to encode <span class="asm-code">PSSBB</span>.</p>
+          <hr class="note"/></div>
+        
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">CRm</th>
+                <th class="symbol">&lt;option&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">0001</td>
+                <td class="symbol">OSHLD</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0010</td>
+                <td class="symbol">OSHST</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0011</td>
+                <td class="symbol">OSH</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0101</td>
+                <td class="symbol">NSHLD</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0110</td>
+                <td class="symbol">NSHST</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0111</td>
+                <td class="symbol">NSH</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1x00</td>
+                <td class="symbol">RESERVED</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1001</td>
+                <td class="symbol">ISHLD</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1010</td>
+                <td class="symbol">ISHST</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1011</td>
+                <td class="symbol">ISH</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1101</td>
+                <td class="symbol">LD</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1110</td>
+                <td class="symbol">ST</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1111</td>
+                <td class="symbol">SY</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr><tr><td/><td><a id="imm2_option"/>
+        
+          <p class="aml">For the "Memory nXS barrier" variant: specifies the limitation on the barrier operation. Values are:</p>
+          <dl>
+            <dt>SY</dt><dd>Full system is the required shareability domain, reads and writes are the required access types, both before and after the barrier instruction. This option is referred to as the full system barrier. Encoded as imm2 = 0b11.</dd>
+            <dt>ISH</dt><dd>Inner Shareable is the required shareability domain, reads and writes are the required access types, both before and after the barrier instruction. Encoded as imm2 = 0b10.</dd>
+            <dt>NSH</dt><dd>Non-shareable is the required shareability domain, reads and writes are the required access, both before and after the barrier instruction. Encoded as imm2 = 0b01.</dd>
+            <dt>OSH</dt><dd>Outer Shareable is the required shareability domain, reads and writes are the required access types, both before and after the barrier instruction. Encoded as imm2 = 0b00.</dd>
+          </dl>
+        
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">imm2</th>
+                <th class="symbol">&lt;option&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00</td>
+                <td class="symbol">OSH</td>
+              </tr>
+              <tr>
+                <td class="bitfield">01</td>
+                <td class="symbol">NSH</td>
+              </tr>
+              <tr>
+                <td class="bitfield">10</td>
+                <td class="symbol">ISH</td>
+              </tr>
+              <tr>
+                <td class="bitfield">11</td>
+                <td class="symbol">SY</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;imm&gt;</td><td><a id="option__2"/>
+        
+          <p class="aml">Is a 4-bit unsigned immediate, in the range 0 to 15, encoded in the "CRm" field.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/><h3 class="aliastable" id="">Alias Conditions</h3><table class="aliastable"><thead><tr><th>Alias</th><th>Is preferred when</th></tr></thead><tbody><tr><td><a href="pssbb_dsb.html" title="Physical speculative store bypass barrier">PSSBB</a></td><td class="notfirst"><span class="pseudocode">CRm == '0100'</span></td></tr><tr><td><a href="ssbb_dsb.html" title="Speculative store bypass barrier">SSBB</a></td><td class="notfirst"><span class="pseudocode">CRm == '0000'</span></td></tr></tbody></table>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">case alias of
+    when DSBAlias_SSBB =&gt;
+        SpeculativeStoreBypassBarrierToVA();
+    when DSBAlias_PSSBB =&gt;
+        SpeculativeStoreBypassBarrierToPA();
+    when DSBAlias_DSB =&gt;
+        if !nXS &amp;&amp; IsFeatureImplemented(FEAT_XS) then
+            nXS = PSTATE.EL IN {<a href="shared_pseudocode.html#global_EL0" title="">EL0</a>, <a href="shared_pseudocode.html#global_EL1" title="">EL1</a>} &amp;&amp; <a href="shared_pseudocode.html#func_IsHCRXEL2Enabled_0" title="">IsHCRXEL2Enabled</a>() &amp;&amp; HCRX_EL2().FnXS == '1';
+        end;
+        DataSynchronizationBarrier(domain, types, nXS);
+    otherwise =&gt;
+        unreachable;
+end;</p>
+    </div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

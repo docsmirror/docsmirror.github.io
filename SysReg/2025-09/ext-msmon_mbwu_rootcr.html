@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>MSMON_MBWU_ROOTCR</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">MSMON_MBWU_ROOTCR, MPAM Monitor Memory Bandwidth Usage Root Control Register</h1><p>The MSMON_MBWU_ROOTCR characteristics are:</p><h2>Purpose</h2>
+        <p>Allows Root software to control the PA space of:</p>
+
+      
+        <ul>
+<li>The monitor instance selected in <a href="ext-msmon_sel_rootcr.html">MSMON_SEL_ROOTCR</a>.
+</li><li>Accesses matched for filtering by the monitor instance.
+</li><li>Events that will trigger a capture.
+</li></ul>
+      <h2>Configuration</h2><p>The power domain of MSMON_MBWU_ROOTCR is <span class="arm-defined-word">IMPLEMENTATION DEFINED</span>.
+    </p><p>This register is present only when FEAT_MPAMv2_MSC is implemented, FEAT_RME is implemented, MPAMF_IDR.HAS_MSMON == 1, MPAMF_MSMON_IDR.MSMON_MBWU == 1, and MPAMF_MBWUMON_IDR.HAS_MON_SEC == 1. Otherwise, direct accesses to MSMON_MBWU_ROOTCR are <span class="arm-defined-word">RES0</span>.</p>
+        <p>The power and reset domain of each MSC component is specific to that component.</p>
+      <h2>Attributes</h2>
+        <p>MSMON_MBWU_ROOTCR is a 32-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="29"><a href="#fieldset_0-31_3">RES0</a></td><td class="lr" colspan="3"><a href="#fieldset_0-2_0">PAS</a></td></tr></tbody></table><h4 id="fieldset_0-31_3">Bits [31:3]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-2_0">PAS, bits [2:0]</h4><div class="field"><p>PA space of the monitor instance selected in <a href="ext-msmon_sel_rootcr.html">MSMON_SEL_ROOTCR</a>.SEL.</p>
+<p>Also restricts which accesses are monitored by the monitor instance based on their PAS.</p><table class="valuetable"><tr><th>PAS</th><th>Meaning</th></tr><tr><td class="bitfield">0b000</td><td>
+          <p>NS_Only: The monitor instance selected in <a href="ext-msmon_sel_rootcr.html">MSMON_SEL_ROOTCR</a>.SEL is assigned to Non-secure PA space. Only accesses with Non-secure or Non-secure Protected PAS are monitored. Only events triggered from Non-secure PAS cause capture.</p>
+        </td></tr><tr><td class="bitfield">0b001</td><td>
+          <p>NS_Plus: The monitor instance selected in <a href="ext-msmon_sel_rootcr.html">MSMON_SEL_ROOTCR</a>.SEL is assigned to Non-secure PA space. Accesses with any Non-secure and Realm PAS are monitored. Events triggered from any Non-secure and Realm PAS cause capture.</p>
+        </td></tr><tr><td class="bitfield">0b010</td><td>
+          <p>NS_Any: The monitor instance selected in <a href="ext-msmon_sel_rootcr.html">MSMON_SEL_ROOTCR</a>.SEL is assigned to Non-secure PA space. Accesses with any PAS are monitored. Events triggered from any PAS cause capture.</p>
+        </td></tr><tr><td class="bitfield">0b011</td><td>
+          <p>RL_Only: The monitor instance selected in <a href="ext-msmon_sel_rootcr.html">MSMON_SEL_ROOTCR</a>.SEL is assigned to Realm PA space. Only accesses with Realm PAS are monitored. Only events triggered from Realm PAS cause capture.</p>
+        </td></tr><tr><td class="bitfield">0b100</td><td>
+          <p>RL_Plus: The monitor instance selected in <a href="ext-msmon_sel_rootcr.html">MSMON_SEL_ROOTCR</a>.SEL is assigned to Realm PA space. Only accesses with Realm or Non-secure PAS are monitored. Only events triggered from Realm or Non-secure PAS cause capture.</p>
+        </td></tr><tr><td class="bitfield">0b101</td><td>
+          <p>S_Only: The monitor instance selected in <a href="ext-msmon_sel_rootcr.html">MSMON_SEL_ROOTCR</a>.SEL is assigned to Secure PA space. Only accesses with Secure PAS are monitored. Only events triggered from Secure PAS cause capture.</p>
+        </td></tr><tr><td class="bitfield">0b110</td><td>
+          <p>S_Plus: The monitor instance selected in <a href="ext-msmon_sel_rootcr.html">MSMON_SEL_ROOTCR</a>.SEL is assigned to Secure PA space. Only accesses with Secure or Non-secure PAS are monitored. Only events triggered from Secure or Non-secure PAS cause capture.</p>
+        </td></tr><tr><td class="bitfield">0b111</td><td>
+          <p>RT_Any: The monitor instance selected in <a href="ext-msmon_sel_rootcr.html">MSMON_SEL_ROOTCR</a>.SEL is assigned to Root PA space. Accesses with any PAS are monitored. Events triggered from any PAS cause capture.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to the expression <span class="pseudocode">0</span>.</li></ul></div><h2>Accessing MSMON_MBWU_ROOTCR</h2><h4>MSMON_MBWU_ROOTCR can be accessed through the memory-mapped interfaces:</h4><table class="info"><tr><th>Component</th><th>Offset</th></tr><tr><td>MPAM</td><td><span class="hexnumber">0x2220</span></td></tr></table><p>Accessible as follows:</p><ul><li>When an access is not Root, accesses to this register are <span class="access_level">RAZ/WI</span>.
+          </li><li>Otherwise, accesses to this register are <span class="access_level">RW</span>.
+          </li></ul><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

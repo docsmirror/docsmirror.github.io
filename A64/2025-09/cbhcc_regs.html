@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>CBH&lt;cc&gt; -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">CBH&lt;cc&gt;</h2><p>Compare halfwords and branch</p>
+      <p class="aml">This instruction compares the halfword values in two registers, and conditionally
+branches to a label at a PC-relative offset if the condition is true.
+This instruction provides a hint that this is not a subroutine call or return.
+This instruction does not affect the condition flags.</p>
+    <p class="desc">This instruction is used by the pseudo-instructions <a href="cbhle_regs.html" title="Compare signed less than or equal to halfwords and branch">CBHLE</a>, <a href="cbhlo_regs.html" title="Compare unsigned lower than halfwords and branch">CBHLO</a>, <a href="cbhls_regs.html" title="Compare unsigned lower than or same as halfwords and branch">CBHLS</a>, and <a href="cbhlt_regs.html" title="Compare signed less than halfwords and branch">CBHLT</a>.</p>
+    <h3 class="classheading"><a id="iclass_branch"/>Branch<span style="font-size:smaller;"><br/>(FEAT_CMPBR)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td class="r">0</td><td colspan="3" class="lr">cc</td><td colspan="5" class="lr">Rm</td><td class="lr">1</td><td class="lr">1</td><td colspan="9" class="lr">imm9</td><td colspan="5" class="lr">Rt</td></tr><tr class="secondrow"><td colspan="8"/><td colspan="3"/><td colspan="5"/><td/><td class="droppedname">H</td><td colspan="9"/><td colspan="5"/></tr></tbody></table></div><div class="encoding"><h4 class="encoding">
+              Encoding for the Greater than variant
+            </h4><a id="CBHGT_16_regs"/>
+        Applies when
+        <span class="bitdiff"> (cc == 000)</span><p class="asm-code">CBHGT  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, <a href="#WmOrWZR__2" title="Is the 32-bit name of the second general-purpose source register, encoded in the &quot;Rm&quot; field.">&lt;Wm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the Greater than or equal variant
+            </h4><a id="CBHGE_16_regs"/>
+        Applies when
+        <span class="bitdiff"> (cc == 001)</span><p class="asm-code">CBHGE  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, <a href="#WmOrWZR__2" title="Is the 32-bit name of the second general-purpose source register, encoded in the &quot;Rm&quot; field.">&lt;Wm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the Higher variant
+            </h4><a id="CBHHI_16_regs"/>
+        Applies when
+        <span class="bitdiff"> (cc == 010)</span><p class="asm-code">CBHHI  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, <a href="#WmOrWZR__2" title="Is the 32-bit name of the second general-purpose source register, encoded in the &quot;Rm&quot; field.">&lt;Wm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the Higher or same variant
+            </h4><a id="CBHHS_16_regs"/>
+        Applies when
+        <span class="bitdiff"> (cc == 011)</span><p class="asm-code">CBHHS  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, <a href="#WmOrWZR__2" title="Is the 32-bit name of the second general-purpose source register, encoded in the &quot;Rm&quot; field.">&lt;Wm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the Equal variant
+            </h4><a id="CBHEQ_16_regs"/>
+        Applies when
+        <span class="bitdiff"> (cc == 110)</span><p class="asm-code">CBHEQ  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, <a href="#WmOrWZR__2" title="Is the 32-bit name of the second general-purpose source register, encoded in the &quot;Rm&quot; field.">&lt;Wm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the Not equal variant
+            </h4><a id="CBHNE_16_regs"/>
+        Applies when
+        <span class="bitdiff"> (cc == 111)</span><p class="asm-code">CBHNE  <a href="#WtOrWZR" title="Is the 32-bit name of the general-purpose register to be tested, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, <a href="#WmOrWZR__2" title="Is the 32-bit name of the second general-purpose source register, encoded in the &quot;Rm&quot; field.">&lt;Wm&gt;</a>, <a href="#imm9_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as &quot;imm9&quot; times 4.">&lt;label&gt;</a></p></div><h4>Decode for all variants of this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_CMPBR) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+let datasize : integer{} = 8 &lt;&lt; UInt(H);
+let t : integer = UInt(Rt);
+let m : integer = UInt(Rm);
+let offset : bits(64) = SignExtend{}(imm9::'00');
+var op : CmpOp;
+var unsigned : boolean;
+
+case cc of
+    when '000' =&gt; op = Cmp_GT; unsigned = FALSE;
+    when '001' =&gt; op = Cmp_GE; unsigned = FALSE;
+    when '010' =&gt; op = Cmp_GT; unsigned = TRUE;
+    when '011' =&gt; op = Cmp_GE; unsigned = TRUE;
+    when '110' =&gt; op = Cmp_EQ; unsigned = TRUE;
+    when '111' =&gt; op = Cmp_NE; unsigned = TRUE;
+    otherwise =&gt; EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>);
+end;</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Wt&gt;</td><td><a id="WtOrWZR"/>
+        
+          <p class="aml">Is the 32-bit name of the general-purpose register to be tested, encoded in the "Rt" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Wm&gt;</td><td><a id="WmOrWZR__2"/>
+        
+          <p class="aml">Is the 32-bit name of the second general-purpose source register, encoded in the "Rm" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;label&gt;</td><td><a id="imm9_offset"/>
+        
+          <p class="aml">Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range -1024 to 1020, is encoded as "imm9" times 4.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">let operand1 : bits(datasize) = X{}(t);
+let operand2 : bits(datasize) = X{}(m);
+let branch_conditional : boolean = TRUE;
+
+let value1 : integer = if unsigned then UInt(operand1) else SInt(operand1);
+let value2 : integer = if unsigned then UInt(operand2) else SInt(operand2);
+var cond : boolean;
+case op of
+    when Cmp_EQ =&gt; cond = value1 == value2;
+    when Cmp_NE =&gt; cond = value1 != value2;
+    when Cmp_GE =&gt; cond = value1 &gt;= value2;
+    when Cmp_GT =&gt; cond = value1 &gt;  value2;
+end;
+
+if cond then
+    BranchTo{64}(<a href="shared_pseudocode.html#func_PC64_0" title="">PC64</a>() + offset, <a href="shared_pseudocode.html#enum_BranchType_DIR" title="">BranchType_DIR</a>, branch_conditional);
+else
+    BranchNotTaken(<a href="shared_pseudocode.html#enum_BranchType_DIR" title="">BranchType_DIR</a>, branch_conditional);
+end;</p>
+    </div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

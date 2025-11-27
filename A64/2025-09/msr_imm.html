@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>MSR (immediate) -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">MSR (immediate)</h2><p>Move immediate value to special register</p>
+      <p class="aml">This instruction moves an immediate value to
+selected bits of the PSTATE. For more information, see
+<a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_PSTATE">Process state, PSTATE</a>.</p>
+      <p class="aml">The bits that can be written by this instruction are:</p>
+      <ul>
+        <li>
+          PSTATE.D, PSTATE.A, PSTATE.I, PSTATE.F, and PSTATE.SP.
+        </li>
+        <li>
+          If <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_FEAT_SSBS">FEAT_SSBS</a> is implemented, PSTATE.SSBS.
+        </li>
+        <li>
+          If <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_FEAT_PAN">FEAT_PAN</a> is implemented, PSTATE.PAN.
+        </li>
+        <li>
+          If <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_FEAT_UAO">FEAT_UAO</a> is implemented, PSTATE.UAO.
+        </li>
+        <li>
+          If <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_FEAT_DIT">FEAT_DIT</a> is implemented, PSTATE.DIT.
+        </li>
+        <li>
+          If <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_FEAT_MTE">FEAT_MTE</a> is implemented, PSTATE.TCO.
+        </li>
+        <li>
+          If <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_FEAT_NMI">FEAT_NMI</a> is implemented, PSTATE.ALLINT.
+        </li>
+        <li>
+          If <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_FEAT_SME">FEAT_SME</a> is implemented, PSTATE.SM and PSTATE.ZA.
+        </li>
+        <li>
+          If FEAT_EBEP is implemented, PSTATE.PM.
+        </li>
+      </ul>
+      <p class="aml">If <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_FEAT_MTE">FEAT_MTE</a> is implemented and <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_FEAT_MTE2">FEAT_MTE2</a>
+is not implemented, it is <span class="arm-defined-word">IMPLEMENTATION DEFINED</span>
+whether writes to PSTATE.TCO by this instruction are ignored.</p>
+    <p class="desc">This instruction is used by the aliases <a href="smstart_msr_imm.html" title="Enables access to Streaming SVE mode and SME architectural state">SMSTART</a>, and <a href="smstop_msr_imm.html" title="Disables access to Streaming SVE mode and SME architectural state">SMSTOP</a>.</p>
+    <p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">1</td><td>1</td><td class="r">0</td><td class="l">1</td><td>0</td><td class="r">1</td><td class="l">0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="r">0</td><td colspan="3" class="lr">op1</td><td class="l">0</td><td>1</td><td>0</td><td class="r">0</td><td colspan="4" class="lr">CRm</td><td colspan="3" class="lr">op2</td><td class="l">1</td><td>1</td><td>1</td><td>1</td><td class="r">1</td></tr><tr class="secondrow"><td colspan="3"/><td colspan="3"/><td colspan="7"/><td colspan="3"/><td colspan="4"/><td colspan="4"/><td colspan="3"/><td colspan="5" class="droppedname">Rt</td></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="MSR_SI_pstate"/>
+        Applies when
+        <span class="bitdiff"> (!(op1 == 000 &amp;&amp; op2 IN {00x, 010}))</span><p class="asm-code">MSR  <a href="#pstatefield_option" title="Is a PSTATE field name. For the MSR instruction, this is ">&lt;pstatefield&gt;</a>, #<a href="#msr_imm" title="Is a 4-bit unsigned immediate, in the range 0 to 15, encoded in the &quot;CRm&quot; field. Restricted to the range 0 to 1, encoded in &quot;CRm&lt;0&gt;&quot;, when &lt;pstatefield&gt; is ALLINT, PM, SVCRSM, SVCRSMZA, or SVCRZA.">&lt;imm&gt;</a></p></div><h4>Decode for this encoding</h4><p class="pseudocode">if op1 == '000' &amp;&amp; op2 == '000' then See("CFINV"); end;
+if op1 == '000' &amp;&amp; op2 == '001' then See("XAFLAG"); end;
+if op1 == '000' &amp;&amp; op2 == '010' then See("AXFLAG"); end;
+
+var min_EL : bits(2);
+var need_secure : boolean = FALSE;
+
+case op1 of
+    when '00x' =&gt;
+        min_EL = <a href="shared_pseudocode.html#global_EL1" title="">EL1</a>;
+    when '010' =&gt;
+        min_EL = <a href="shared_pseudocode.html#global_EL1" title="">EL1</a>;
+    when '011' =&gt;
+        min_EL = <a href="shared_pseudocode.html#global_EL0" title="">EL0</a>;
+    when '100' =&gt;
+        min_EL = <a href="shared_pseudocode.html#global_EL2" title="">EL2</a>;
+    when '101' =&gt;
+        if !IsFeatureImplemented(FEAT_VHE) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+        min_EL = <a href="shared_pseudocode.html#global_EL2" title="">EL2</a>;
+    when '110' =&gt;
+        min_EL = <a href="shared_pseudocode.html#global_EL3" title="">EL3</a>;
+    when '111' =&gt;
+        min_EL = <a href="shared_pseudocode.html#global_EL1" title="">EL1</a>;
+        need_secure = TRUE;
+end;
+
+let operand : bits(4) = CRm;
+var field : <a href="shared_pseudocode.html#type_PSTATEField" title="">PSTATEField</a>;
+case op1::op2 of
+    when '000 011' =&gt;
+        if !IsFeatureImplemented(FEAT_UAO) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+        field = <a href="shared_pseudocode.html#enum_PSTATEField_UAO" title="">PSTATEField_UAO</a>;
+    when '000 100' =&gt;
+        if !IsFeatureImplemented(FEAT_PAN) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+        field = <a href="shared_pseudocode.html#enum_PSTATEField_PAN" title="">PSTATEField_PAN</a>;
+    when '000 101' =&gt; field = <a href="shared_pseudocode.html#enum_PSTATEField_SP" title="">PSTATEField_SP</a>;
+    when '001 000' =&gt;
+        case CRm of
+            when '000x' =&gt;
+                if !IsFeatureImplemented(FEAT_NMI) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+                field = <a href="shared_pseudocode.html#enum_PSTATEField_ALLINT" title="">PSTATEField_ALLINT</a>;
+            when '001x' =&gt;
+                if !IsFeatureImplemented(FEAT_EBEP) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+                field = <a href="shared_pseudocode.html#enum_PSTATEField_PM" title="">PSTATEField_PM</a>;
+            otherwise =&gt;
+                EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>);
+        end;
+    when '011 010' =&gt;
+        if !IsFeatureImplemented(FEAT_DIT) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+        field = <a href="shared_pseudocode.html#enum_PSTATEField_DIT" title="">PSTATEField_DIT</a>;
+    when '011 011' =&gt;
+        case CRm of
+            when '001x' =&gt;
+                if !IsFeatureImplemented(FEAT_SME) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+                field = <a href="shared_pseudocode.html#enum_PSTATEField_SVCRSM" title="">PSTATEField_SVCRSM</a>;
+            when '010x' =&gt;
+                if !IsFeatureImplemented(FEAT_SME) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+                field = <a href="shared_pseudocode.html#enum_PSTATEField_SVCRZA" title="">PSTATEField_SVCRZA</a>;
+            when '011x' =&gt;
+                if !IsFeatureImplemented(FEAT_SME) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+                field = <a href="shared_pseudocode.html#enum_PSTATEField_SVCRSMZA" title="">PSTATEField_SVCRSMZA</a>;
+            otherwise =&gt;
+                EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>);
+        end;
+    when '011 100' =&gt;
+        if !IsFeatureImplemented(FEAT_MTE) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+        field = <a href="shared_pseudocode.html#enum_PSTATEField_TCO" title="">PSTATEField_TCO</a>;
+    when '011 110' =&gt; field = <a href="shared_pseudocode.html#enum_PSTATEField_DAIFSet" title="">PSTATEField_DAIFSet</a>;
+    when '011 111' =&gt; field = <a href="shared_pseudocode.html#enum_PSTATEField_DAIFClr" title="">PSTATEField_DAIFClr</a>;
+    when '011 001' =&gt;
+        if !IsFeatureImplemented(FEAT_SSBS) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+        field = <a href="shared_pseudocode.html#enum_PSTATEField_SSBS" title="">PSTATEField_SSBS</a>;
+    otherwise =&gt;      EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>);
+end;</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;pstatefield&gt;</td><td><a id="pstatefield_option"/>
+        <p>Is a PSTATE field name. For the MSR instruction, this is 
+          encoded in
+          <q>(CRm :: op1 :: op2)</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">CRm</th>
+                <th class="bitfield">op1</th>
+                <th class="bitfield">op2</th>
+                <th class="symbol">&lt;pstatefield&gt;</th>
+                <th class="symbol">Architectural Feature</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">000</td>
+                <td class="bitfield">011</td>
+                <td class="symbol">UAO</td>
+                <td class="feature">
+                  FEAT_UAO
+                </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">000</td>
+                <td class="bitfield">100</td>
+                <td class="symbol">PAN</td>
+                <td class="feature">
+                  FEAT_PAN
+                </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">000</td>
+                <td class="bitfield">101</td>
+                <td class="symbol">SPSel</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">000</td>
+                <td class="bitfield">11x</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">000x</td>
+                <td class="bitfield">001</td>
+                <td class="bitfield">000</td>
+                <td class="symbol">ALLINT</td>
+                <td class="feature">
+                  FEAT_NMI
+                </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">001</td>
+                <td class="bitfield">001</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">001</td>
+                <td class="bitfield">01x</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">001</td>
+                <td class="bitfield">1xx</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">010</td>
+                <td class="bitfield">xxx</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">000</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">001</td>
+                <td class="symbol">SSBS</td>
+                <td class="feature">
+                  FEAT_SSBS
+                </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">010</td>
+                <td class="symbol">DIT</td>
+                <td class="feature">
+                  FEAT_DIT
+                </td>
+              </tr>
+              <tr>
+                <td class="bitfield">000x</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">011</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">100</td>
+                <td class="symbol">TCO</td>
+                <td class="feature">
+                  FEAT_MTE
+                </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">101</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">110</td>
+                <td class="symbol">DAIFSet</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">111</td>
+                <td class="symbol">DAIFClr</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx</td>
+                <td class="bitfield">1xx</td>
+                <td class="bitfield">xxx</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">001x</td>
+                <td class="bitfield">001</td>
+                <td class="bitfield">000</td>
+                <td class="symbol">PM</td>
+                <td class="feature">
+                  FEAT_EBEP
+                </td>
+              </tr>
+              <tr>
+                <td class="bitfield">001x</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">011</td>
+                <td class="symbol">SVCRSM</td>
+                <td class="feature">
+                  FEAT_SME
+                </td>
+              </tr>
+              <tr>
+                <td class="bitfield">01xx</td>
+                <td class="bitfield">001</td>
+                <td class="bitfield">000</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">010x</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">011</td>
+                <td class="symbol">SVCRZA</td>
+                <td class="feature">
+                  FEAT_SME
+                </td>
+              </tr>
+              <tr>
+                <td class="bitfield">011x</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">011</td>
+                <td class="symbol">SVCRSMZA</td>
+                <td class="feature">
+                  FEAT_SME
+                </td>
+              </tr>
+              <tr>
+                <td class="bitfield">1xxx</td>
+                <td class="bitfield">001</td>
+                <td class="bitfield">000</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+              <tr>
+                <td class="bitfield">1xxx</td>
+                <td class="bitfield">011</td>
+                <td class="bitfield">011</td>
+                <td class="symbol">RESERVED</td>
+                <td class="feature">
+          -
+        </td>
+              </tr>
+            </tbody>
+          
+        </table>
+        For the SMSTART and SMSTOP aliases, this is encoded in "CRm&lt;2:1&gt;", where 0b01 specifies SVCRSM, 0b10 specifies SVCRZA, and 0b11 specifies SVCRSMZA.
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;imm&gt;</td><td><a id="msr_imm"/>
+        
+          <p class="aml">Is a 4-bit unsigned immediate, in the range 0 to 15, encoded in the "CRm" field. Restricted to the range 0 to 1, encoded in "CRm&lt;0&gt;", when &lt;pstatefield&gt; is ALLINT, PM, SVCRSM, SVCRSMZA, or SVCRZA.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/><h3 class="aliastable" id="">Alias Conditions</h3><table class="aliastable"><thead><tr><th>Alias</th><th>Is preferred when</th></tr></thead><tbody><tr><td><a href="smstart_msr_imm.html" title="Enables access to Streaming SVE mode and SME architectural state">SMSTART</a></td><td class="notfirst"><span class="pseudocode">op1 == '011' &amp;&amp; CRm IN {'0xx1'} &amp;&amp; op2 == '011'</span></td></tr><tr><td><a href="smstop_msr_imm.html" title="Disables access to Streaming SVE mode and SME architectural state">SMSTOP</a></td><td class="notfirst"><span class="pseudocode">op1 == '011' &amp;&amp; CRm IN {'0xx0'} &amp;&amp; op2 == '011'</span></td></tr></tbody></table>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">if UInt(PSTATE.EL) &lt; UInt(min_EL) then Undefined(); end;
+if need_secure &amp;&amp; <a href="shared_pseudocode.html#func_CurrentSecurityState_0" title="">CurrentSecurityState</a>() != <a href="shared_pseudocode.html#enum_SS_Secure" title="">SS_Secure</a> then Undefined(); end;
+
+case field of
+    when <a href="shared_pseudocode.html#enum_PSTATEField_SSBS" title="">PSTATEField_SSBS</a> =&gt;
+        PSTATE.SSBS = operand[0];
+    when <a href="shared_pseudocode.html#enum_PSTATEField_SP" title="">PSTATEField_SP</a> =&gt;
+        PSTATE.SP = operand[0];
+    when <a href="shared_pseudocode.html#enum_PSTATEField_DAIFSet" title="">PSTATEField_DAIFSet</a> =&gt;
+        AArch64_CheckDAIFAccess(<a href="shared_pseudocode.html#enum_PSTATEField_DAIFSet" title="">PSTATEField_DAIFSet</a>);
+        PSTATE.D = PSTATE.D OR operand[3];
+        PSTATE.A = PSTATE.A OR operand[2];
+        PSTATE.I = PSTATE.I OR operand[1];
+        PSTATE.F = PSTATE.F OR operand[0];
+    when <a href="shared_pseudocode.html#enum_PSTATEField_DAIFClr" title="">PSTATEField_DAIFClr</a> =&gt;
+        AArch64_CheckDAIFAccess(<a href="shared_pseudocode.html#enum_PSTATEField_DAIFClr" title="">PSTATEField_DAIFClr</a>);
+        PSTATE.D = PSTATE.D AND NOT(operand[3]);
+        PSTATE.A = PSTATE.A AND NOT(operand[2]);
+        PSTATE.I = PSTATE.I AND NOT(operand[1]);
+        PSTATE.F = PSTATE.F AND NOT(operand[0]);
+    when <a href="shared_pseudocode.html#enum_PSTATEField_PAN" title="">PSTATEField_PAN</a> =&gt;
+        PSTATE.PAN = operand[0];
+    when <a href="shared_pseudocode.html#enum_PSTATEField_UAO" title="">PSTATEField_UAO</a> =&gt;
+        PSTATE.UAO = operand[0];
+    when <a href="shared_pseudocode.html#enum_PSTATEField_DIT" title="">PSTATEField_DIT</a> =&gt;
+        PSTATE.DIT = operand[0];
+    when <a href="shared_pseudocode.html#enum_PSTATEField_TCO" title="">PSTATEField_TCO</a> =&gt;
+        PSTATE.TCO = operand[0];
+    when <a href="shared_pseudocode.html#enum_PSTATEField_ALLINT" title="">PSTATEField_ALLINT</a> =&gt;
+        if (PSTATE.EL == <a href="shared_pseudocode.html#global_EL1" title="">EL1</a> &amp;&amp; <a href="shared_pseudocode.html#func_IsHCRXEL2Enabled_0" title="">IsHCRXEL2Enabled</a>() &amp;&amp;
+              HCRX_EL2().TALLINT == '1' &amp;&amp; operand[0] == '1') then
+            AArch64_SystemAccessTrap(<a href="shared_pseudocode.html#global_EL2" title="">EL2</a>, 0x18);
+        end;
+        PSTATE.ALLINT = operand[0];
+    when <a href="shared_pseudocode.html#enum_PSTATEField_SVCRSM" title="">PSTATEField_SVCRSM</a> =&gt;
+        CheckSMEAccess();
+        SetPSTATE_SM(operand[0]);
+    when <a href="shared_pseudocode.html#enum_PSTATEField_SVCRZA" title="">PSTATEField_SVCRZA</a> =&gt;
+        CheckSMEAccess();
+        SetPSTATE_ZA(operand[0]);
+    when <a href="shared_pseudocode.html#enum_PSTATEField_SVCRSMZA" title="">PSTATEField_SVCRSMZA</a> =&gt;
+        CheckSMEAccess();
+        SetPSTATE_SM(operand[0]);
+        SetPSTATE_ZA(operand[0]);
+    when <a href="shared_pseudocode.html#enum_PSTATEField_PM" title="">PSTATEField_PM</a> =&gt;
+        PSTATE.PM = operand[0];
+end;</p>
+    </div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

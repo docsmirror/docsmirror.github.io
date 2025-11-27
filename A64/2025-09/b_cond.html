@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>B.cond -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">B.cond</h2><p>Branch conditionally</p>
+      <p class="aml">This instruction branches conditionally to a label at a PC-relative
+offset. 
+This instruction provides a hint that this is not a subroutine call or return.</p>
+    
+    <p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">0</td><td>1</td><td class="r">0</td><td class="l">1</td><td>0</td><td class="r">1</td><td class="l">0</td><td class="r">0</td><td colspan="19" class="lr">imm19</td><td class="lr">0</td><td colspan="4" class="lr">cond</td></tr><tr class="secondrow"><td colspan="3"/><td colspan="3"/><td colspan="2"/><td colspan="19"/><td class="droppedname">o0</td><td colspan="4"/></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="B_only_condbranch"/><p class="asm-code">B.<a href="#cond_option" title="Is one of the standard conditions, encoded in the standard way, and ">&lt;cond&gt;</a>  <a href="#imm19_offset" title="Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range +/-1MB, is encoded as &quot;imm19&quot; times 4.">&lt;label&gt;</a></p></div><h4>Decode for this encoding</h4><p class="pseudocode">let offset : bits(64) = SignExtend{}(imm19::'00');
+let condition : bits(4) = cond;</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;cond&gt;</td><td><a id="cond_option"/>
+        <p>Is one of the standard conditions, encoded in the standard way, and 
+          encoded in
+          <q>cond</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">cond</th>
+                <th class="symbol">&lt;cond&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">0000</td>
+                <td class="symbol">EQ</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0001</td>
+                <td class="symbol">NE</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0010</td>
+                <td class="symbol">CS</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0011</td>
+                <td class="symbol">CC</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0100</td>
+                <td class="symbol">MI</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0101</td>
+                <td class="symbol">PL</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0110</td>
+                <td class="symbol">VS</td>
+              </tr>
+              <tr>
+                <td class="bitfield">0111</td>
+                <td class="symbol">VC</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1000</td>
+                <td class="symbol">HI</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1001</td>
+                <td class="symbol">LS</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1010</td>
+                <td class="symbol">GE</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1011</td>
+                <td class="symbol">LT</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1100</td>
+                <td class="symbol">GT</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1101</td>
+                <td class="symbol">LE</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1110</td>
+                <td class="symbol">AL</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1111</td>
+                <td class="symbol">NV</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;label&gt;</td><td><a id="imm19_offset"/>
+        
+          <p class="aml">Is the program label to be conditionally branched to. Its offset from the address of this instruction, in the range +/-1MB, is encoded as "imm19" times 4.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">let branch_conditional : boolean = TRUE;
+if <a href="shared_pseudocode.html#func_ConditionHolds_1" title="">ConditionHolds</a>(condition) then
+    BranchTo{64}(<a href="shared_pseudocode.html#func_PC64_0" title="">PC64</a>() + offset, <a href="shared_pseudocode.html#enum_BranchType_DIR" title="">BranchType_DIR</a>, branch_conditional);
+else
+    BranchNotTaken(<a href="shared_pseudocode.html#enum_BranchType_DIR" title="">BranchType_DIR</a>, branch_conditional);
+end;</p>
+    </div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

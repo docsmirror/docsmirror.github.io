@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>TRFCR_EL2</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">TRFCR_EL2, Trace Filter Control Register (EL2)</h1><p>The TRFCR_EL2 characteristics are:</p><h2>Purpose</h2>
+        <p>Provides EL2 controls for Trace.</p>
+      <h2>Configuration</h2><p>AArch64 System register TRFCR_EL2 bits [31:0] are architecturally mapped to AArch32 System register <a href="AArch32-htrfcr.html">HTRFCR[31:0]</a>.</p><p>This register is present only when FEAT_TRF is implemented and FEAT_AA64 is implemented. Otherwise, direct accesses to TRFCR_EL2 are <span class="arm-defined-word">UNDEFINED</span>.</p>
+        <p>If EL2 is not implemented, this register is <span class="arm-defined-word">RES0</span> from EL3.</p>
+      <h2>Attributes</h2>
+        <p>TRFCR_EL2 is a 64-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="32"><a href="#fieldset_0-63_12">RES0</a></td></tr><tr class="firstrow"><td class="lr" colspan="20"><a href="#fieldset_0-63_12">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-11_11-1">DnVM</a></td><td class="lr" colspan="1"><a href="#fieldset_0-10_10-1">KE</a></td><td class="lr" colspan="2"><a href="#fieldset_0-9_8-1">EE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-7_7">RES0</a></td><td class="lr" colspan="2"><a href="#fieldset_0-6_5">TS</a></td><td class="lr" colspan="1"><a href="#fieldset_0-4_4">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-3_3">CX</a></td><td class="lr" colspan="1"><a href="#fieldset_0-2_2">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-1_1">E2TRE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-0_0">E0HTRE</a></td></tr></tbody></table><h4 id="fieldset_0-63_12">Bits [63:12]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-11_11-1">DnVM, bit [11]<span class="condition"><br/>When FEAT_TRBEv1p1 is implemented:
+                        </span></h4><div class="field">
+      <p>Disable use of physical address trace buffer pointers.</p>
+    <table class="valuetable"><tr><th>DnVM</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Use of physical address trace buffer pointers is permitted.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Use of physical address trace buffer pointers is disabled. The PE behaves as if <a href="AArch64-trblimitr_el1.html">TRBLIMITR_EL1</a>.nVM is 0.</p>
+        </td></tr></table>
+      <p>If EL2 is disabled in the owning Security state, or the trace buffer owning Exception level is EL2, then the Effective value of this field is 0.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-11_11-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-10_10-1">KE, bit [10]<span class="condition"><br/>When FEAT_TRBE_EXC is implemented:
+                        </span></h4><div class="field">
+      <p>Kernel exception enable for TRBE Profiling exceptions taken to EL2.</p>
+    <table class="valuetable"><tr><th>KE</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>TRBE Profiling exceptions taken to EL2 are always masked at EL2.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Enabled TRBE Profiling exceptions taken to EL2 are masked at EL2 when PSTATE.PM is 1 and unmasked when PSTATE.PM is 0.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-10_10-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-9_8-1">EE, bits [9:8]<span class="condition"><br/>When FEAT_TRBE_EXC is implemented:
+                        </span></h4><div class="field">
+      <p>Exception Enable.</p>
+    <table class="valuetable"><tr><th>EE</th><th>Meaning</th></tr><tr><td class="bitfield">0b00</td><td><p>Disabled. TRBE Profiling exceptions for EL2 and EL1 are disabled. All of the following apply:</p>
+<ul>
+<li>No trace buffer management events are recorded in <a href="AArch64-trbsr_el2.html">TRBSR_EL2</a>.
+</li><li>Unless enabled by a higher Exception level, TRBE Profiling exceptions are not generated.
+</li><li><a href="AArch64-trbsr_el1.html">TRBSR_EL1</a>.IRQ drives the interrupt request signal <span class="signal">TRBIRQ</span>.
+</li><li>Accesses to <a href="AArch64-trbsr_el1.html">TRBSR_EL1</a> at EL1 ignore the value of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.NV1 and accesses to <a href="AArch64-trbsr_el1.html">TRBSR_EL1</a> at EL2 ignore the value of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.E2H.
+</li></ul></td></tr><tr><td class="bitfield">0b01</td><td><p>Delegated. TRBE Profiling exceptions for EL2 are disabled, but might be enabled for  EL1 by  <a href="AArch64-trfcr_el1.html">TRFCR_EL1</a>.EE. All of the following apply:</p>
+<ul>
+<li>No trace buffer management events are recorded in <a href="AArch64-trbsr_el2.html">TRBSR_EL2</a>.
+</li><li><a href="AArch64-trbsr_el2.html">TRBSR_EL2</a>.IRQ is ignored and TRBE Profiling exceptions are not taken to EL2, other than for the case when the Effective value of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TGE is 1.
+</li></ul></td></tr><tr><td class="bitfield">0b10</td><td><p>Enabled. TRBE Profiling exceptions for EL2 are enabled for trace buffer management events targeting EL2, as follows:</p>
+<ul>
+<li>Trace buffer management events due to a fault on a write to the trace buffer that would generate a Data Abort exception taken to EL2 if generated by a store instruction executed at the owning Exception level are recorded in <a href="AArch64-trbsr_el2.html">TRBSR_EL2</a>, unless they are configured to be recorded in <a href="AArch64-trbsr_el3.html">TRBSR_EL3</a> by <a href="AArch64-mdcr_el3.html">MDCR_EL3</a>.TRBEE.
+    If the trace buffer owning Exception level is EL2, then this means any fault on a write to the trace buffer.
+    If the trace buffer owning Exception level is EL1, then this means any of the following faults on a write to the trace buffer:<ul>
+<li>Stage 2 faults.
+</li><li>If <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TEA is 1, synchronous External aborts.
+</li><li>If <a href="AArch64-hcr_el2.html">HCR_EL2</a>.GPF is 1, Granule Protection Faults (GPFs).
+</li></ul>
+
+</li><li>Trace buffer management events due to Granule Protection Check faults other than GPFs on a write to the trace buffer are recorded in <a href="AArch64-trbsr_el2.html">TRBSR_EL2</a>, unless they are configured to be recorded in <a href="AArch64-trbsr_el3.html">TRBSR_EL3</a> by <a href="AArch64-mdcr_el3.html">MDCR_EL3</a>.TRBEE.
+</li><li>TRBE Profiling exceptions are generated and taken to EL2 when unmasked and <a href="AArch64-trbsr_el2.html">TRBSR_EL2</a>.IRQ is 1.
+</li></ul></td></tr><tr><td class="bitfield">0b11</td><td><p>Trap all. TRBE Profiling exceptions for EL2 are enabled for all trace buffer management events, as follows:</p>
+<ul>
+<li>All trace buffer management events are recorded in <a href="AArch64-trbsr_el2.html">TRBSR_EL2</a>, unless they are configured to be recorded in <a href="AArch64-trbsr_el3.html">TRBSR_EL3</a> by <a href="AArch64-mdcr_el3.html">MDCR_EL3</a>.TRBEE.
+</li><li>TRBE Profiling exceptions are generated and taken to EL2 when unmasked and <a href="AArch64-trbsr_el2.html">TRBSR_EL2</a>.IRQ is 1.
+</li></ul></td></tr></table>
+      <p>If the Effective value of <a href="AArch64-mdcr_el3.html">MDCR_EL3</a>.TRBEE is <span class="binarynumber">0b00</span>, then the Effective value of <a href="AArch64-trfcr_el2.html">TRFCR_EL2</a>.EE is <span class="binarynumber">0b00</span>. Otherwise, if EL2 is not implemented or the Effective value of <a href="AArch64-scr_el3.html">SCR_EL3</a>.{NS, EEL2} is {0, 0}, then the Effective value of <a href="AArch64-trfcr_el2.html">TRFCR_EL2</a>.EE is <span class="binarynumber">0b01</span>.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset:<ul>
+            <li>When the highest implemented Exception level is EL2,
+            this field resets to
+            <span class="binarynumber">'00'</span>.
+</li>
+          
+            <li>Otherwise,
+            this field resets to
+            an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li>
+          </ul></li></ul></div><h4 id="fieldset_0-9_8-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-7_7">Bit [7]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-6_5">TS, bits [6:5]</h4><div class="field">
+      <p>Timestamp Control. Controls which timebase is used for trace timestamps.</p>
+    <table class="valuetable"><tr><th>TS</th><th>Meaning</th><th>Applies when</th></tr><tr><td class="bitfield">0b00</td><td>
+          <p>Timestamp controlled by <a href="AArch64-trfcr_el1.html">TRFCR_EL1</a>.TS or <a href="AArch32-trfcr.html">TRFCR</a>.TS.</p>
+        </td></tr><tr><td class="bitfield">0b01</td><td>
+          <p>Virtual timestamp. The traced timestamp is the physical counter value minus the value of <a href="AArch64-cntvoff_el2.html">CNTVOFF_EL2</a>.</p>
+        </td></tr><tr><td class="bitfield">0b10</td><td><p>Guest physical timestamp. The traced timestamp is the physical counter value minus a physical offset. If any of the following are true, the physical offset is zero, otherwise the physical offset is the value of <a href="AArch64-cntpoff_el2.html">CNTPOFF_EL2</a>:</p>
+<ul>
+<li><a href="AArch64-scr_el3.html">SCR_EL3</a>.ECVEn == 0.
+</li><li><a href="AArch64-cnthctl_el2.html">CNTHCTL_EL2</a>.ECV == 0.
+</li><li><span class="xref">FEAT_ECV_POFF</span> is not implemented.
+</li></ul></td><td>When FEAT_ECV is implemented</td></tr><tr><td class="bitfield">0b11</td><td>
+          <p>Physical timestamp. The traced timestamp is the physical counter value.</p>
+        </td></tr></table>
+      <p>If <span class="function">SelfHostedTraceEnabled()</span> == FALSE, then this field is ignored by the PE.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to <span class="binarynumber">'00'</span>.
+</li></ul></div><h4 id="fieldset_0-4_4">Bit [4]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-3_3">CX, bit [3]</h4><div class="field">
+      <p><a href="AArch64-contextidr_el2.html">CONTEXTIDR_EL2</a> and VMID trace enable.</p>
+    <table class="valuetable"><tr><th>CX</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-contextidr_el2.html">CONTEXTIDR_EL2</a> and VMID trace prohibited.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-contextidr_el2.html">CONTEXTIDR_EL2</a> and VMID trace allowed.</p>
+        </td></tr></table>
+      <p>If <span class="function">SelfHostedTraceEnabled</span>() == FALSE, then this field is ignored by the PE.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to <span class="binarynumber">'0'</span>.
+</li></ul></div><h4 id="fieldset_0-2_2">Bit [2]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-1_1">E2TRE, bit [1]</h4><div class="field">
+      <p>EL2 Trace Enable.</p>
+    <table class="valuetable"><tr><th>E2TRE</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Trace is prohibited at EL2.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Trace is allowed at EL2.</p>
+        </td></tr></table>
+      <p>If <span class="function">SelfHostedTraceEnabled</span>() == FALSE, then this field is ignored by the PE.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to <span class="binarynumber">'0'</span>.
+</li></ul></div><h4 id="fieldset_0-0_0">E0HTRE, bit [0]</h4><div class="field">
+      <p>EL0 Trace Enable.</p>
+    <table class="valuetable"><tr><th>E0HTRE</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Trace is prohibited at EL0.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Trace is allowed at EL0.</p>
+        </td></tr></table><p>If any of the following are true, then this field is ignored by the PE:</p>
+<ul>
+<li><span class="function">SelfHostedTraceEnabled</span>() == FALSE.
+</li><li>The Effective value of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TGE is 0.
+</li></ul><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to <span class="binarynumber">'0'</span>.
+</li></ul></div><div class="access_mechanisms"><h2>Accessing TRFCR_EL2</h2><p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRS &lt;Xt&gt;, TRFCR_EL2</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b100</td><td>0b0001</td><td>0b0010</td><td>0b001</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_TRF) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EffectiveHCR_EL2_NVx() IN {'xx1'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; MDCR_EL3().TTRF == '1' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; MDCR_EL3().TTRF == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    else
+        X{64}(t) = TRFCR_EL2();
+    end;
+elsif PSTATE.EL == EL3 then
+    X{64}(t) = TRFCR_EL2();
+end;
+                </p><div><h4 class="assembler">MSR TRFCR_EL2, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b100</td><td>0b0001</td><td>0b0010</td><td>0b001</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_TRF) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EffectiveHCR_EL2_NVx() IN {'xx1'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; MDCR_EL3().TTRF == '1' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; MDCR_EL3().TTRF == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    else
+        TRFCR_EL2() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL3 then
+    TRFCR_EL2() = X{64}(t);
+end;
+                </p><div><h4 class="condition">
+When FEAT_VHE is implemented
+            </h4><h4 class="assembler">MRS &lt;Xt&gt;, TRFCR_EL1</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b000</td><td>0b0001</td><td>0b0010</td><td>0b001</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_TRF) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; MDCR_EL3().TTRF == '1' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; MDCR_EL2().TTRF == '1' then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif HaveEL(EL3) &amp;&amp; MDCR_EL3().TTRF == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif EffectiveHCR_EL2_NVx() IN {'111'} then
+        X{64}(t) = NVMem(0x880);
+    else
+        X{64}(t) = TRFCR_EL1();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; MDCR_EL3().TTRF == '1' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; MDCR_EL3().TTRF == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif ELIsInHost(EL2) then
+        X{64}(t) = TRFCR_EL2();
+    else
+        X{64}(t) = TRFCR_EL1();
+    end;
+elsif PSTATE.EL == EL3 then
+    X{64}(t) = TRFCR_EL1();
+end;
+                </p><div><h4 class="condition">
+When FEAT_VHE is implemented
+            </h4><h4 class="assembler">MSR TRFCR_EL1, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b000</td><td>0b0001</td><td>0b0010</td><td>0b001</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_TRF) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; MDCR_EL3().TTRF == '1' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_FGT) &amp;&amp; (!HaveEL(EL3) || SCR_EL3().FGTEn == '1') &amp;&amp; HDFGWTR_EL2().TRFCR_EL1 == '1' then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif EL2Enabled() &amp;&amp; MDCR_EL2().TTRF == '1' then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif HaveEL(EL3) &amp;&amp; MDCR_EL3().TTRF == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif EffectiveHCR_EL2_NVx() IN {'111'} then
+        NVMem(0x880) = X{64}(t);
+    else
+        TRFCR_EL1() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; MDCR_EL3().TTRF == '1' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; MDCR_EL3().TTRF == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    elsif ELIsInHost(EL2) then
+        TRFCR_EL2() = X{64}(t);
+    else
+        TRFCR_EL1() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL3 then
+    TRFCR_EL1() = X{64}(t);
+end;
+                </p></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

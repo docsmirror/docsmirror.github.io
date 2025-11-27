@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>MOV (SIMD&amp;FP scalar, unpredicated) -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">MOV (SIMD&amp;FP scalar, unpredicated)</h2><p>Move indexed element or SIMD&amp;FP scalar to vector (unpredicated)</p>
+      <p class="aml">This instruction unconditionally broadcasts the SIMD&amp;FP scalar into each element of the
+destination vector. This instruction is unpredicated.</p>
+    <p>
+        This is an alias of
+        <a href="dup_z_zi.html">DUP (indexed)</a>.
+        This means:
+      </p><ul><li>
+          The encodings in this description are named to match the encodings of
+          <a href="dup_z_zi.html">DUP (indexed)</a>.
+        </li><li>The description of <a href="dup_z_zi.html">DUP (indexed)</a> gives the operational pseudocode, any <span class="arm-defined-word">constrained unpredictable</span> behavior, and any operational information for this instruction.</li></ul>
+    <h3 class="classheading"><a id="iclass_sve"/>SVE<span style="font-size:smaller;"><br/>(FEAT_SVE || FEAT_SME)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td class="r">1</td><td colspan="2" class="lr">imm2</td><td class="lr">1</td><td colspan="5" class="lr">tsz</td><td class="l">0</td><td>0</td><td>1</td><td>0</td><td>0</td><td class="r">0</td><td colspan="5" class="lr">Zn</td><td colspan="5" class="lr">Zd</td></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="mov_z_v__dup_z_zi_"/><p class="asm-code">MOV  <a href="#Zd" title="Is the name of the destination scalable vector register, encoded in the &quot;Zd&quot; field.">&lt;Zd&gt;</a>.<a href="#T__33" title="Is the size specifier, ">&lt;T&gt;</a>, <a href="#V__8" title="Is a width specifier, ">&lt;V&gt;</a><a href="#n__6" title="Is the number [0-31] of the source SIMD&amp;FP register, encoded in the &quot;Zn&quot; field.">&lt;n&gt;</a></p><p class="equivto">
+      is equivalent to
+    </p>
+          <p class="asm-code"><a href="dup_z_zi.html#dup_z_zi_">DUP</a>  <a href="dup_z_zi.html#Zd">&lt;Zd&gt;</a>.<a href="dup_z_zi.html#T__33">&lt;T&gt;</a>, <a href="dup_z_zi.html#Zn">&lt;Zn&gt;</a>.<a href="dup_z_zi.html#T__33">&lt;T&gt;</a>[0]</p>
+          <p class="equivto">
+          and is the preferred disassembly when
+          <span class="pseudocode">BitCount(imm2 :: tsz) == 1</span>.
+        </p>
+        </div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="mov_z_zi__dup_z_zi_"/><p class="asm-code">MOV  <a href="#Zd" title="Is the name of the destination scalable vector register, encoded in the &quot;Zd&quot; field.">&lt;Zd&gt;</a>.<a href="#T__33" title="Is the size specifier, ">&lt;T&gt;</a>, <a href="#Zn" title="Is the name of the source scalable vector register, encoded in the &quot;Zn&quot; field.">&lt;Zn&gt;</a>.<a href="#T__33" title="Is the size specifier, ">&lt;T&gt;</a>[<a href="#imm__47" title="Is the immediate index, in the range 0 to one less than the number of elements in 512 bits, encoded in &quot;imm2:tsz&quot;.">&lt;imm&gt;</a>]</p><p class="equivto">
+      is equivalent to
+    </p>
+          <p class="asm-code"><a href="dup_z_zi.html#dup_z_zi_">DUP</a>  <a href="dup_z_zi.html#Zd">&lt;Zd&gt;</a>.<a href="dup_z_zi.html#T__33">&lt;T&gt;</a>, <a href="dup_z_zi.html#Zn">&lt;Zn&gt;</a>.<a href="dup_z_zi.html#T__33">&lt;T&gt;</a>[<a href="dup_z_zi.html#imm__47">&lt;imm&gt;</a>]</p>
+          <p class="equivto">
+          and is the preferred disassembly when
+          <span class="pseudocode">BitCount(imm2 :: tsz) &gt; 1</span>.
+        </p>
+        </div>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zd&gt;</td><td><a id="Zd"/>
+        
+          <p class="aml">Is the name of the destination scalable vector register, encoded in the "Zd" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;T&gt;</td><td><a id="T__33"/>
+        <p>Is the size specifier, 
+          encoded in
+          <q>tsz</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">tsz</th>
+                <th class="symbol">&lt;T&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00000</td>
+                <td class="symbol">RESERVED</td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx1</td>
+                <td class="symbol">B</td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxx10</td>
+                <td class="symbol">H</td>
+              </tr>
+              <tr>
+                <td class="bitfield">xx100</td>
+                <td class="symbol">S</td>
+              </tr>
+              <tr>
+                <td class="bitfield">x1000</td>
+                <td class="symbol">D</td>
+              </tr>
+              <tr>
+                <td class="bitfield">10000</td>
+                <td class="symbol">Q</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;V&gt;</td><td><a id="V__8"/>
+        <p>Is a width specifier, 
+          encoded in
+          <q>tsz</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">tsz</th>
+                <th class="symbol">&lt;V&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00000</td>
+                <td class="symbol">RESERVED</td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxxx1</td>
+                <td class="symbol">B</td>
+              </tr>
+              <tr>
+                <td class="bitfield">xxx10</td>
+                <td class="symbol">H</td>
+              </tr>
+              <tr>
+                <td class="bitfield">xx100</td>
+                <td class="symbol">S</td>
+              </tr>
+              <tr>
+                <td class="bitfield">x1000</td>
+                <td class="symbol">D</td>
+              </tr>
+              <tr>
+                <td class="bitfield">10000</td>
+                <td class="symbol">Q</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;n&gt;</td><td><a id="n__6"/>
+        
+          <p class="aml">Is the number [0-31] of the source SIMD&amp;FP register, encoded in the "Zn" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zn&gt;</td><td><a id="Zn"/>
+        
+          <p class="aml">Is the name of the source scalable vector register, encoded in the "Zn" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;imm&gt;</td><td><a id="imm__47"/>
+        
+          <p class="aml">Is the immediate index, in the range 0 to one less than the number of elements in 512 bits, encoded in "imm2:tsz".</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/><div class="alias_ps_section"><h3 class="pseudocode">Operation</h3><p>The description of <a href="dup_z_zi.html">DUP (indexed)</a> gives the operational pseudocode for this instruction.</p></div><div class="alias_ps_section"><h3 class="pseudocode">Operational Information</h3><p>The description of <a href="dup_z_zi.html">DUP (indexed)</a> gives the operational information for this instruction.</p></div><hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

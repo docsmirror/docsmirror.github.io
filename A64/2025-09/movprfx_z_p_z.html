@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>MOVPRFX (predicated) -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">MOVPRFX (predicated)</h2><p>Move prefix (predicated)</p>
+      <p class="aml">This instruction is a hint to hardware that the instruction
+may be combined with the destructive instruction that
+follows it in program order to create a single constructive
+operation. This instruction is also
+permitted to be implemented as a discrete vector copy, and
+the result of executing the pair of instructions with or
+without combining is identical. The choice of combined
+versus discrete operation may vary dynamically.</p>
+      <p class="aml">Unless the combination of a constructive operation with
+   merging predication is specifically required, it is strongly
+   recommended that for performance reasons software should
+   prefer to use the zeroing form of predicated <span class="asm-code">MOVPRFX</span> or
+   the unpredicated <span class="asm-code">MOVPRFX</span> instruction.</p>
+      <p class="aml">Although the operation of the instruction is defined as a
+simple predicated vector copy, it is required that the prefixed
+instruction at PC+4 must be an SVE destructive
+binary or ternary instruction encoding, or a unary operation with
+merging predication, but excluding other <span class="asm-code">MOVPRFX</span>
+instructions.
+The prefixed instruction must specify
+the same predicate register, and  have the same maximum element size
+  (ignoring a fixed 64-bit "wide vector" operand), and the same destination vector as the <span class="asm-code">MOVPRFX</span> instruction.
+The prefixed instruction must not use the
+destination register in any other operand position,
+even if they have different names but refer to the
+same architectural register state.
+Any other use is <span class="arm-defined-word">UNPREDICTABLE</span>.</p>
+    
+    <h3 class="classheading"><a id="iclass_sve"/>SVE<span style="font-size:smaller;"><br/>(FEAT_SVE || FEAT_SME)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">0</td><td>0</td><td class="r">0</td><td class="l">0</td><td>0</td><td>1</td><td class="r">0</td><td class="lr">0</td><td colspan="2" class="lr">size</td><td class="lr">0</td><td class="l">1</td><td class="r">0</td><td class="l">0</td><td class="r">0</td><td class="lr">M</td><td class="l">0</td><td>0</td><td class="r">1</td><td colspan="3" class="lr">Pg</td><td colspan="5" class="lr">Zn</td><td colspan="5" class="lr">Zd</td></tr><tr class="secondrow"><td colspan="3"/><td colspan="4"/><td/><td colspan="2"/><td/><td colspan="2"/><td colspan="2" class="droppedname">opc</td><td/><td colspan="3"/><td colspan="3"/><td colspan="5"/><td colspan="5"/></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="movprfx_z_p_z_"/><p class="asm-code">MOVPRFX  <a href="#Zd" title="Is the name of the destination scalable vector register, encoded in the &quot;Zd&quot; field.">&lt;Zd&gt;</a>.<a href="#T" title="Is the size specifier, ">&lt;T&gt;</a>, <a href="#Pg" title="Is the name of the governing scalable predicate register P0-P7, encoded in the &quot;Pg&quot; field.">&lt;Pg&gt;</a>/<a href="#ZM" title="Is the predication qualifier, ">&lt;ZM&gt;</a>, <a href="#Zn" title="Is the name of the source scalable vector register, encoded in the &quot;Zn&quot; field.">&lt;Zn&gt;</a>.<a href="#T" title="Is the size specifier, ">&lt;T&gt;</a></p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_SVE) &amp;&amp; !IsFeatureImplemented(FEAT_SME) then
+    EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>);
+end;
+let esize : integer{} = 8 &lt;&lt; UInt(size);
+let g : integer = UInt(Pg);
+let n : integer = UInt(Zn);
+let d : integer = UInt(Zd);
+let merging : boolean = (M == '1');</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zd&gt;</td><td><a id="Zd"/>
+        
+          <p class="aml">Is the name of the destination scalable vector register, encoded in the "Zd" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;T&gt;</td><td><a id="T"/>
+        <p>Is the size specifier, 
+          encoded in
+          <q>size</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">size</th>
+                <th class="symbol">&lt;T&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00</td>
+                <td class="symbol">B</td>
+              </tr>
+              <tr>
+                <td class="bitfield">01</td>
+                <td class="symbol">H</td>
+              </tr>
+              <tr>
+                <td class="bitfield">10</td>
+                <td class="symbol">S</td>
+              </tr>
+              <tr>
+                <td class="bitfield">11</td>
+                <td class="symbol">D</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pg&gt;</td><td><a id="Pg"/>
+        
+          <p class="aml">Is the name of the governing scalable predicate register P0-P7, encoded in the "Pg" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;ZM&gt;</td><td><a id="ZM"/>
+        <p>Is the predication qualifier, 
+          encoded in
+          <q>M</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">M</th>
+                <th class="symbol">&lt;ZM&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">0</td>
+                <td class="symbol">Z</td>
+              </tr>
+              <tr>
+                <td class="bitfield">1</td>
+                <td class="symbol">M</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zn&gt;</td><td><a id="Zn"/>
+        
+          <p class="aml">Is the name of the source scalable vector register, encoded in the "Zn" field.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">CheckSVEEnabled();
+let VL : integer{} = CurrentVL();
+let PL : integer{} = VL DIV 8;
+let elements : integer = VL DIV esize;
+let mask : bits(PL) = P{}(g);
+let operand1 : bits(VL) = if <a href="shared_pseudocode.html#func_AnyActiveElement_3" title="">AnyActiveElement</a>{PL}(mask, esize) then <a href="shared_pseudocode.html#accessor_Z_2" title="">Z</a>{VL}(n) else Zeros{VL};
+let dest : bits(VL) = if merging then <a href="shared_pseudocode.html#accessor_Z_2" title="">Z</a>{VL}(d) else Zeros{VL};
+var result : bits(VL);
+
+for e = 0 to elements-1 do
+    if <a href="shared_pseudocode.html#func_ActivePredicateElement_4" title="">ActivePredicateElement</a>{PL}(mask, e, esize) then
+        let element : bits(esize) = operand1[e*:esize];
+        result[e*:esize] = element;
+    else
+        result[e*:esize] = dest[e*:esize];
+    end;
+end;
+
+<a href="shared_pseudocode.html#accessor_Z_2" title="">Z</a>{VL}(d) = result;</p>
+    </div>
+  <h3>Operational information</h3>
+    
+      
+        <p class="aml">This instruction is a data-independent-time instruction as described in <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_BEICCDDAB3">About PSTATE.DIT</a>.</p>
+      
+    
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>TRCIDR4</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">TRCIDR4, Trace ID Register 4</h1><p>The TRCIDR4 characteristics are:</p><h2>Purpose</h2>
+        <p>Returns the tracing capabilities of the trace unit.</p>
+      <h2>Configuration</h2><p>External register TRCIDR4 bits [31:0] are architecturally mapped to AArch64 System register <a href="AArch64-trcidr4.html">TRCIDR4[31:0]</a>.</p><p>This register is present only when FEAT_ETE is implemented and FEAT_TRC_EXT is implemented. Otherwise, direct accesses to TRCIDR4 are <span class="arm-defined-word">RES0</span>.</p><h2>Attributes</h2>
+        <p>TRCIDR4 is a 32-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="4"><a href="#fieldset_0-31_28">NUMVMIDC</a></td><td class="lr" colspan="4"><a href="#fieldset_0-27_24">NUMCIDC</a></td><td class="lr" colspan="4"><a href="#fieldset_0-23_20">NUMSSCC</a></td><td class="lr" colspan="4"><a href="#fieldset_0-19_16">NUMRSPAIR</a></td><td class="lr" colspan="4"><a href="#fieldset_0-15_12">NUMPC</a></td><td class="lr" colspan="3"><a href="#fieldset_0-11_9">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-8_8-1">SUPPDAC</a></td><td class="lr" colspan="4"><a href="#fieldset_0-7_4">NUMDVC</a></td><td class="lr" colspan="4"><a href="#fieldset_0-3_0">NUMACPAIRS</a></td></tr></tbody></table><h4 id="fieldset_0-31_28">NUMVMIDC, bits [31:28]</h4><div class="field">
+      <p>Indicates the number of Virtual Context Identifier Comparators that are available for tracing.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>NUMVMIDC</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000..0b1000</td><td>
+          <p>The number of Virtual Context Identifier Comparators in this implementation.</p>
+        </td></tr></table><p>All other values are reserved.</p>
+<p>If the PE does not implement EL2 then this field is <span class="binarynumber">0b0000</span>.</p><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-27_24">NUMCIDC, bits [27:24]</h4><div class="field">
+      <p>Indicates the number of Context Identifier Comparators that are available for tracing.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>NUMCIDC</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000..0b1000</td><td>
+          <p>The number of Context Identifier Comparators in this implementation.</p>
+        </td></tr></table>
+      <p>All other values are reserved.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-23_20">NUMSSCC, bits [23:20]</h4><div class="field">
+      <p>Indicates the number of Single-shot Comparator Controls that are available for tracing.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>NUMSSCC</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000..0b1000</td><td>
+          <p>The number of Single-shot Comparator Controls in this implementation.</p>
+        </td></tr></table>
+      <p>All other values are reserved.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-19_16">NUMRSPAIR, bits [19:16]</h4><div class="field">
+      <p>Indicates the number of resource selector pairs that are available for tracing.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>NUMRSPAIR</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000</td><td>
+          <p>This implementation has zero resource selector pairs.</p>
+        </td></tr><tr><td class="bitfield">0b0001..0b1111</td><td>
+          <p>The number of resource selector pairs in this implementation, minus one.</p>
+        </td></tr></table>
+      <p>All other values are reserved.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-15_12">NUMPC, bits [15:12]</h4><div class="field">
+      <p>Indicates the number of PE Comparator Inputs that are available for tracing.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>NUMPC</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000..0b1000</td><td>
+          <p>The number of PE Comparator Inputs in this implementation.</p>
+        </td></tr></table>
+      <p>All other values are reserved.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-11_9">Bits [11:9]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-8_8-1">SUPPDAC, bit [8]<span class="condition"><br/>When TRCIDR4.NUMACPAIRS != 0b0000:
+                        </span></h4><div class="field">
+      <p>Indicates whether data address comparisons are implemented. Data address comparisons are not implemented in ETE and are reserved for other trace architectures. Allocated in other trace architectures.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>SUPPDAC</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Data address comparisons not implemented.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Data address comparisons implemented.</p>
+        </td></tr></table>
+      <p>This field reads as <span class="binarynumber">0b0</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-8_8-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-7_4">NUMDVC, bits [7:4]</h4><div class="field">
+      <p>Indicates the number of data value comparators. Data value comparators are not implemented in ETE and are reserved for other trace architectures. Allocated in other trace architectures.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>NUMDVC</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000..0b1000</td><td>
+          <p>The number of data value comparators in this implementation.</p>
+        </td></tr></table><p>All other values are reserved.</p>
+<p>This field reads as <span class="binarynumber">0b0000</span>.</p><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-3_0">NUMACPAIRS, bits [3:0]</h4><div class="field">
+      <p>Indicates the number of Address Comparator pairs that are available for tracing.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>NUMACPAIRS</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000..0b1000</td><td>
+          <p>The number of Address Comparator pairs in this implementation.</p>
+        </td></tr></table>
+      <p>All other values are reserved.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h2>Accessing TRCIDR4</h2><h4>TRCIDR4 can be accessed through the external debug interface:</h4><table class="info"><tr><th>Component</th><th>Offset</th><th>Instance</th></tr><tr><td>ETE</td><td><span class="hexnumber">0x1F0</span></td><td>TRCIDR4</td></tr></table><p>Accessible as follows:</p><ul><li>When OSLockStatus() or !IsTraceCorePowered(), accesses to this register generate an error response.
+          </li><li>Otherwise, accesses to this register are <span class="access_level">RO</span>.
+          </li></ul><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

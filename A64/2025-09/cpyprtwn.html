@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>CPYPRTWN, CPYMRTWN, CPYERTWN -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">CPYPRTWN, CPYMRTWN, CPYERTWN</h2><p>Memory copy, reads unprivileged, writes non-temporal</p>
+      <p class="aml">These instructions copy a requested number of bytes in memory from a source address to a
+destination address. The prologue, main, and epilogue instructions are expected to be run
+in succession and to appear consecutively in memory: CPYPRTWN, then CPYMRTWN,
+and then CPYERTWN.</p>
+      <p class="aml">CPYPRTWN performs some preconditioning of the arguments suitable for using the
+CPYMRTWN instruction, and copies an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> portion of the requested
+number of bytes. CPYMRTWN copies a further <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> portion of the
+remaining bytes. CPYERTWN copies any final remaining bytes.</p>
+      <div class="note"><hr class="note"/><h4>Note</h4>
+        <p class="aml">The ability to copy an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> number of bytes allows an implementation
+to optimize how the bytes being copied are divided between the different instructions.</p>
+      <hr class="note"/></div>
+      <p class="aml">For more information on exceptions specific to memory copy instructions,
+see <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_MDSec.memcpy_and_memset_exceptions">Memory Copy and Memory Set exceptions</a>.</p>
+      <p class="aml">The architecture supports two algorithms for the memory copy: option A and option B.
+Which algorithm is used is <span class="arm-defined-word">IMPLEMENTATION DEFINED</span>.</p>
+      <div class="note"><hr class="note"/><h4>Note</h4>
+        <p class="aml">Portable software should not assume that the choice of algorithm is constant.</p>
+      <hr class="note"/></div>
+      <p class="aml">For CPYPRTWN:</p>
+      <ul>
+        <li>
+          
+            <p class="aml">If Xn[63:55] != '000000000', the copy size Xn is saturated to 0x007FFFFFFFFFFFFF.</p>
+          
+        </li>
+        <li>
+          
+            <p class="aml">After saturation is performed, the direction of the memory copy is based on
+the following:</p>
+            <p class="aml">If (Xs[55:0] &gt; Xd[55:0]) and (Xd[55:0] + saturated copy size) &gt; Xs[55:0], then the direction is forward.</p>
+            <p class="aml">If (Xs[55:0] &lt; Xd[55:0]) and (Xs[55:0] + saturated copy size) &gt; Xd[55:0], then the direction is backward.</p>
+            <p class="aml">Otherwise, the direction is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice between forward and backward.</p>
+          
+        </li>
+      </ul>
+      <p class="aml">On completion of CPYPRTWN, option A:</p>
+      <ul>
+        <li>
+          PSTATE.{N,Z,C,V} are set to {0,0,0,0}.
+        </li>
+        <li>
+          If the copy is in the forward direction, then:<ul>
+              <li>
+                Xn holds -1 times the number of bytes in the saturated copy size remaining to be copied.
+              </li>
+              <li>
+                Xs holds the original Xs + saturated copy size.
+              </li>
+              <li>
+                Xd holds the original Xd + saturated copy size.
+              </li>
+            </ul>
+          
+        </li>
+        <li>
+          If the copy is in the backward direction, then:<ul>
+              <li>
+                Xn holds the number of bytes in the saturated copy size remaining to be copied.
+              </li>
+              <li>
+                Xs and Xd are unchanged.
+              </li>
+            </ul>
+          
+        </li>
+      </ul>
+      <p class="aml">On completion of CPYPRTWN, option B:</p>
+      <ul>
+        <li>
+          If the copy is in the forward direction, then:<ul>
+              <li>
+                Xn holds the number of bytes in the saturated copy size remaining to be copied.
+              </li>
+              <li>
+                Xs holds the lowest address that has not been copied from.
+              </li>
+              <li>
+                Xd holds the lowest address that has not been copied to.
+              </li>
+              <li>
+                PSTATE.{N,Z,C,V} are set to {0,0,1,0}.
+              </li>
+            </ul>
+          
+        </li>
+        <li>
+          If the copy is in the backward direction, then:<ul>
+              <li>
+                Xn holds the number of bytes in the saturated copy size remaining to be copied.
+              </li>
+              <li>
+                Xs holds the highest address that has not been copied from + 1.
+              </li>
+              <li>
+                Xd holds the highest address that has not been copied to + 1.
+              </li>
+              <li>
+                PSTATE.{N,Z,C,V} are set to {1,0,1,0}.
+              </li>
+            </ul>
+          
+        </li>
+      </ul>
+      <p class="aml">For CPYMRTWN, option A, when PSTATE.C = 0:</p>
+      <ul>
+        <li>
+          Xn holds a signed 64-bit integer.
+        </li>
+        <li>
+          If the copy is in the forward direction (Xn holds a negative number), then:<ul>
+              <li>
+                Xn holds -1 times the number of bytes remaining to be copied.
+              </li>
+              <li>
+                Xs holds the lowest address to be copied from - Xn.
+              </li>
+              <li>
+                Xd holds the lowest address to be copied to - Xn.
+              </li>
+              <li>
+                On completion of the instruction, Xn holds -1 times the number of bytes
+remaining to be copied.
+              </li>
+            </ul>
+          
+        </li>
+        <li>
+          If the copy is in the backward direction (Xn holds a positive number), then:<ul>
+              <li>
+                Xn holds the number of bytes remaining to be copied.
+              </li>
+              <li>
+                Xs holds the highest address to be copied from + 1 - Xn.
+              </li>
+              <li>
+                Xd holds the highest address to be copied to + 1 - Xn.
+              </li>
+              <li>
+                On completion of the instruction, Xn holds the number of bytes
+remaining to be copied.
+              </li>
+            </ul>
+          
+        </li>
+      </ul>
+      <p class="aml">For CPYMRTWN, option B, when PSTATE.C = 1:</p>
+      <ul>
+        <li>
+          Xn holds the number of bytes remaining to be copied.
+        </li>
+        <li>
+          If the copy is in the forward direction (PSTATE.N == 0), then:<ul>
+              <li>
+                Xs holds the lowest address to be copied from.
+              </li>
+              <li>
+                Xd holds the lowest address to be copied to.
+              </li>
+              <li>
+                On completion of the instruction:<ul>
+                    <li>
+                      Xn holds the number of bytes remaining to be copied.
+                    </li>
+                    <li>
+                      Xs holds the lowest address that has not been copied from.
+                    </li>
+                    <li>
+                      Xd holds the lowest address that has not been copied to.
+                    </li>
+                  </ul>
+                
+              </li>
+            </ul>
+          
+        </li>
+        <li>
+          If the copy is in the backward direction (PSTATE.N == 1), then:<ul>
+              <li>
+                Xs holds the highest address to be copied from + 1.
+              </li>
+              <li>
+                Xd holds the highest address to be copied to + 1.
+              </li>
+              <li>
+                On completion of the instruction:<ul>
+                    <li>
+                      Xn holds the number of bytes remaining to be copied.
+                    </li>
+                    <li>
+                      Xs holds the highest address that has not been copied from + 1.
+                    </li>
+                    <li>
+                      Xd holds the highest address that has not been copied to + 1.
+                    </li>
+                  </ul>
+                
+              </li>
+            </ul>
+          
+        </li>
+      </ul>
+      <p class="aml">For CPYERTWN, option A, when PSTATE.C = 0:</p>
+      <ul>
+        <li>
+          Xn holds a signed 64-bit integer.
+        </li>
+        <li>
+          If the copy is in the forward direction (Xn holds a negative number), then:<ul>
+              <li>
+                Xn holds -1 times the number of bytes remaining to be copied.
+              </li>
+              <li>
+                Xs holds the lowest address to be copied from - Xn.
+              </li>
+              <li>
+                Xd holds the lowest address to be copied to - Xn.
+              </li>
+              <li>
+                On completion of the instruction, Xn holds 0.
+              </li>
+            </ul>
+          
+        </li>
+        <li>
+          If the copy is in the backward direction (Xn holds a positive number), then:<ul>
+              <li>
+                Xn holds the number of bytes remaining to be copied.
+              </li>
+              <li>
+                Xs holds the highest address to be copied from + 1 - Xn.
+              </li>
+              <li>
+                Xd holds the highest address to be copied to + 1 - Xn.
+              </li>
+              <li>
+                On completion of the instruction, Xn holds 0.
+              </li>
+            </ul>
+          
+        </li>
+      </ul>
+      <p class="aml">For CPYERTWN, option B, when PSTATE.C = 1:</p>
+      <ul>
+        <li>
+          Xn holds the number of bytes remaining to be copied.
+        </li>
+        <li>
+          If the copy is in the forward direction (PSTATE.N == 0), then:<ul>
+              <li>
+                Xs holds the lowest address to be copied from.
+              </li>
+              <li>
+                Xd holds the lowest address to be copied to.
+              </li>
+              <li>
+                On completion of the instruction:<ul>
+                    <li>
+                      Xn holds 0.
+                    </li>
+                    <li>
+                      Xs holds the lowest address that has not been copied from.
+                    </li>
+                    <li>
+                      Xd holds the lowest address that has not been copied to.
+                    </li>
+                  </ul>
+                
+              </li>
+            </ul>
+          
+        </li>
+        <li>
+          If the copy is in the backward direction (PSTATE.N == 1), then:<ul>
+              <li>
+                Xs holds the highest address to be copied from + 1.
+              </li>
+              <li>
+                Xd holds the highest address to be copied to + 1.
+              </li>
+              <li>
+                On completion of the instruction:<ul>
+                    <li>
+                      Xn holds 0.
+                    </li>
+                    <li>
+                      Xs holds the highest address that has not been copied from + 1.
+                    </li>
+                    <li>
+                      Xd holds the highest address that has not been copied to + 1.
+                    </li>
+                  </ul>
+                
+              </li>
+            </ul>
+          
+        </li>
+      </ul>
+      <p class="aml">Explicit Memory Read  effects produced by the instruction behave as if the instruction was
+  executed at EL0 if the <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_Effective_value">Effective value</a> of
+  PSTATE.UAO is 0 and either:</p>
+      <ul>
+        <li>
+          The instruction is executed at EL1.
+        </li>
+        <li>
+          The instruction is executed at EL2 when the <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_Effective_value">Effective value</a>
+  of HCR_EL2().{E2H, TGE} is '11'.
+        </li>
+      </ul>
+      <p class="aml">Otherwise, the Explicit Memory Read  effects operate with the restrictions determined by
+  the Exception level at which the instruction is executed.</p>
+    
+    <h3 class="classheading"><a id="iclass_integer"/>Integer<span style="font-size:smaller;"><br/>(FEAT_MOPS)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td colspan="2" class="lr">sz</td><td class="l">0</td><td>1</td><td class="r">1</td><td class="lr">1</td><td class="l">0</td><td class="r">1</td><td colspan="2" class="lr">op1</td><td class="lr">0</td><td colspan="5" class="lr">Rs</td><td class="l">0</td><td>1</td><td>1</td><td class="r">0</td><td class="l">0</td><td class="r">1</td><td colspan="5" class="lr">Rn</td><td colspan="5" class="lr">Rd</td></tr><tr class="secondrow"><td colspan="2"/><td colspan="3"/><td class="droppedname">o0</td><td colspan="2"/><td colspan="2"/><td/><td colspan="5"/><td colspan="4" class="droppedname">op2</td><td colspan="2"/><td colspan="5"/><td colspan="5"/></tr></tbody></table></div><div class="encoding"><h4 class="encoding">
+              Encoding for the Prologue variant
+            </h4><a id="CPYPRTWN_CPY_memcms"/>
+        Applies when
+        <span class="bitdiff"> (op1 == 00)</span><p class="asm-code">CPYPRTWN  [<a href="#XdOrXZR" title="For the &quot;Prologue&quot; variant: is the 64-bit name of the general-purpose register that holds the destination address and is updated by the instruction, encoded in the &quot;Rd&quot; field.">&lt;Xd&gt;</a>]!, [<a href="#XsOrXZR__5" title="For the &quot;Prologue&quot; variant: is the 64-bit name of the general-purpose register that holds the source address and is updated by the instruction, encoded in the &quot;Rs&quot; field.">&lt;Xs&gt;</a>]!, <a href="#XnOrXZR__2" title="For the &quot;Prologue&quot; variant: is the 64-bit name of the general-purpose register that holds the number of bytes to be transferred and is updated by the instruction to encode the remaining size and destination, encoded in the &quot;Rn&quot; field.">&lt;Xn&gt;</a>!</p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the Main variant
+            </h4><a id="CPYMRTWN_CPY_memcms"/>
+        Applies when
+        <span class="bitdiff"> (op1 == 01)</span><p class="asm-code">CPYMRTWN  [<a href="#XdOrXZR__2" title="For the &quot;Epilogue&quot; and &quot;Main&quot; variants: is the 64-bit name of the general-purpose register that holds an encoding of the destination address, encoded in the &quot;Rd&quot; field.">&lt;Xd&gt;</a>]!, [<a href="#XsOrXZR__6" title="For the &quot;Epilogue&quot; and &quot;Main&quot; variants: is the 64-bit name of the general-purpose register that holds an encoding of the source address, encoded in the &quot;Rs&quot; field.">&lt;Xs&gt;</a>]!, <a href="#XnOrXZR__3" title="For the &quot;Main&quot; variant: is the 64-bit name of the general-purpose register that holds an encoding of the number of bytes to be transferred, encoded in the &quot;Rn&quot; field.">&lt;Xn&gt;</a>!</p></div><div class="encoding"><h4 class="encoding">
+              Encoding for the Epilogue variant
+            </h4><a id="CPYERTWN_CPY_memcms"/>
+        Applies when
+        <span class="bitdiff"> (op1 == 10)</span><p class="asm-code">CPYERTWN  [<a href="#XdOrXZR__2" title="For the &quot;Epilogue&quot; and &quot;Main&quot; variants: is the 64-bit name of the general-purpose register that holds an encoding of the destination address, encoded in the &quot;Rd&quot; field.">&lt;Xd&gt;</a>]!, [<a href="#XsOrXZR__6" title="For the &quot;Epilogue&quot; and &quot;Main&quot; variants: is the 64-bit name of the general-purpose register that holds an encoding of the source address, encoded in the &quot;Rs&quot; field.">&lt;Xs&gt;</a>]!, <a href="#XnOrXZR__4" title="For the &quot;Epilogue&quot; variant: is the 64-bit name of the general-purpose register that holds an encoding of the number of bytes to be transferred and is set to zero on completion of the instruction, encoded in the &quot;Rn&quot; field.">&lt;Xn&gt;</a>!</p></div><h4>Decode for all variants of this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_MOPS) || sz != '00' then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+
+var memcpy : CPYParams;
+memcpy.d = UInt(Rd);
+memcpy.s = UInt(Rs);
+memcpy.n = UInt(Rn);
+let options : bits(4) = op2;
+let rnontemporal : boolean = options[3] == '1';
+let wnontemporal : boolean = options[2] == '1';
+case op1 of
+    when '00' =&gt; memcpy.stage = MOPSStage_Prologue;
+    when '01' =&gt; memcpy.stage = MOPSStage_Main;
+    when '10' =&gt; memcpy.stage = MOPSStage_Epilogue;
+end;</p>
+  <div class="encoding-notes">
+      <p class="aml">For information about the <span class="arm-defined-word">CONSTRAINED UNPREDICTABLE</span> behavior of this instruction, see <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="CJAEGDJC">Architectural Constraints on UNPREDICTABLE behaviors</a>, and particularly <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="CEGCIDDEI6">Memory Copy and Memory Set CPY*</a> and <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_CEGCCGAE">Crossing a page boundary with different memory types or Shareability attributes</a>.</p>
+    </div><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Xd&gt;</td><td><a id="XdOrXZR"/>
+        
+          <p class="aml">For the "Prologue" variant: is the 64-bit name of the general-purpose register that holds the destination address and is updated by the instruction, encoded in the "Rd" field.</p>
+        
+      </td></tr><tr><td/><td><a id="XdOrXZR__2"/>
+        
+          <p class="aml">For the "Epilogue" and "Main" variants: is the 64-bit name of the general-purpose register that holds an encoding of the destination address, encoded in the "Rd" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Xs&gt;</td><td><a id="XsOrXZR__5"/>
+        
+          <p class="aml">For the "Prologue" variant: is the 64-bit name of the general-purpose register that holds the source address and is updated by the instruction, encoded in the "Rs" field.</p>
+        
+      </td></tr><tr><td/><td><a id="XsOrXZR__6"/>
+        
+          <p class="aml">For the "Epilogue" and "Main" variants: is the 64-bit name of the general-purpose register that holds an encoding of the source address, encoded in the "Rs" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Xn&gt;</td><td><a id="XnOrXZR__2"/>
+        
+          <p class="aml">For the "Prologue" variant: is the 64-bit name of the general-purpose register that holds the number of bytes to be transferred and is updated by the instruction to encode the remaining size and destination, encoded in the "Rn" field.</p>
+        
+      </td></tr><tr><td/><td><a id="XnOrXZR__3"/>
+        
+          <p class="aml">For the "Main" variant: is the 64-bit name of the general-purpose register that holds an encoding of the number of bytes to be transferred, encoded in the "Rn" field.</p>
+        
+      </td></tr><tr><td/><td><a id="XnOrXZR__4"/>
+        
+          <p class="aml">For the "Epilogue" variant: is the 64-bit name of the general-purpose register that holds an encoding of the number of bytes to be transferred and is set to zero on completion of the instruction, encoded in the "Rn" field.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">CheckMOPSEnabled();
+
+CheckCPYConstrainedUnpredictable(memcpy.n, memcpy.d, memcpy.s);
+
+memcpy.nzcv        = PSTATE.[N,Z,C,V];
+memcpy.toaddress   = <a href="shared_pseudocode.html#accessor_X_2" title="">X</a>{64}(memcpy.d);
+memcpy.fromaddress = <a href="shared_pseudocode.html#accessor_X_2" title="">X</a>{64}(memcpy.s);
+
+if memcpy.stage == MOPSStage_Prologue then
+    memcpy.cpysize = UInt(<a href="shared_pseudocode.html#accessor_X_2" title="">X</a>{64}(memcpy.n));
+else
+    memcpy.cpysize = SInt(<a href="shared_pseudocode.html#accessor_X_2" title="">X</a>{64}(memcpy.n));
+end;
+
+memcpy.implements_option_a = <a href="shared_pseudocode.html#func_CPYOptionA_0" title="">CPYOptionA</a>();
+
+let rprivileged : boolean = (if options[1] == '1' then <a href="shared_pseudocode.html#func_AArch64_IsUnprivAccessPriv_0" title="">AArch64_IsUnprivAccessPriv</a>()
+                                else PSTATE.EL != <a href="shared_pseudocode.html#global_EL0" title="">EL0</a>);
+let wprivileged : boolean = (if options[0] == '1' then <a href="shared_pseudocode.html#func_AArch64_IsUnprivAccessPriv_0" title="">AArch64_IsUnprivAccessPriv</a>()
+                                else PSTATE.EL != <a href="shared_pseudocode.html#global_EL0" title="">EL0</a>);
+
+let raccdesc : <a href="shared_pseudocode.html#type_AccessDescriptor" title="">AccessDescriptor</a> = CreateAccDescMOPS(MemOp_LOAD,  rprivileged, rnontemporal);
+let waccdesc : <a href="shared_pseudocode.html#type_AccessDescriptor" title="">AccessDescriptor</a> = CreateAccDescMOPS(MemOp_STORE, wprivileged, wnontemporal);
+
+if memcpy.stage == MOPSStage_Prologue then
+    if memcpy.cpysize &gt; <a href="shared_pseudocode.html#global_ArchMaxMOPSCPYSize" title="">ArchMaxMOPSCPYSize</a> then
+        memcpy.cpysize = <a href="shared_pseudocode.html#global_ArchMaxMOPSCPYSize" title="">ArchMaxMOPSCPYSize</a>;
+    end;
+
+    memcpy.forward = <a href="shared_pseudocode.html#func_IsMemCpyForward_1" title="">IsMemCpyForward</a>(memcpy);
+
+    if memcpy.implements_option_a then
+        memcpy.nzcv = '0000';
+        if memcpy.forward then
+            // Copy in the forward direction offsets the arguments.
+            memcpy.toaddress   = memcpy.toaddress   + memcpy.cpysize;
+            memcpy.fromaddress = memcpy.fromaddress + memcpy.cpysize;
+            memcpy.cpysize     = 0 - memcpy.cpysize;
+        end;
+    else
+        if !memcpy.forward then
+            // Copy in the reverse direction offsets the arguments.
+            memcpy.toaddress   = memcpy.toaddress   + memcpy.cpysize;
+            memcpy.fromaddress = memcpy.fromaddress + memcpy.cpysize;
+            memcpy.nzcv = '1010';
+        else
+            memcpy.nzcv = '0010';
+        end;
+    end;
+end;
+
+memcpy.stagecpysize = <a href="shared_pseudocode.html#func_MemCpyStageSize_1" title="">MemCpyStageSize</a>(memcpy);
+
+if memcpy.stage != MOPSStage_Prologue then
+    memcpy.forward = memcpy.cpysize &lt; 0 || (!memcpy.implements_option_a &amp;&amp; memcpy.nzcv[3] == '0');
+    CheckMemCpyParams(memcpy, options);
+end;
+
+var copied : integer;
+var iswrite : boolean;
+var memaddrdesc : <a href="shared_pseudocode.html#type_AddressDescriptor" title="">AddressDescriptor</a>;
+var memstatus : <a href="shared_pseudocode.html#type_PhysMemRetStatus" title="">PhysMemRetStatus</a>;
+var fault : boolean = FALSE;
+var B : MOPSBlockSize = 0;
+
+if memcpy.implements_option_a then
+    while memcpy.stagecpysize != 0 &amp;&amp; !fault looplimit <a href="shared_pseudocode.html#global_ArchMaxMOPSCPYSize" title="">ArchMaxMOPSCPYSize</a> do
+        // IMP DEF selection of the block size that is worked on. While many
+        // implementations might make this constant, that is not assumed.
+        B = CPYSizeChoice(memcpy);
+
+        if memcpy.forward then
+            assert B &lt;= -1 * memcpy.stagecpysize;
+            (copied, iswrite, memaddrdesc, memstatus) = MemCpyBytes(
+                                                                memcpy.toaddress + memcpy.cpysize,
+                                                                memcpy.fromaddress + memcpy.cpysize,
+                                                                memcpy.forward, B,
+                                                                raccdesc, waccdesc);
+            if copied != B then
+                fault = TRUE;
+            else
+                memcpy.cpysize      = memcpy.cpysize      + B;
+                memcpy.stagecpysize = memcpy.stagecpysize + B;
+            end;
+
+        else
+            assert B &lt;= memcpy.stagecpysize;
+            memcpy.cpysize      = memcpy.cpysize      - B;
+            memcpy.stagecpysize = memcpy.stagecpysize - B;
+
+            (copied, iswrite, memaddrdesc, memstatus) = MemCpyBytes(
+                                                                memcpy.toaddress   + memcpy.cpysize,
+                                                                memcpy.fromaddress + memcpy.cpysize,
+                                                                memcpy.forward, B, raccdesc,
+                                                                waccdesc);
+            if copied != B then
+                fault               = TRUE;
+                memcpy.cpysize      = memcpy.cpysize      + B;
+                memcpy.stagecpysize = memcpy.stagecpysize + B;
+            end;
+        end;
+    end;
+
+else
+    while memcpy.stagecpysize &gt; 0 &amp;&amp; !fault looplimit <a href="shared_pseudocode.html#global_ArchMaxMOPSCPYSize" title="">ArchMaxMOPSCPYSize</a> do
+        // IMP DEF selection of the block size that is worked on. While many
+        // implementations might make this constant, that is not assumed.
+        B = CPYSizeChoice(memcpy);
+        assert B &lt;= memcpy.stagecpysize;
+
+        if memcpy.forward then
+            (copied, iswrite, memaddrdesc, memstatus) = MemCpyBytes(memcpy.toaddress,
+                                                                    memcpy.fromaddress,
+                                                                    memcpy.forward, B,
+                                                                    raccdesc, waccdesc);
+            if copied != B then
+                fault = TRUE;
+            else
+                memcpy.fromaddress = memcpy.fromaddress + B;
+                memcpy.toaddress   = memcpy.toaddress   + B;
+            end;
+        else
+            (copied, iswrite, memaddrdesc, memstatus) = MemCpyBytes(memcpy.toaddress   - B,
+                                                                    memcpy.fromaddress - B,
+                                                                    memcpy.forward, B,
+                                                                    raccdesc, waccdesc);
+
+            if copied != B then
+                fault = TRUE;
+            else
+                memcpy.fromaddress = memcpy.fromaddress - B;
+                memcpy.toaddress   = memcpy.toaddress   - B;
+            end;
+        end;
+
+        if !fault then
+            memcpy.cpysize      = memcpy.cpysize        - B;
+            memcpy.stagecpysize = memcpy.stagecpysize   - B;
+        end;
+    end;
+end;
+
+UpdateCpyRegisters(memcpy, fault, copied);
+
+if fault then
+    if <a href="shared_pseudocode.html#func_IsFault_1" title="">IsFault</a>(memaddrdesc) then
+        AArch64_Abort(memaddrdesc.fault);
+    else
+        let accdesc : <a href="shared_pseudocode.html#type_AccessDescriptor" title="">AccessDescriptor</a> = if iswrite then waccdesc else raccdesc;
+        HandleExternalAbort(memstatus, iswrite, memaddrdesc, B, accdesc);
+    end;
+end;
+
+if memcpy.stage == MOPSStage_Prologue then
+    PSTATE.[N,Z,C,V] = memcpy.nzcv;
+end;</p>
+    </div>
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

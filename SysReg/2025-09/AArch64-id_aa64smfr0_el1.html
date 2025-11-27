@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>ID_AA64SMFR0_EL1</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">ID_AA64SMFR0_EL1, SME Feature ID Register 0</h1><p>The ID_AA64SMFR0_EL1 characteristics are:</p><h2>Purpose</h2>
+        <p>Provides information about the implemented features of the AArch64 Scalable Matrix Extension.</p>
+
+      
+        <p>The fields in this register do not follow the standard ID scheme. See <span class="xref">Alternative ID scheme used for ID_AA64SMFR0_EL1 and ID_AA64FPFR0_EL1</span>.</p>
+      <h2>Configuration</h2>
+        <div class="note"><span class="note-header">Note</span><p>Prior to the introduction of the features described by this register, this register was unnamed and reserved, <span class="arm-defined-word">RES0</span> from EL1, EL2, and EL3.</p></div>
+      <h2>Attributes</h2>
+        <p>ID_AA64SMFR0_EL1 is a 64-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="1"><a href="#fieldset_0-63_63">FA64</a></td><td class="lr" colspan="1"><a href="#fieldset_0-62_62">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-61_61-1">LUT6</a></td><td class="lr" colspan="1"><a href="#fieldset_0-60_60">LUTv2</a></td><td class="lr" colspan="4"><a href="#fieldset_0-59_56">SMEver</a></td><td class="lr" colspan="4"><a href="#fieldset_0-55_52">I16I64</a></td><td class="lr" colspan="3"><a href="#fieldset_0-51_49">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-48_48">F64F64</a></td><td class="lr" colspan="4"><a href="#fieldset_0-47_44-1">I16I32</a></td><td class="lr" colspan="1"><a href="#fieldset_0-43_43">B16B16</a></td><td class="lr" colspan="1"><a href="#fieldset_0-42_42">F16F16</a></td><td class="lr" colspan="1"><a href="#fieldset_0-41_41">F8F16</a></td><td class="lr" colspan="1"><a href="#fieldset_0-40_40">F8F32</a></td><td class="lr" colspan="4"><a href="#fieldset_0-39_36-1">I8I32</a></td><td class="lr" colspan="1"><a href="#fieldset_0-35_35-1">F16F32</a></td><td class="lr" colspan="1"><a href="#fieldset_0-34_34-1">B16F32</a></td><td class="lr" colspan="1"><a href="#fieldset_0-33_33-1">BI32I32</a></td><td class="lr" colspan="1"><a href="#fieldset_0-32_32-1">F32F32</a></td></tr><tr class="firstrow"><td class="lr" colspan="1"><a href="#fieldset_0-31_31">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_30">SF8FMA</a></td><td class="lr" colspan="1"><a href="#fieldset_0-29_29">SF8DP4</a></td><td class="lr" colspan="1"><a href="#fieldset_0-28_28">SF8DP2</a></td><td class="lr" colspan="2"><a href="#fieldset_0-27_26">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-25_25">SBitPerm</a></td><td class="lr" colspan="1"><a href="#fieldset_0-24_24">AES</a></td><td class="lr" colspan="1"><a href="#fieldset_0-23_23">SFEXPA</a></td><td class="lr" colspan="6"><a href="#fieldset_0-22_17">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-16_16">STMOP</a></td><td class="lr" colspan="15"><a href="#fieldset_0-15_1">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-0_0">SMOP4</a></td></tr></tbody></table><h4 id="fieldset_0-63_63">FA64, bit [63]</h4><div class="field">
+      <p>Indicates support at each Exception Level for execution of the full AArch64 Advanced SIMD and SVE instruction sets when the PE is in Streaming SVE mode.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>FA64</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Only those AArch64 instructions defined as being legal can be executed in streaming SVE mode.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>All implemented AArch64 instructions are legal for execution in Streaming SVE mode, when enabled by <a href="AArch64-smcr_el1.html">SMCR_EL1</a>.FA64, <a href="AArch64-smcr_el2.html">SMCR_EL2</a>.FA64, and <a href="AArch64-smcr_el3.html">SMCR_EL3</a>.FA64.</p>
+        </td></tr></table>
+      <p><span class="xref">FEAT_SME_FA64</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-62_62">Bit [62]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-61_61-1">LUT6, bit [61]<span class="condition"><br/>When FEAT_SME2p3 is implemented:
+                        </span></h4><div class="field">
+      <p>Indicates support for SME lookup table instructions with 6-bit indices.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>LUT6</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>SME <span class="instruction">LUTI6</span> instructions with 6-bit indices are not implemented.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>SME <span class="instruction">LUTI6</span> instructions with 6-bit indices are implemented.</p>
+        </td></tr></table>
+      <p>If <span class="xref">FEAT_SME2p3</span> is implemented, the value <span class="binarynumber">0b0</span> is not permitted.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-61_61-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-60_60">LUTv2, bit [60]</h4><div class="field"><p>Indicates support for the following additional variants of SME2 lookup table <span class="instruction">LUTI4</span> and <span class="instruction">MOVT</span> instructions:</p>
+<ul>
+<li>A <span class="instruction">LUTI4</span> instruction with 8-bit result elements, two consecutively numbered source vectors, and four consecutively numbered destination vectors.
+</li><li>If <span class="xref">FEAT_SME2p1</span> is implemented, a <span class="instruction">LUTI4</span> instruction with 8-bit result elements, two consecutively numbered source vectors, and four destination vectors with strided register numbering.
+</li><li>A <span class="instruction">MOVT</span> instruction that copies a single Z source vector to ZT0.
+</li></ul><p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>LUTv2</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table><p>All other values are reserved.</p>
+<p><span class="xref">FEAT_SME_LUTv2</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-59_56">SMEver, bits [59:56]</h4><div class="field">
+      <p>Indicates support for SME instructions when <span class="xref">FEAT_SME</span> is implemented.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>SMEver</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000</td><td>
+          <p>The mandatory SME instructions are implemented.</p>
+        </td></tr><tr><td class="bitfield">0b0001</td><td>
+          <p>As <span class="binarynumber">0b0000</span>, and adds the mandatory SME2 instructions.</p>
+        </td></tr><tr><td class="bitfield">0b0010</td><td>
+          <p>As <span class="binarynumber">0b0001</span>, and adds the mandatory SME2.1 instructions.</p>
+        </td></tr><tr><td class="bitfield">0b0011</td><td>
+          <p>As <span class="binarynumber">0b0010</span>, and adds the mandatory SME2.2 instructions.</p>
+        </td></tr><tr><td class="bitfield">0b0100</td><td>
+          <p>As <span class="binarynumber">0b0011</span>, and adds the mandatory SME2.3 instructions.</p>
+        </td></tr></table><p>All other values are reserved.</p>
+<p><span class="xref">FEAT_SME</span> implements the functionality identified by the value <span class="binarynumber">0b0000</span>.</p>
+<p><span class="xref">FEAT_SME2</span> implements the functionality identified by the value <span class="binarynumber">0b0001</span>.</p>
+<p><span class="xref">FEAT_SME2p1</span> implements the functionality identified by the value <span class="binarynumber">0b0010</span>.</p>
+<p>From Armv9.4, the value <span class="binarynumber">0b0001</span> is not permitted.</p>
+<p><span class="xref">FEAT_SME2p2</span> implements the functionality identified by <span class="binarynumber">0b0011</span>.</p>
+<p>From Armv9.6, the values <span class="binarynumber">0b0000</span> and <span class="binarynumber">0b0010</span> are not permitted.</p>
+<p><span class="xref">FEAT_SME2p3</span> implements the functionality identified by <span class="binarynumber">0b0100</span>.</p>
+<p>From Armv9.7, the value <span class="binarynumber">0b0011</span> is not permitted.</p><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-55_52">I16I64, bits [55:52]</h4><div class="field"><p>Indicates support for the following SME instructions that accumulate into 64-bit integer elements in the ZA array:</p>
+<ul>
+<li>The variants of the <span class="instruction">ADDHA</span>, <span class="instruction">ADDVA</span>, <span class="instruction">SMOPA</span>, <span class="instruction">SMOPS</span>, <span class="instruction">SUMOPA</span>, <span class="instruction">SUMOPS</span>, <span class="instruction">UMOPA</span>, <span class="instruction">UMOPS</span>, <span class="instruction">USMOPA</span>, and <span class="instruction">USMOPS</span> instructions that accumulate into 64-bit integer tiles.
+</li><li>When <span class="xref">FEAT_SME2</span> is implemented, the variants of the <span class="instruction">ADD</span>, <span class="instruction">ADDA</span>, <span class="instruction">SDOT</span>, <span class="instruction">SMLALL</span>, <span class="instruction">SMLSLL</span>, <span class="instruction">SUB</span>, <span class="instruction">SUBA</span>, <span class="instruction">SVDOT</span>, <span class="instruction">UDOT</span>, <span class="instruction">UMLALL</span>, <span class="instruction">UMLSLL</span>, and <span class="instruction">UVDOT</span> instructions that accumulate into 64-bit integer elements in ZA array vectors.
+</li></ul><p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>I16I64</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1111</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table><p>All other values are reserved.</p>
+<p><span class="xref">FEAT_SME_I16I64</span> implements the functionality identified by the value <span class="binarynumber">0b1111</span>.</p><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-51_49">Bits [51:49]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-48_48">F64F64, bit [48]</h4><div class="field"><p>Indicates support for the following SME instructions that accumulate into double-precision floating-point elements in the ZA array:</p>
+<ul>
+<li>The variants of the <span class="instruction">FMOPA</span> and <span class="instruction">FMOPS</span> instructions that accumulate into double-precision tiles.
+</li><li>When <span class="xref">FEAT_SME2</span> is implemented, the variants of the <span class="instruction">FADD</span>, <span class="instruction">FMLA</span>, <span class="instruction">FMLS</span>, and <span class="instruction">FSUB</span> instructions that accumulate into double-precision elements in ZA array vectors.
+</li></ul><p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>F64F64</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented .</p>
+        </td></tr></table>
+      <p><span class="xref">FEAT_SME_F64F64</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-47_44-1">I16I32, bits [47:44]<span class="condition"><br/>When FEAT_SME2 is implemented:
+                        </span></h4><div class="field">
+      <p>Indicates support for SME2 <span class="instruction">SMOPA</span> (2-way), <span class="instruction">SMOPS</span> (2-way), <span class="instruction">UMOPA</span> (2-way), and <span class="instruction">UMOPS</span> (2-way) instructions that accumulate 16-bit outer products into 32-bit integer tiles.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>I16I32</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b0101</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table><p>All other values are reserved.</p>
+<p>If <span class="xref">FEAT_SME2</span> is implemented, the value <span class="binarynumber">0b0000</span> is not permitted.</p><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-47_44-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-43_43">B16B16, bit [43]</h4><div class="field">
+      <p>Indicates support for the SME ZA-targeting non-widening BFloat16 <span class="instruction">BFADD</span>, <span class="instruction">BFMLA</span>, <span class="instruction">BFMLS</span>, <span class="instruction">BFMOPA</span>, <span class="instruction">BFMOPS</span>, and <span class="instruction">BFSUB</span> instructions with BFloat16 operands and results.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>B16B16</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table>
+      <p><span class="xref">FEAT_SME_B16B16</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-42_42">F16F16, bit [42]</h4><div class="field"><p>Indicates support for the following SME2 half-precision floating-point instructions:</p>
+<ul>
+<li><span class="instruction">FMOPA</span> and <span class="instruction">FMOPS</span> instructions that accumulate half-precision outer-products into half-precision tiles.
+</li><li>Multi-vector <span class="instruction">FADD</span>, <span class="instruction">FMLA</span>, <span class="instruction">FMLS</span>, and <span class="instruction">FSUB</span> instructions with half-precision operands and results.
+</li><li>Multi-vector <span class="instruction">FCVT</span> and <span class="instruction">FCVTL</span> instructions that convert half-precision inputs to single-precision results.
+</li></ul><p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>F16F16</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table>
+      <p><span class="xref">FEAT_SME_F16F16</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-41_41">F8F16, bit [41]</h4><div class="field"><p>Indicates support for the following SME2 instructions:</p>
+<ul>
+<li>The ZA-targeting FP8 instructions <span class="instruction">FDOT</span> (2-way), <span class="instruction">FMLAL</span>, <span class="instruction">FMOPA</span> (2-way), and <span class="instruction">FVDOT</span> that accumulate into half-precision floating-point elements.
+</li><li>ZA-targeting non-widening half-precision <span class="instruction">FADD</span> and <span class="instruction">FSUB</span> instructions.
+</li></ul><p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>F8F16</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table>
+      <p><span class="xref">FEAT_SME_F8F16</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-40_40">F8F32, bit [40]</h4><div class="field">
+      <p>Indicates support for the SME2 ZA-targeting FP8 <span class="instruction">FDOT</span> (4-way), <span class="instruction">FMLALL</span>, <span class="instruction">FMOPA</span> (4-way), <span class="instruction">FVDOTB</span>, and <span class="instruction">FVDOTT</span> instructions that accumulate into single-precision floating-point elements.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>F8F32</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table>
+      <p><span class="xref">FEAT_SME_F8F32</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-39_36-1">I8I32, bits [39:36]<span class="condition"><br/>When FEAT_SME is implemented:
+                        </span></h4><div class="field">
+      <p>Indicates support for SME <span class="instruction">SMOPA</span>, <span class="instruction">SMOPS</span>, <span class="instruction">SUMOPA</span>, <span class="instruction">SUMOPS</span>, <span class="instruction">UMOPA</span>, <span class="instruction">UMOPS</span>, <span class="instruction">USMOPA</span>, and <span class="instruction">USMOPS</span> instructions that accumulate 8-bit outer products into 32-bit tiles</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>I8I32</th><th>Meaning</th></tr><tr><td class="bitfield">0b0000</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1111</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table><p>All other values are reserved.</p>
+<p>If <span class="xref">FEAT_SME</span> is implemented, the value <span class="binarynumber">0b0000</span> is not permitted.</p><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-39_36-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-35_35-1">F16F32, bit [35]<span class="condition"><br/>When FEAT_SME is implemented:
+                        </span></h4><div class="field">
+      <p>Indicates support for SME <span class="instruction">FMOPA</span> and <span class="instruction">FMOPS</span> instructions that accumulate half-precision floating-point outer products into single-precision floating-point tiles.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>F16F32</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table>
+      <p>If <span class="xref">FEAT_SME</span> is implemented, the value <span class="binarynumber">0b0</span> is not permitted.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-35_35-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-34_34-1">B16F32, bit [34]<span class="condition"><br/>When FEAT_SME is implemented:
+                        </span></h4><div class="field">
+      <p>Indicates support for SME <span class="instruction">BFMOPA</span> and <span class="instruction">BFMOPS</span> instructions that accumulate BFloat16 outer products into single-precision floating-point tiles.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>B16F32</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table>
+      <p>If <span class="xref">FEAT_SME</span> is implemented, the value <span class="binarynumber">0b0</span> is not permitted.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-34_34-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-33_33-1">BI32I32, bit [33]<span class="condition"><br/>When FEAT_SME2 is implemented:
+                        </span></h4><div class="field">
+      <p>Indicates support for SME <span class="instruction">BMOPA</span> and <span class="instruction">BMOPS</span> instructions that accumulate thirty-two 1-bit binary outer products into 32-bit integer tiles.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>BI32I32</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table>
+      <p>If <span class="xref">FEAT_SME2</span> is implemented, the value <span class="binarynumber">0b0</span> is not permitted.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-33_33-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-32_32-1">F32F32, bit [32]<span class="condition"><br/>When FEAT_SME is implemented:
+                        </span></h4><div class="field">
+      <p>Indicates support for SME <span class="instruction">FMOPA</span> and <span class="instruction">FMOPS</span> instructions that accumulate single-precision floating-point outer products into single-precision floating-point tiles.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>F32F32</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table>
+      <p>If <span class="xref">FEAT_SME</span> is implemented, the value <span class="binarynumber">0b0</span> is not permitted.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-32_32-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-31_31">Bit [31]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-30_30">SF8FMA, bit [30]</h4><div class="field">
+      <p>Indicates support for the SVE2 FP8 to single-precision and half-precision multiply-accumulate <span class="instruction">FMLALB</span>, <span class="instruction">FMLALT</span>, <span class="instruction">FMLALLBB</span>, <span class="instruction">FMLALLBT</span>, <span class="instruction">FMLALLTB</span>, and <span class="instruction">FMLALLTT</span> instructions when the PE is in Streaming SVE mode.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>SF8FMA</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>This control has no effect on Streaming SVE mode behavior.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are supported in Streaming SVE mode.</p>
+        </td></tr></table><div class="note"><span class="note-header">Note</span><p>Other features may support some of the specified instructions in Non-streaming SVE mode.</p></div><p>If <span class="xref">FEAT_SME2</span> and <span class="xref">FEAT_FP8FMA</span> are implemented, the value <span class="binarynumber">0b0</span> is not permitted.</p>
+<p><span class="xref">FEAT_SSVE_FP8FMA</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-29_29">SF8DP4, bit [29]</h4><div class="field">
+      <p>Indicates support for the SVE2 FP8 to single-precision 4-way dot product <span class="instruction">FDOT</span> (4-way) instructions when the PE is in Streaming SVE mode.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>SF8DP4</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>This control has no effect on Streaming SVE mode behavior.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are supported in Streaming SVE mode.</p>
+        </td></tr></table><div class="note"><span class="note-header">Note</span><p>Other features may support some of the specified instructions in Non-streaming SVE mode.</p></div><p>If <span class="xref">FEAT_SME2</span> and <span class="xref">FEAT_FP8DOT4</span> are implemented, the value <span class="binarynumber">0b0</span> is not permitted.</p>
+<p><span class="xref">FEAT_SSVE_FP8DOT4</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-28_28">SF8DP2, bit [28]</h4><div class="field">
+      <p>Indicates support for the SVE2 FP8 to half-precision 2-way dot product <span class="instruction">FDOT</span> (2-way) instructions when the PE is in Streaming SVE mode.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>SF8DP2</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>This control has no effect on Streaming SVE mode behavior.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are supported in Streaming SVE mode.</p>
+        </td></tr></table><div class="note"><span class="note-header">Note</span><p>Other features may support some of the specified instructions in Non-streaming SVE mode.</p></div><p>If <span class="xref">FEAT_SME2</span> and <span class="xref">FEAT_FP8DOT2</span> are implemented, the value <span class="binarynumber">0b0</span> is not permitted.</p>
+<p><span class="xref">FEAT_SSVE_FP8DOT2</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p><p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-27_26">Bits [27:26]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-25_25">SBitPerm, bit [25]</h4><div class="field">
+      <p>Indicates support for the SVE bit permute instructions identified as implemented by <a href="AArch64-id_aa64zfr0_el1.html">ID_AA64ZFR0_EL1</a>.BitPerm, when the PE is in Streaming SVE mode.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>SBitPerm</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>This control has no effect on Streaming SVE mode behavior.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented when the PE is in Streaming SVE mode.</p>
+        </td></tr></table>
+      <div class="note"><span class="note-header">Note</span>
+        <p>Other features may support some of the specified instructions in Non-streaming SVE mode.</p>
+      </div>
+      <p><span class="xref">FEAT_SSVE_BitPerm</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-24_24">AES, bit [24]</h4><div class="field">
+      <p>Indicates support for the SVE AES and 128-bit polynomial multiply long instructions identified as implemented by <a href="AArch64-id_aa64zfr0_el1.html">ID_AA64ZFR0_EL1</a>.AES, when the PE is in Streaming SVE mode.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>AES</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>This control has no effect on Streaming SVE mode behavior.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are supported when the PE is in Streaming SVE mode.</p>
+        </td></tr></table>
+      <div class="note"><span class="note-header">Note</span>
+        <p>Other features may support some of the specified instructions in Non-streaming SVE mode.</p>
+      </div>
+      <p><span class="xref">FEAT_SSVE_AES</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-23_23">SFEXPA, bit [23]</h4><div class="field">
+      <p>Indicates support for the SVE <span class="instruction">FEXPA</span> instruction when the PE is in Streaming SVE mode.</p>
+    <p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>SFEXPA</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>This control has no effect on Streaming SVE mode behavior.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instruction is supported when the PE is in Streaming SVE mode.</p>
+        </td></tr></table>
+      <div class="note"><span class="note-header">Note</span>
+        <p>Other features may support some of the specified instructions in Non-streaming SVE mode.</p>
+      </div>
+      <p><span class="xref">FEAT_SSVE_FEXPA</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-22_17">Bits [22:17]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-16_16">STMOP, bit [16]</h4><div class="field"><p>Indicates support for the following SME Structured sparsity outer product instructions:</p>
+<ul>
+<li><span class="instruction">BFTMOPA</span> (non-widening), if <span class="xref">FEAT_SME_B16B16</span> is implemented.
+</li><li><span class="instruction">BFTMOPA</span> (widening, BF16 to FP32).
+</li><li><span class="instruction">FTMOPA</span> (non-widening, FP16), if <span class="xref">FEAT_SME_F16F16</span> is implemented.
+</li><li><span class="instruction">FTMOPA</span> (non-widening, FP32).
+</li><li><span class="instruction">FTMOPA</span> (widening, 2-way, FP16 to FP32).
+</li><li><span class="instruction">FTMOPA</span> (widening, 2-way, FP8 to FP16), if <span class="xref">FEAT_SME_F8F16</span> is implemented.
+</li><li><span class="instruction">FTMOPA</span> (widening, 4-way, FP8 to FP32) if <span class="xref">FEAT_SME_F8F32</span> is implemented.
+</li><li><span class="instruction">STMOPA</span>, <span class="instruction">SUTMOPA</span>, <span class="instruction">USTMOPA</span>, <span class="instruction">UTMOPA</span> (4-way, Int8 to Int32).
+<span class="instruction">STMOPA</span>, <span class="instruction">UTMOPA</span> (2-way, Int16 to Int32).
+</li></ul><p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>STMOP</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table>
+      <p><span class="xref">FEAT_SME_TMOP</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><h4 id="fieldset_0-15_1">Bits [15:1]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-0_0">SMOP4, bit [0]</h4><div class="field"><p>Indicates support for the following SME Quarter-tile outer product instructions:</p>
+<ul>
+<li><span class="instruction">BFMOP4A</span>, <span class="instruction">BFMOP4S</span> (non-widening, BF16), if <span class="xref">FEAT_SME_B16B16</span> is implemented.
+</li><li><span class="instruction">BFMOP4A</span>, <span class="instruction">BFMOP4S</span> (widening, 2-way, BF16 to FP32).
+</li><li><span class="instruction">FMOP4A</span>, <span class="instruction">FMOP4S</span> (non-widening, FP16), if <span class="xref">FEAT_SME_F16F16</span> is implemented.
+</li><li><span class="instruction">FMOP4A</span>, <span class="instruction">FMOP4S</span> (non-widening, FP32).
+</li><li><span class="instruction">FMOP4A</span>, <span class="instruction">FMOP4S</span> (non-widening, FP64), if <span class="xref">FEAT_SME_F64F64</span> is implemented.
+</li><li><span class="instruction">FMOP4A</span>, <span class="instruction">FMOP4S</span> (widening, 2-way, FP16 to FP32).
+</li><li><span class="instruction">FMOP4A</span>(widening, 2-way, FP8 to FP16), if <span class="xref">FEAT_SME_F8F16</span> is implemented.
+</li><li><span class="instruction">FMOP4A</span>(widening, 4-way, FP8 to FP32) instruction, if <span class="xref">FEAT_SME_F8F32</span> is implemented.
+</li><li><span class="instruction">SMOP4A</span>, <span class="instruction">SMOP4S</span>, <span class="instruction">SUMOP4A</span>, <span class="instruction">SUMOP4S</span>, <span class="instruction">UMOP4A</span>, <span class="instruction">UMOP4S</span>, <span class="instruction">USMOP4A</span>, <span class="instruction">USMOP4S</span> (4-way, Int8 to Int32).
+</li><li><span class="instruction">SMOP4A</span>, <span class="instruction">SMOP4S</span>, <span class="instruction">SUMOP4A</span>, <span class="instruction">SUMOP4S</span>, <span class="instruction">UMOP4A</span>, <span class="instruction">UMOP4S</span>, <span class="instruction">USMOP4A</span>, <span class="instruction">USMOP4S</span> (4-way, Int16 to Int64), if <span class="xref">FEAT_SME_I16I64</span> is implemented.
+</li><li><span class="instruction">SMOP4A</span>, <span class="instruction">SMOP4S</span>, <span class="instruction">UMOP4A</span>, <span class="instruction">UMOP4S</span> (2-way, Int16 to Int32).
+</li></ul><p> The value of this field is an <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> choice of:</p><table class="valuetable"><tr><th>SMOP4</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The specified instructions are not implemented by this control.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The specified instructions are implemented.</p>
+        </td></tr></table>
+      <p><span class="xref">FEAT_SME_MOP4</span> implements the functionality identified by the value <span class="binarynumber">0b1</span>.</p>
+    <p>Access to this field is <span class="access_level">RO</span>.</p></div><div class="access_mechanisms"><h2>Accessing ID_AA64SMFR0_EL1</h2>
+        <p>This register is read-only and can be accessed from EL1 and higher.</p>
+
+      
+        <p>This register is only accessible from the AArch64 state.</p>
+      <p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRS &lt;Xt&gt;, ID_AA64SMFR0_EL1</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b000</td><td>0b0000</td><td>0b0100</td><td>0b101</td></tr></table><p class="pseudocode">
+if PSTATE.EL == EL0 then
+    if IsFeatureImplemented(FEAT_IDST) then
+        if EL2Enabled() &amp;&amp; HCR_EL2().TGE == '1' then
+            AArch64_SystemAccessTrap(EL2, 0x18);
+        else
+            AArch64_SystemAccessTrap(EL1, 0x18);
+        end;
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL1 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; IsFeatureImplemented(FEAT_IDTE3) &amp;&amp; SCR_EL3().TID3 == '1' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_FGT) || !IsZero(ID_AA64SMFR0_EL1()) || ImpDefBool("ID_AA64SMFR0_EL1 trapped by HCR_EL2.TID3")) &amp;&amp; HCR_EL2().TID3 == '1' then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_IDTE3) &amp;&amp; SCR_EL3().TID3 == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    else
+        X{64}(t) = ID_AA64SMFR0_EL1();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; IsFeatureImplemented(FEAT_IDTE3) &amp;&amp; SCR_EL3().TID3 == '1' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_IDTE3) &amp;&amp; SCR_EL3().TID3 == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    else
+        X{64}(t) = ID_AA64SMFR0_EL1();
+    end;
+elsif PSTATE.EL == EL3 then
+    X{64}(t) = ID_AA64SMFR0_EL1();
+end;
+                </p></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

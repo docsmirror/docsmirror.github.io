@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>NVHCRXMASK_EL2</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">NVHCRXMASK_EL2, Nested Virtual Extended Hypervisor Configuration Masking Register</h1><p>The NVHCRXMASK_EL2 characteristics are:</p><h2>Purpose</h2>
+        <p>Mask register to prevent updates of fields in NVHCRX_EL2 on direct writes to NVHCRX_EL2.</p>
+      <h2>Configuration</h2><p>This register is present only when FEAT_NV3 is implemented, FEAT_SRMASK2 is implemented, and FEAT_AA64 is implemented. Otherwise, direct accesses to NVHCRXMASK_EL2 are <span class="arm-defined-word">UNDEFINED</span>.</p><h2>Attributes</h2>
+        <p>NVHCRXMASK_EL2 is a 64-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="27"><a href="#fieldset_0-63_37">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-36_36-1">FNB</a></td><td class="lr" colspan="1"><a href="#fieldset_0-35_35-1">VTLBIDOSEn</a></td><td class="lr" colspan="1"><a href="#fieldset_0-34_34-1">NVnTTLBOS</a></td><td class="lr" colspan="1"><a href="#fieldset_0-33_33-1">NVnTTLBIS</a></td><td class="lr" colspan="1"><a href="#fieldset_0-32_32-1">NVnTTLB</a></td></tr><tr class="firstrow"><td class="lr" colspan="1"><a href="#fieldset_0-31_31-1">FDIT</a></td><td class="lr" colspan="3"><a href="#fieldset_0-30_28">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-27_27-1">NVTGE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-26_26-1">SRMASKEn</a></td><td class="lr" colspan="1"><a href="#fieldset_0-25_25-1">VTLBIDEn</a></td><td class="lr" colspan="1"><a href="#fieldset_0-24_24-1">PACMEn</a></td><td class="lr" colspan="1"><a href="#fieldset_0-23_23-1">EnFPM</a></td><td class="lr" colspan="1"><a href="#fieldset_0-22_22-1">GCSEn</a></td><td class="lr" colspan="1"><a href="#fieldset_0-21_21-1">EnIDCP128</a></td><td class="lr" colspan="1"><a href="#fieldset_0-20_20-1">EnSDERR</a></td><td class="lr" colspan="1"><a href="#fieldset_0-19_19-1">TMEA</a></td><td class="lr" colspan="1"><a href="#fieldset_0-18_18-1">EnSNERR</a></td><td class="lr" colspan="1"><a href="#fieldset_0-17_17-1">D128En</a></td><td class="lr" colspan="1"><a href="#fieldset_0-16_16-1">PTTWI</a></td><td class="lr" colspan="1"><a href="#fieldset_0-15_15-1">SCTLR2En</a></td><td class="lr" colspan="1"><a href="#fieldset_0-14_14-1">TCR2En</a></td><td class="lr" colspan="2"><a href="#fieldset_0-13_12">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-11_11-1">MSCEn</a></td><td class="lr" colspan="1"><a href="#fieldset_0-10_10-1">MCE2</a></td><td class="lr" colspan="1"><a href="#fieldset_0-9_9-1">CMOW</a></td><td class="lr" colspan="1"><a href="#fieldset_0-8_8-1">VFNMI</a></td><td class="lr" colspan="1"><a href="#fieldset_0-7_7-1">VINMI</a></td><td class="lr" colspan="1"><a href="#fieldset_0-6_6-1">TALLINT</a></td><td class="lr" colspan="1"><a href="#fieldset_0-5_5-1">SMPME</a></td><td class="lr" colspan="1"><a href="#fieldset_0-4_4-1">FGTnXS</a></td><td class="lr" colspan="1"><a href="#fieldset_0-3_3-1">FnXS</a></td><td class="lr" colspan="1"><a href="#fieldset_0-2_2-1">EnASR</a></td><td class="lr" colspan="1"><a href="#fieldset_0-1_1-1">EnALS</a></td><td class="lr" colspan="1"><a href="#fieldset_0-0_0-1">EnAS0</a></td></tr></tbody></table><h4 id="fieldset_0-63_37">Bits [63:37]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-36_36-1">FNB, bit [36]<span class="condition"><br/>When FEAT_TLBID is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for FNB.</p>
+    <table class="valuetable"><tr><th>FNB</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.FNB is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.FNB is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-36_36-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-35_35-1">VTLBIDOSEn, bit [35]<span class="condition"><br/>When FEAT_TLBID is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for VTLBIDOSEn.</p>
+    <table class="valuetable"><tr><th>VTLBIDOSEn</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.VTLBIDOSEn is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.VTLBIDOSEn is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-35_35-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-34_34-1">NVnTTLBOS, bit [34]<span class="condition"><br/>When FEAT_NV3 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for NVnTTLBOS.</p>
+    <table class="valuetable"><tr><th>NVnTTLBOS</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.NVnTTLBOS is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.NVnTTLBOS is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-34_34-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-33_33-1">NVnTTLBIS, bit [33]<span class="condition"><br/>When FEAT_NV3 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for NVnTTLBIS.</p>
+    <table class="valuetable"><tr><th>NVnTTLBIS</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.NVnTTLBIS is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.NVnTTLBIS is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-33_33-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-32_32-1">NVnTTLB, bit [32]<span class="condition"><br/>When FEAT_NV3 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for NVnTTLB.</p>
+    <table class="valuetable"><tr><th>NVnTTLB</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.NVnTTLB is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.NVnTTLB is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-32_32-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-31_31-1">FDIT, bit [31]<span class="condition"><br/>When FEAT_FDIT is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for FDIT.</p>
+    <table class="valuetable"><tr><th>FDIT</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.FDIT is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.FDIT is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-31_31-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-30_28">Bits [30:28]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-27_27-1">NVTGE, bit [27]<span class="condition"><br/>When FEAT_NV3 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for NVTGE.</p>
+    <table class="valuetable"><tr><th>NVTGE</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.NVTGE is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.NVTGE is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-27_27-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-26_26-1">SRMASKEn, bit [26]<span class="condition"><br/>When FEAT_SRMASK is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for SRMASKEn.</p>
+    <table class="valuetable"><tr><th>SRMASKEn</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.SRMASKEn is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.SRMASKEn is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-26_26-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-25_25-1">VTLBIDEn, bit [25]<span class="condition"><br/>When FEAT_TLBID is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for VTLBIDEn.</p>
+    <table class="valuetable"><tr><th>VTLBIDEn</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.VTLBIDEn is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.VTLBIDEn is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-25_25-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-24_24-1">PACMEn, bit [24]<span class="condition"><br/>When FEAT_PAuth_LR is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for PACMEn.</p>
+    <table class="valuetable"><tr><th>PACMEn</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.PACMEn is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.PACMEn is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-24_24-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-23_23-1">EnFPM, bit [23]<span class="condition"><br/>When FEAT_FPMR is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for EnFPM.</p>
+    <table class="valuetable"><tr><th>EnFPM</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnFPM is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnFPM is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-23_23-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-22_22-1">GCSEn, bit [22]<span class="condition"><br/>When FEAT_GCS is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for GCSEn.</p>
+    <table class="valuetable"><tr><th>GCSEn</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.GCSEn is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.GCSEn is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-22_22-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-21_21-1">EnIDCP128, bit [21]<span class="condition"><br/>When FEAT_SYSREG128 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for EnIDCP128.</p>
+    <table class="valuetable"><tr><th>EnIDCP128</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnIDCP128 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnIDCP128 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-21_21-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-20_20-1">EnSDERR, bit [20]<span class="condition"><br/>When FEAT_ADERR is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for EnSDERR.</p>
+    <table class="valuetable"><tr><th>EnSDERR</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnSDERR is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnSDERR is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-20_20-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-19_19-1">TMEA, bit [19]<span class="condition"><br/>When FEAT_DoubleFault2 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for TMEA.</p>
+    <table class="valuetable"><tr><th>TMEA</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.TMEA is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.TMEA is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-19_19-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-18_18-1">EnSNERR, bit [18]<span class="condition"><br/>When FEAT_ANERR is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for EnSNERR.</p>
+    <table class="valuetable"><tr><th>EnSNERR</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnSNERR is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnSNERR is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-18_18-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-17_17-1">D128En, bit [17]<span class="condition"><br/>When FEAT_D128 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for D128En.</p>
+    <table class="valuetable"><tr><th>D128En</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.D128En is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.D128En is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-17_17-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-16_16-1">PTTWI, bit [16]<span class="condition"><br/>When FEAT_THE is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for PTTWI.</p>
+    <table class="valuetable"><tr><th>PTTWI</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.PTTWI is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.PTTWI is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-16_16-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-15_15-1">SCTLR2En, bit [15]<span class="condition"><br/>When FEAT_SCTLR2 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for SCTLR2En.</p>
+    <table class="valuetable"><tr><th>SCTLR2En</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.SCTLR2En is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.SCTLR2En is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-15_15-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-14_14-1">TCR2En, bit [14]<span class="condition"><br/>When FEAT_TCR2 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for TCR2En.</p>
+    <table class="valuetable"><tr><th>TCR2En</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.TCR2En is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.TCR2En is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-14_14-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-13_12">Bits [13:12]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-11_11-1">MSCEn, bit [11]<span class="condition"><br/>When FEAT_MOPS is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for MSCEn.</p>
+    <table class="valuetable"><tr><th>MSCEn</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.MSCEn is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.MSCEn is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-11_11-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-10_10-1">MCE2, bit [10]<span class="condition"><br/>When FEAT_MOPS is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for MCE2.</p>
+    <table class="valuetable"><tr><th>MCE2</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.MCE2 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.MCE2 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-10_10-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-9_9-1">CMOW, bit [9]<span class="condition"><br/>When FEAT_CMOW is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for CMOW.</p>
+    <table class="valuetable"><tr><th>CMOW</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.CMOW is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.CMOW is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-9_9-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-8_8-1">VFNMI, bit [8]<span class="condition"><br/>When FEAT_NMI is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for VFNMI.</p>
+    <table class="valuetable"><tr><th>VFNMI</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.VFNMI is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.VFNMI is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-8_8-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-7_7-1">VINMI, bit [7]<span class="condition"><br/>When FEAT_NMI is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for VINMI.</p>
+    <table class="valuetable"><tr><th>VINMI</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.VINMI is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.VINMI is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-7_7-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-6_6-1">TALLINT, bit [6]<span class="condition"><br/>When FEAT_NMI is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for TALLINT.</p>
+    <table class="valuetable"><tr><th>TALLINT</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.TALLINT is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.TALLINT is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-6_6-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-5_5-1">SMPME, bit [5]<span class="condition"><br/>When FEAT_SME is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for SMPME.</p>
+    <table class="valuetable"><tr><th>SMPME</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.SMPME is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.SMPME is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-5_5-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-4_4-1">FGTnXS, bit [4]<span class="condition"><br/>When FEAT_XS is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for FGTnXS.</p>
+    <table class="valuetable"><tr><th>FGTnXS</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.FGTnXS is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.FGTnXS is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-4_4-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-3_3-1">FnXS, bit [3]<span class="condition"><br/>When FEAT_XS is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for FnXS.</p>
+    <table class="valuetable"><tr><th>FnXS</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.FnXS is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.FnXS is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-3_3-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-2_2-1">EnASR, bit [2]<span class="condition"><br/>When FEAT_LS64_V is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for EnASR.</p>
+    <table class="valuetable"><tr><th>EnASR</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnASR is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnASR is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-2_2-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-1_1-1">EnALS, bit [1]<span class="condition"><br/>When FEAT_LS64 is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for EnALS.</p>
+    <table class="valuetable"><tr><th>EnALS</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnALS is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnALS is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-1_1-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-0_0-1">EnAS0, bit [0]<span class="condition"><br/>When FEAT_LS64_ACCDATA is implemented:
+                        </span></h4><div class="field">
+      <p>Mask bit for EnAS0.</p>
+    <table class="valuetable"><tr><th>EnAS0</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnAS0 is writeable.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch64-nvhcrx_el2.html">NVHCRX_EL2</a>.EnAS0 is not writeable.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-0_0-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><div class="access_mechanisms"><h2>Accessing NVHCRXMASK_EL2</h2><p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRS &lt;Xt&gt;, NVHCRXMASK_EL2</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b100</td><td>0b0001</td><td>0b0101</td><td>0b101</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_NV3) &amp;&amp; IsFeatureImplemented(FEAT_SRMASK2) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EffectiveHCR_EL2_NVx() IN {'1x1'} then
+        X{64}(t) = NVMem(0x0F8);
+    elsif EffectiveHCR_EL2_NVx() IN {'xx1'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; SCR2_EL3().SRMASK2En == '0' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_SCR2) &amp;&amp; SCR2_EL3().SRMASK2En == '0' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    else
+        X{64}(t) = NVHCRXMASK_EL2();
+    end;
+elsif PSTATE.EL == EL3 then
+    X{64}(t) = NVHCRXMASK_EL2();
+end;
+                </p><div><h4 class="assembler">MSR NVHCRXMASK_EL2, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b100</td><td>0b0001</td><td>0b0101</td><td>0b101</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_NV3) &amp;&amp; IsFeatureImplemented(FEAT_SRMASK2) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EffectiveHCR_EL2_NVx() IN {'1x1'} then
+        NVMem(0x0F8) = X{64}(t);
+    elsif EffectiveHCR_EL2_NVx() IN {'xx1'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; SCR2_EL3().SRMASK2En == '0' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_SCR2) &amp;&amp; SCR2_EL3().SRMASK2En == '0' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    else
+        NVHCRXMASK_EL2() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL3 then
+    NVHCRXMASK_EL2() = X{64}(t);
+end;
+                </p></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

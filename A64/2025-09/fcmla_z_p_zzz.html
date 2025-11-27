@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>FCMLA (vectors) -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">FCMLA (vectors)</h2><p>Floating-point complex multiply-add (predicated)</p>
+      <p class="aml">This instruction multiplies the duplicated real components for rotations 0
+and 180, or imaginary components for rotations 90 and
+270, of the floating-point complex numbers in  the first source vector by the corresponding complex number in the second source vector
+ rotated by 0, 90, 180 or 270
+degrees in the direction from the positive real axis towards
+the positive imaginary axis, when considered in polar
+representation.</p>
+      <p class="aml">This instruction then destructively adds the products to the corresponding
+components of the complex numbers in the addend and
+destination vector, without intermediate rounding.</p>
+      <p class="aml">These transformations permit the creation of a variety of
+multiply-add and multiply-subtract operations on complex numbers by
+combining two of these instructions with the same vector operands
+but with rotations that are 90 degrees apart.</p>
+      <p class="aml">Each complex number is represented in a vector register as an
+even/odd pair of elements with the real part in the
+even-numbered element and the imaginary part in the
+odd-numbered element.
+Inactive elements in the destination vector register remain unmodified.</p>
+    
+    <h3 class="classheading"><a id="iclass_sve"/>SVE<span style="font-size:smaller;"><br/>(FEAT_SVE || FEAT_SME)
+          </span></h3><p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">0</td><td>1</td><td class="r">1</td><td class="l">0</td><td>0</td><td>1</td><td class="r">0</td><td class="lr">0</td><td colspan="2" class="lr">size</td><td class="lr">0</td><td colspan="5" class="lr">Zm</td><td class="lr">0</td><td colspan="2" class="lr">rot</td><td colspan="3" class="lr">Pg</td><td colspan="5" class="lr">Zn</td><td colspan="5" class="lr">Zda</td></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="fcmla_z_p_zzz_"/><p class="asm-code">FCMLA  <a href="#Zda" title="Is the name of the third source and destination scalable vector register, encoded in the &quot;Zda&quot; field.">&lt;Zda&gt;</a>.<a href="#T__48" title="Is the size specifier, ">&lt;T&gt;</a>, <a href="#Pg" title="Is the name of the governing scalable predicate register P0-P7, encoded in the &quot;Pg&quot; field.">&lt;Pg&gt;</a>/M, <a href="#Zn__2" title="Is the name of the first source scalable vector register, encoded in the &quot;Zn&quot; field.">&lt;Zn&gt;</a>.<a href="#T__48" title="Is the size specifier, ">&lt;T&gt;</a>, <a href="#Zm" title="Is the name of the second source scalable vector register, encoded in the &quot;Zm&quot; field.">&lt;Zm&gt;</a>.<a href="#T__48" title="Is the size specifier, ">&lt;T&gt;</a>, <a href="#const__4" title="Is the const specifier, ">&lt;const&gt;</a></p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_SVE) &amp;&amp; !IsFeatureImplemented(FEAT_SME) then
+    EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>);
+end;
+if size == '00' then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+let esize : integer{} = 8 &lt;&lt; UInt(size);
+let g : integer = UInt(Pg);
+let n : integer = UInt(Zn);
+let m : integer = UInt(Zm);
+let da : integer = UInt(Zda);
+let sel_a : integer = UInt(rot[0]);
+let sel_b : integer = UInt(NOT(rot[0]));
+let neg_i : boolean = (rot[1] == '1');
+let neg_r : boolean = (rot[0] != rot[1]);</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zda&gt;</td><td><a id="Zda"/>
+        
+          <p class="aml">Is the name of the third source and destination scalable vector register, encoded in the "Zda" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;T&gt;</td><td><a id="T__48"/>
+        <p>Is the size specifier, 
+          encoded in
+          <q>size</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">size</th>
+                <th class="symbol">&lt;T&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00</td>
+                <td class="symbol">RESERVED</td>
+              </tr>
+              <tr>
+                <td class="bitfield">01</td>
+                <td class="symbol">H</td>
+              </tr>
+              <tr>
+                <td class="bitfield">10</td>
+                <td class="symbol">S</td>
+              </tr>
+              <tr>
+                <td class="bitfield">11</td>
+                <td class="symbol">D</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Pg&gt;</td><td><a id="Pg"/>
+        
+          <p class="aml">Is the name of the governing scalable predicate register P0-P7, encoded in the "Pg" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zn&gt;</td><td><a id="Zn__2"/>
+        
+          <p class="aml">Is the name of the first source scalable vector register, encoded in the "Zn" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zm&gt;</td><td><a id="Zm"/>
+        
+          <p class="aml">Is the name of the second source scalable vector register, encoded in the "Zm" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;const&gt;</td><td><a id="const__4"/>
+        <p>Is the const specifier, 
+          encoded in
+          <q>rot</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">rot</th>
+                <th class="symbol">&lt;const&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00</td>
+                <td class="symbol">#0</td>
+              </tr>
+              <tr>
+                <td class="bitfield">01</td>
+                <td class="symbol">#90</td>
+              </tr>
+              <tr>
+                <td class="bitfield">10</td>
+                <td class="symbol">#180</td>
+              </tr>
+              <tr>
+                <td class="bitfield">11</td>
+                <td class="symbol">#270</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">CheckSVEEnabled();
+let VL : integer{} = CurrentVL();
+let PL : integer{} = VL DIV 8;
+let pairs : integer = VL DIV (2 * esize);
+let mask : bits(PL) = P{}(g);
+let op1 : bits(VL) = if <a href="shared_pseudocode.html#func_AnyActiveElement_3" title="">AnyActiveElement</a>{PL}(mask, esize) then <a href="shared_pseudocode.html#accessor_Z_2" title="">Z</a>{VL}(n) else Zeros{VL};
+let op2 : bits(VL) = if <a href="shared_pseudocode.html#func_AnyActiveElement_3" title="">AnyActiveElement</a>{PL}(mask, esize) then <a href="shared_pseudocode.html#accessor_Z_2" title="">Z</a>{VL}(m) else Zeros{VL};
+let op3 : bits(VL) = Z{}(da);
+var result : bits(VL);
+
+for p = 0 to pairs-1 do
+    var addend_r : bits(esize) = op3[(2 * p + 0)*:esize];
+    var addend_i : bits(esize) = op3[(2 * p + 1)*:esize];
+    if <a href="shared_pseudocode.html#func_ActivePredicateElement_4" title="">ActivePredicateElement</a>{PL}(mask, 2 * p + 0, esize) then
+        let elt1_a : bits(esize) = op1[(2*p + sel_a)*:esize];
+        let elt2_a : bits(esize) = (if neg_r then <a href="shared_pseudocode.html#func_FPNeg_3" title="">FPNeg</a>{esize}(op2[(2 * p + sel_a)*:esize], FPCR())
+                                       else op2[(2 * p + sel_a)*:esize]);
+        addend_r = <a href="shared_pseudocode.html#func_FPMulAdd_5" title="">FPMulAdd</a>{esize}(addend_r, elt1_a, elt2_a, FPCR());
+    end;
+    if <a href="shared_pseudocode.html#func_ActivePredicateElement_4" title="">ActivePredicateElement</a>{PL}(mask, 2 * p + 1, esize) then
+        let elt1_a : bits(esize) = op1[(2 * p + sel_a)*:esize];
+        let elt2_b : bits(esize) = (if neg_i then <a href="shared_pseudocode.html#func_FPNeg_3" title="">FPNeg</a>{esize}(op2[(2 * p + sel_b)*:esize], FPCR())
+                                       else op2[(2 * p + sel_b)*:esize]);
+        addend_i = <a href="shared_pseudocode.html#func_FPMulAdd_5" title="">FPMulAdd</a>{esize}(addend_i, elt1_a, elt2_b, FPCR());
+    end;
+    result[(2 * p + 0)*:esize] = addend_r;
+    result[(2 * p + 1)*:esize] = addend_i;
+end;
+
+<a href="shared_pseudocode.html#accessor_Z_2" title="">Z</a>{VL}(da) = result;</p>
+    </div>
+  <h3>Operational information</h3>
+    
+      
+        <p class="aml">This instruction might be immediately preceded in program order by a <span class="asm-code">MOVPRFX</span> instruction. The <span class="asm-code">MOVPRFX</span> must conform to all of the following requirements, otherwise the behavior of the <span class="asm-code">MOVPRFX</span> and this instruction is <span class="arm-defined-word">CONSTRAINED UNPREDICTABLE</span>:</p>
+        <ul>
+          <li>
+            The <span class="asm-code">MOVPRFX</span> can be predicated or unpredicated.
+          </li>
+          <li>
+            A predicated <span class="asm-code">MOVPRFX</span> must use the same governing predicate register as this instruction.
+          </li>
+          <li>
+            A predicated <span class="asm-code">MOVPRFX</span> must use the larger of the destination element size and first source element size in the preferred disassembly of this instruction.
+          </li>
+          <li>
+            The <span class="asm-code">MOVPRFX</span> must specify the same destination register as this instruction.
+          </li>
+          <li>
+            The destination register must not refer to architectural register state referenced by any other source operand register of this instruction.
+          </li>
+        </ul>
+      
+    
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

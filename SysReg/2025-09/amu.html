@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>AMU</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">AMU</h1><p>The AMU characteristics are:</p><h2>Attributes</h2>
+          <p>AMU is a block of size: 4096 bytes</p>
+        <h2>Contents</h2><table class="info"><tr><th>Offset</th><th>Name</th><th>Accessor condition</th><th>Register condition</th><th>Most permissive access</th></tr><tr><td><span class="hexnumber">0x000 + (8 * n) for n in 16:0</span></td><td><a href="amu.amevcntr0n.html">AMEVCNTR0&lt;n&gt;</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0x000 + (8 * n) for n in 16:0</span></td><td><a href="amu.amevcntr0n.html">AMEVCNTR0&lt;n&gt;</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0x100 + (8 * n) for n in 16:0</span></td><td><a href="amu.amevcntr1n.html">AMEVCNTR1&lt;n&gt;</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0x100 + (8 * n) for n in 16:0</span></td><td><a href="amu.amevcntr1n.html">AMEVCNTR1&lt;n&gt;</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0x400 + (8 * n) for n in 16:0</span></td><td><a href="amu.amevtyper0n.html">AMEVTYPER0&lt;n&gt;</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0x400 + (4 * n) for n in 16:0</span></td><td><a href="amu.amevtyper0n.html">AMEVTYPER0&lt;n&gt;</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0x480 + (4 * n) for n in 16:0</span></td><td><a href="amu.amevtyper1n.html">AMEVTYPER1&lt;n&gt;</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0x500 + (8 * n) for n in 16:0</span></td><td><a href="amu.amevtyper1n.html">AMEVTYPER1&lt;n&gt;</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xC00</span></td><td><a href="amu.amcntenset.html">AMCNTENSET</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT64 is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xC00</span></td><td><a href="amu.amcntenset0.html">AMCNTENSET0</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT32 is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xC04</span></td><td><a href="amu.amcntenset1.html">AMCNTENSET1</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT32 is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xC10</span></td><td><a href="amu.amcnten.html">AMCNTEN</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT64 is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xC20</span></td><td><a href="amu.amcntenclr.html">AMCNTENCLR</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT64 is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xC20</span></td><td><a href="amu.amcntenclr0.html">AMCNTENCLR0</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT32 is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xC24</span></td><td><a href="amu.amcntenclr1.html">AMCNTENCLR1</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xCE0</span></td><td><a href="amu.amcgcr.html">AMCGCR</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xCE0</span></td><td><a href="amu.amcgcr.html">AMCGCR</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xE00</span></td><td><a href="amu.amcfgr.html">AMCFGR</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xE00</span></td><td><a href="amu.amcfgr.html">AMCFGR</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xE04</span></td><td><a href="amu.amcr.html">AMCR</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xE08</span></td><td><a href="amu.amiidr.html">AMIIDR</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xE08</span></td><td><a href="amu.amiidr.html">AMIIDR</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xE10</span></td><td><a href="amu.amcr.html">AMCR</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xE40</span></td><td><a href="amu.amscr.html">AMSCR</a></td><td>
+                When FEAT_AMU_EXTACR is implemented and FEAT_RME is not implemented
+            </td><td>When FEAT_AMU_EXTACR is implemented and FEAT_RME is not implemented</td><td class="pseudocode">RW</td></tr><tr><td><span class="hexnumber">0xE48</span></td><td><a href="amu.amrootcr.html">AMROOTCR</a></td><td>
+                When FEAT_AMU_EXTACR is implemented and FEAT_RME is implemented
+            </td><td>When FEAT_AMU_EXTACR is implemented and FEAT_RME is implemented</td><td class="pseudocode">RW</td></tr><tr><td><span class="hexnumber">0xFA8</span></td><td><a href="amu.amdevaff.html">AMDEVAFF</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, FEAT_AMU_EXT64 is implemented, and an implementation implements AMDEVAFF1</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFA8</span></td><td><a href="amu.amdevaff0.html">AMDEVAFF0</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, FEAT_AMU_EXT32 is implemented, and an implementation implements AMDEVAFF0</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFAC</span></td><td><a href="amu.amdevaff1.html">AMDEVAFF1</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, FEAT_AMU_EXT32 is implemented, and an implementation implements AMDEVAFF1</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFBC</span></td><td><a href="amu.amdevarch.html">AMDEVARCH</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMDEVARCH, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFBC</span></td><td><a href="amu.amdevarch.html">AMDEVARCH</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMDEVARCH, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFCC</span></td><td><a href="amu.amdevtype.html">AMDEVTYPE</a></td><td>
+                When FEAT_AMU_EXT64 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMDEVTYPE, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFCC</span></td><td><a href="amu.amdevtype.html">AMDEVTYPE</a></td><td>
+                When FEAT_AMU_EXT32 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMDEVTYPE, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFD0</span></td><td><a href="amu.ampidr4.html">AMPIDR4</a></td><td>
+                When FEAT_AMUv1 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMPIDR4, and FEAT_AMU_EXT</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFE0</span></td><td><a href="amu.ampidr0.html">AMPIDR0</a></td><td>
+                When FEAT_AMUv1 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMPIDR0, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFE4</span></td><td><a href="amu.ampidr1.html">AMPIDR1</a></td><td>
+                When FEAT_AMUv1 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMPIDR1, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFE8</span></td><td><a href="amu.ampidr2.html">AMPIDR2</a></td><td>
+                When FEAT_AMUv1 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMPIDR2, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFEC</span></td><td><a href="amu.ampidr3.html">AMPIDR3</a></td><td>
+                When FEAT_AMUv1 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMPIDR3, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFF0</span></td><td><a href="amu.amcidr0.html">AMCIDR0</a></td><td>
+                When FEAT_AMUv1 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMCIDR0, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFF4</span></td><td><a href="amu.amcidr1.html">AMCIDR1</a></td><td>
+                When FEAT_AMUv1 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMCIDR1, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFF8</span></td><td><a href="amu.amcidr2.html">AMCIDR2</a></td><td>
+                When FEAT_AMUv1 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMCIDR2, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr><tr><td><span class="hexnumber">0xFFC</span></td><td><a href="amu.amcidr3.html">AMCIDR3</a></td><td>
+                When FEAT_AMUv1 is implemented
+            </td><td>When FEAT_AMUv1 is implemented, an implementation implements AMCIDR3, and FEAT_AMU_EXT is implemented</td><td class="pseudocode">RO</td></tr></table><p>Direct accesses to other offsets in this block are <span class="arm-defined-word">RES0</span>.</p><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

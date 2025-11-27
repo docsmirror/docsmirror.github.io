@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>ICC_ICSR_EL1</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">ICC_ICSR_EL1, Interrupt Controller Interrupt Configuration and State Register</h1><p>The ICC_ICSR_EL1 characteristics are:</p><h2>Purpose</h2>
+        <p>Reports the configuration and state of the INTID specified to a previous GIC request interrupt configuration instruction.</p>
+      <h2>Configuration</h2><p>This register is present only when FEAT_GCIE is implemented and FEAT_AA64 is implemented. Otherwise, direct accesses to ICC_ICSR_EL1 are <span class="arm-defined-word">UNDEFINED</span>.</p><h2>Attributes</h2>
+        <p>ICC_ICSR_EL1 is a 64-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="16"><a href="#fieldset_0-63_48">RES0</a></td><td class="lr" colspan="16"><a href="#fieldset_0-47_32">IAFFID</a></td></tr><tr class="firstrow"><td class="lr" colspan="16"><a href="#fieldset_0-31_16">RES0</a></td><td class="lr" colspan="5"><a href="#fieldset_0-15_11">Priority</a></td><td class="lr" colspan="5"><a href="#fieldset_0-10_6">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-5_5">HM</a></td><td class="lr" colspan="1"><a href="#fieldset_0-4_4">Active</a></td><td class="lr" colspan="1"><a href="#fieldset_0-3_3">IRM</a></td><td class="lr" colspan="1"><a href="#fieldset_0-2_2">Pending</a></td><td class="lr" colspan="1"><a href="#fieldset_0-1_1">Enabled</a></td><td class="lr" colspan="1"><a href="#fieldset_0-0_0">F</a></td></tr></tbody></table><h4 id="fieldset_0-63_48">Bits [63:48]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-47_32">IAFFID, bits [47:32]</h4><div class="field"><p>The interrupt Affinity value.</p>
+<p>The IRS may support fewer than 16 bits of IAFFID.
+Upper bits not implemented by the IRS are returned as zero.</p>
+<p>When IRM is 1, this field is IMPSPEC.</p><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-31_16">Bits [31:16]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-15_11">Priority, bits [15:11]</h4><div class="field">
+      <p>The priority of the interrupt.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-10_6">Bits [10:6]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-5_5">HM, bit [5]</h4><div class="field">
+      <p>The Handling mode of the interrupt.</p>
+    <table class="valuetable"><tr><th>HM</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Edge-triggered</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Level-sensitive</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-4_4">Active, bit [4]</h4><div class="field">
+      <p>The interrupt's Active state.</p>
+    <table class="valuetable"><tr><th>Active</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Inactive</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Active</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-3_3">IRM, bit [3]</h4><div class="field">
+      <p>Interrupt Routing mode.</p>
+    <table class="valuetable"><tr><th>IRM</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>The interrupt Routing mode is Targeted.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>The interrupt Routing mode is 1ofN.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-2_2">Pending, bit [2]</h4><div class="field">
+      <p>The interrupt's Pending state.</p>
+    <table class="valuetable"><tr><th>Pending</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Not pending</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Pending</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-1_1">Enabled, bit [1]</h4><div class="field">
+      <p>The interrupt's individual enable.</p>
+    <table class="valuetable"><tr><th>Enabled</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Disabled</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Enabled</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-0_0">F, bit [0]</h4><div class="field">
+      <p>Indicates whether the IRS returned valid data.</p>
+    <table class="valuetable"><tr><th>F</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p>Request completed successfully.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p>Request did not complete successfully.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><div class="access_mechanisms"><h2>Accessing ICC_ICSR_EL1</h2><p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRS &lt;Xt&gt;, ICC_ICSR_EL1</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b000</td><td>0b1100</td><td>0b1010</td><td>0b100</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_GCIE) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EL2Enabled() &amp;&amp; HCR_EL2().IMO == '1' &amp;&amp; IsFeatureImplemented(FEAT_GCIE_LEGACY) &amp;&amp; ICH_VCTLR_EL2().V3 == '1' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; ICH_HFGRTR_EL2().ICC_ICSR_EL1 == '0' then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        X{64}(t) = ICC_ICSR_EL1();
+    end;
+elsif PSTATE.EL == EL2 then
+    X{64}(t) = ICC_ICSR_EL1();
+elsif PSTATE.EL == EL3 then
+    X{64}(t) = ICC_ICSR_EL1();
+end;
+                </p><div><h4 class="assembler">MSR ICC_ICSR_EL1, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b000</td><td>0b1100</td><td>0b1010</td><td>0b100</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_GCIE) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EL2Enabled() &amp;&amp; HCR_EL2().IMO == '1' &amp;&amp; IsFeatureImplemented(FEAT_GCIE_LEGACY) &amp;&amp; ICH_VCTLR_EL2().V3 == '1' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; ICH_HFGWTR_EL2().ICC_ICSR_EL1 == '0' then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        ICC_ICSR_EL1() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL2 then
+    ICC_ICSR_EL1() = X{64}(t);
+elsif PSTATE.EL == EL3 then
+    ICC_ICSR_EL1() = X{64}(t);
+end;
+                </p></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

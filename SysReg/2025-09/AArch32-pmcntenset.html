@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>PMCNTENSET</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">PMCNTENSET, Performance Monitors Count Enable Set register</h1><p>The PMCNTENSET characteristics are:</p><h2>Purpose</h2>
+        <p>Allows software to enable the following counters:</p>
+
+      
+        <ul>
+<li>The cycle counter <a href="AArch32-pmccntr.html">PMCCNTR</a>.
+</li><li>The event counters <a href="AArch32-pmevcntrn.html">PMEVCNTR&lt;n&gt;</a>.
+</li></ul>
+
+      
+        <p>Reading from this register shows which counters are enabled.</p>
+      <h2>Configuration</h2><p>AArch32 System register PMCNTENSET bits [31:0] are architecturally mapped to AArch32 System register <a href="AArch32-pmcntenclr.html">PMCNTENCLR[31:0]</a>.</p><p>AArch32 System register PMCNTENSET bits [31:0] are architecturally mapped to AArch64 System register <a href="AArch64-pmcntenset_el0.html">PMCNTENSET_EL0[31:0]</a>.</p><p>AArch32 System register PMCNTENSET bits [31:0] are architecturally mapped to AArch64 System register <a href="AArch64-pmcntenclr_el0.html">PMCNTENCLR_EL0[31:0]</a>.</p><p>AArch32 System register PMCNTENSET bits [31:0] are architecturally mapped to External register <a href="pmu.pmcntenset_el0.html">PMCNTENSET_EL0[31:0]</a>.</p><p>AArch32 System register PMCNTENSET bits [31:0] are architecturally mapped to External register <a href="pmu.pmcntenclr_el0.html">PMCNTENCLR_EL0[31:0]</a>.</p><p>This register is present only when FEAT_AA32 is implemented and FEAT_PMUv3 is implemented. Otherwise, direct accesses to PMCNTENSET are <span class="arm-defined-word">UNDEFINED</span>.</p><h2>Attributes</h2>
+        <p>PMCNTENSET is a 32-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr" colspan="1"><a href="#fieldset_0-31_31">C</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P30</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P29</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P28</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P27</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P26</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P25</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P24</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P23</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P22</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P21</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P20</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P19</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P18</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P17</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P16</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P15</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P14</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P13</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P12</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P11</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P10</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P9</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P8</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P7</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P6</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P5</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P4</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P3</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P2</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P1</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_0">P0</a></td></tr></tbody></table><h4 id="fieldset_0-31_31">C, bit [31]</h4><div class="field">
+      <p><a href="AArch32-pmccntr.html">PMCCNTR</a> enable. On writes, allows software to enable <a href="AArch32-pmccntr.html">PMCCNTR</a>. On reads, returns the <a href="AArch32-pmccntr.html">PMCCNTR</a> enable status.</p>
+    <table class="valuetable"><tr><th>C</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch32-pmccntr.html">PMCCNTR</a> disabled.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch32-pmccntr.html">PMCCNTR</a> enabled.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Cold reset, when FEAT_PMUv3_EXTPMN is implemented, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li><li>On a Warm reset, when FEAT_PMUv3_EXTPMN is not implemented, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul><p>Accessing this field has the following behavior:</p><ul><li>Access to this field is <span class="access_level">RAZ/WI</span> if all the following are true:<ul><li>FEAT_PMUv3p9 is implemented.</li><li>PSTATE.EL == EL0.</li><li>EL1 is using AArch64.</li><li>PMUSERENR_EL0.UEN == 1.</li><li>PMUACR_EL1.C == 0.</li></ul></li><li>Access to this field is <span class="access_level">RO</span> if all the following are true:<ul><li>FEAT_PMUv3p9 is implemented.</li><li>PSTATE.EL == EL0.</li><li>EL1 is using AArch64.</li><li>PMUSERENR_EL0.[UEN,CR] == 0b11.</li></ul></li><li>
+                  Otherwise,
+                  
+                  access to this field
+                  is <span class="access_level">W1S</span>.
+                </li></ul></div><h4 id="fieldset_0-30_0">P&lt;m&gt;, bit [m], for m = 30 to 0</h4><div class="field">
+      <p><a href="AArch32-pmevcntrn.html">PMEVCNTR&lt;m&gt;</a> enable. On writes, allows software to enable <a href="AArch32-pmevcntrn.html">PMEVCNTR&lt;m&gt;</a>. On reads, returns the <a href="AArch32-pmevcntrn.html">PMEVCNTR&lt;m&gt;</a> enable status.</p>
+    <table class="valuetable"><tr><th>P&lt;m&gt;</th><th>Meaning</th></tr><tr><td class="bitfield">0b0</td><td>
+          <p><a href="AArch32-pmevcntrn.html">PMEVCNTR&lt;m&gt;</a> disabled.</p>
+        </td></tr><tr><td class="bitfield">0b1</td><td>
+          <p><a href="AArch32-pmevcntrn.html">PMEVCNTR&lt;m&gt;</a> enabled.</p>
+        </td></tr></table><p>The reset behavior of this field is:</p><ul><li>On a Cold reset, when FEAT_PMUv3_EXTPMN is implemented, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li><li>On a Warm reset, when FEAT_PMUv3_EXTPMN is not implemented, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul><p>Accessing this field has the following behavior:</p><ul><li>When m &gt;= GetNumEventCountersAccessible(), access to this field
+                            is <span class="access_level">RAZ/WI</span>.
+                        </li><li>Access to this field is <span class="access_level">RAZ/WI</span> if all the following are true:<ul><li>FEAT_PMUv3p9 is implemented.</li><li>PSTATE.EL == EL0.</li><li>EL1 is using AArch64.</li><li>PMUSERENR_EL0.UEN == 1.</li><li>PMUACR_EL1.P&lt;m&gt; == 0.</li></ul></li><li>Access to this field is <span class="access_level">RO</span> if all the following are true:<ul><li>FEAT_PMUv3p9 is implemented.</li><li>PSTATE.EL == EL0.</li><li>EL1 is using AArch64.</li><li>PMUSERENR_EL0.[UEN,ER] == 0b11.</li></ul></li><li>
+                  Otherwise,
+                  
+                  access to this field
+                  is <span class="access_level">W1S</span>.
+                </li></ul></div><div class="access_mechanisms"><h2>Accessing PMCNTENSET</h2><p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRC{&lt;c&gt;}{&lt;q&gt;} &lt;coproc&gt;, {#}&lt;opc1&gt;, &lt;Rt&gt;, &lt;CRn&gt;, &lt;CRm&gt;{, {#}&lt;opc2&gt;}</h4></div><table class="access_instructions"><tr><th>coproc</th><th>opc1</th><th>CRn</th><th>CRm</th><th>opc2</th></tr><tr><td>0b1111</td><td>0b000</td><td>0b1001</td><td>0b1100</td><td>0b001</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_AA32) &amp;&amp; IsFeatureImplemented(FEAT_PMUv3)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        Undefined();
+    elsif IsFeatureImplemented(FEAT_AA64EL1) &amp;&amp; !ELUsingAArch32(EL1) &amp;&amp; (PMUSERENR_EL0().EN == '0' &amp;&amp; (!IsFeatureImplemented(FEAT_PMUv3p9) || PMUSERENR_EL0().UEN == '0')) then
+        if EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2)) &amp;&amp; HCR_EL2().TGE == '1' then
+            AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+        else
+            AArch64_AArch32SystemAccessTrap(EL1, 0x03);
+        end;
+    elsif IsFeatureImplemented(FEAT_AA32EL1) &amp;&amp; ELUsingAArch32(EL1) &amp;&amp; PMUSERENR().EN == '0' then
+        if EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2)) &amp;&amp; HCR_EL2().TGE == '1' then
+            AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+        elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA32EL2) &amp;&amp; ELUsingAArch32(EL2)) &amp;&amp; HCR().TGE == '1' then
+            AArch32_TakeHypTrapException(0x00);
+        else
+            Undefined();
+        end;
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2)) &amp;&amp; !ELIsInHost(EL0) &amp;&amp; HSTR_EL2().T9 == '1' then
+        AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA32EL2) &amp;&amp; ELUsingAArch32(EL2)) &amp;&amp; HSTR().T9 == '1' then
+        AArch32_TakeHypTrapException(0x03);
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA64EL1) &amp;&amp; !ELUsingAArch32(EL1)) &amp;&amp; !ELIsInHost(EL0) &amp;&amp; IsFeatureImplemented(FEAT_FGT) &amp;&amp; (!HaveEL(EL3) || SCR_EL3().FGTEn == '1') &amp;&amp; HDFGRTR_EL2().PMCNTEN == '1' then
+        AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2)) &amp;&amp; MDCR_EL2().TPM == '1' then
+        AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA32EL2) &amp;&amp; ELUsingAArch32(EL2)) &amp;&amp; HDCR().TPM == '1' then
+        AArch32_TakeHypTrapException(0x03);
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_AArch32SystemAccessTrap(EL3, 0x03);
+        end;
+    else
+        R(t) = PMCNTENSET();
+    end;
+elsif PSTATE.EL == EL1 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2) &amp;&amp; HSTR_EL2().T9 == '1' then
+        AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_AA32EL2) &amp;&amp; ELUsingAArch32(EL2) &amp;&amp; HSTR().T9 == '1' then
+        AArch32_TakeHypTrapException(0x03);
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2) &amp;&amp; MDCR_EL2().TPM == '1' then
+        AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_AA32EL2) &amp;&amp; ELUsingAArch32(EL2) &amp;&amp; HDCR().TPM == '1' then
+        AArch32_TakeHypTrapException(0x03);
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_AArch32SystemAccessTrap(EL3, 0x03);
+        end;
+    else
+        R(t) = PMCNTENSET();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_AArch32SystemAccessTrap(EL3, 0x03);
+        end;
+    else
+        R(t) = PMCNTENSET();
+    end;
+elsif PSTATE.EL == EL3 then
+    R(t) = PMCNTENSET();
+end;
+                </p><div><h4 class="assembler">MCR{&lt;c&gt;}{&lt;q&gt;} &lt;coproc&gt;, {#}&lt;opc1&gt;, &lt;Rt&gt;, &lt;CRn&gt;, &lt;CRm&gt;{, {#}&lt;opc2&gt;}</h4></div><table class="access_instructions"><tr><th>coproc</th><th>opc1</th><th>CRn</th><th>CRm</th><th>opc2</th></tr><tr><td>0b1111</td><td>0b000</td><td>0b1001</td><td>0b1100</td><td>0b001</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_AA32) &amp;&amp; IsFeatureImplemented(FEAT_PMUv3)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        Undefined();
+    elsif IsFeatureImplemented(FEAT_AA64EL1) &amp;&amp; !ELUsingAArch32(EL1) &amp;&amp; (PMUSERENR_EL0().EN == '0' &amp;&amp; (!IsFeatureImplemented(FEAT_PMUv3p9) || PMUSERENR_EL0().UEN == '0')) then
+        if EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2)) &amp;&amp; HCR_EL2().TGE == '1' then
+            AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+        else
+            AArch64_AArch32SystemAccessTrap(EL1, 0x03);
+        end;
+    elsif IsFeatureImplemented(FEAT_AA32EL1) &amp;&amp; ELUsingAArch32(EL1) &amp;&amp; PMUSERENR().EN == '0' then
+        if EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2)) &amp;&amp; HCR_EL2().TGE == '1' then
+            AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+        elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA32EL2) &amp;&amp; ELUsingAArch32(EL2)) &amp;&amp; HCR().TGE == '1' then
+            AArch32_TakeHypTrapException(0x00);
+        else
+            Undefined();
+        end;
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2)) &amp;&amp; !ELIsInHost(EL0) &amp;&amp; HSTR_EL2().T9 == '1' then
+        AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA32EL2) &amp;&amp; ELUsingAArch32(EL2)) &amp;&amp; HSTR().T9 == '1' then
+        AArch32_TakeHypTrapException(0x03);
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA64EL1) &amp;&amp; !ELUsingAArch32(EL1)) &amp;&amp; !ELIsInHost(EL0) &amp;&amp; IsFeatureImplemented(FEAT_FGT) &amp;&amp; (!HaveEL(EL3) || SCR_EL3().FGTEn == '1') &amp;&amp; HDFGWTR_EL2().PMCNTEN == '1' then
+        AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2)) &amp;&amp; MDCR_EL2().TPM == '1' then
+        AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+    elsif EL2Enabled() &amp;&amp; (IsFeatureImplemented(FEAT_AA32EL2) &amp;&amp; ELUsingAArch32(EL2)) &amp;&amp; HDCR().TPM == '1' then
+        AArch32_TakeHypTrapException(0x03);
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_AArch32SystemAccessTrap(EL3, 0x03);
+        end;
+    else
+        PMCNTENSET() = R(t);
+    end;
+elsif PSTATE.EL == EL1 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        Undefined();
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2) &amp;&amp; HSTR_EL2().T9 == '1' then
+        AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_AA32EL2) &amp;&amp; ELUsingAArch32(EL2) &amp;&amp; HSTR().T9 == '1' then
+        AArch32_TakeHypTrapException(0x03);
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_AA64EL2) &amp;&amp; !ELUsingAArch32(EL2) &amp;&amp; MDCR_EL2().TPM == '1' then
+        AArch64_AArch32SystemAccessTrap(EL2, 0x03);
+    elsif EL2Enabled() &amp;&amp; IsFeatureImplemented(FEAT_AA32EL2) &amp;&amp; ELUsingAArch32(EL2) &amp;&amp; HDCR().TPM == '1' then
+        AArch32_TakeHypTrapException(0x03);
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_AArch32SystemAccessTrap(EL3, 0x03);
+        end;
+    else
+        PMCNTENSET() = R(t);
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_AA64EL3) &amp;&amp; !ELUsingAArch32(EL3) &amp;&amp; MDCR_EL3().TPM == '1' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_AArch32SystemAccessTrap(EL3, 0x03);
+        end;
+    else
+        PMCNTENSET() = R(t);
+    end;
+elsif PSTATE.EL == EL3 then
+    PMCNTENSET() = R(t);
+end;
+                </p></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

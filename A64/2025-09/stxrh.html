@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>STXRH -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">STXRH</h2><p>Store exclusive register halfword</p>
+      <p class="aml">This instruction
+stores a halfword from a register to memory if the PE has
+exclusive access to the memory address, and returns a status
+value of 0 if the
+store was successful, or of 1 if no store was performed.
+See
+<a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_Chdcgdja">Synchronization and semaphores</a>.
+The memory access is atomic.</p>
+      <p class="aml">For information about addressing modes, see
+<a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_CHDIIIBB">Load/Store addressing modes</a>.</p>
+    
+    <p class="desc"/><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="l">0</td><td class="r">1</td><td class="l">0</td><td class="r">0</td><td class="lr">1</td><td class="lr">0</td><td class="lr">0</td><td class="l">0</td><td class="r">0</td><td class="lr">0</td><td class="lr">0</td><td colspan="5" class="lr">Rs</td><td class="lr">0</td><td class="l">(1)</td><td>(1)</td><td>(1)</td><td>(1)</td><td class="r">(1)</td><td colspan="5" class="lr">Rn</td><td colspan="5" class="lr">Rt</td></tr><tr class="secondrow"><td colspan="2" class="droppedname">size</td><td colspan="2"/><td/><td/><td/><td colspan="2"/><td class="droppedname">L</td><td/><td colspan="5"/><td class="droppedname">o0</td><td colspan="5" class="droppedname">Rt2</td><td colspan="5"/><td colspan="5"/></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="STXRH_SR32_ldstexclr"/><p class="asm-code">STXRH  <a href="#WsOrWZR__4" title="Is the 32-bit name of the general-purpose register into which the status result of the store exclusive is written, encoded in the &quot;Rs&quot; field. The value returned is:   0 : If the operation updates memory.  1 : If the operation fails to update memory.">&lt;Ws&gt;</a>, <a href="#WtOrWZR__4" title="Is the 32-bit name of the general-purpose register to be transferred, encoded in the &quot;Rt&quot; field.">&lt;Wt&gt;</a>, [<a href="#XnSP_option" title="Is the 64-bit name of the general-purpose base register or stack pointer, encoded in the &quot;Rn&quot; field.">&lt;Xn|SP&gt;</a>{, #0}]</p></div><h4>Decode for this encoding</h4><p class="pseudocode">let s : integer{} = UInt(Rs);
+let t : integer{} = UInt(Rt);
+let n : integer{} = UInt(Rn);
+
+let acqrel : boolean = FALSE;
+let tagchecked : boolean = n != 31;
+
+var rt_unknown : boolean = FALSE;
+var rn_unknown : boolean = FALSE;
+if s == t then
+    let c : <a href="shared_pseudocode.html#type_Constraint" title="">Constraint</a> = ConstrainUnpredictable(<a href="shared_pseudocode.html#enum_Unpredictable_DATAOVERLAP" title="">Unpredictable_DATAOVERLAP</a>);
+    assert c IN {<a href="shared_pseudocode.html#enum_Constraint_UNKNOWN" title="">Constraint_UNKNOWN</a>, <a href="shared_pseudocode.html#enum_Constraint_UNDEF" title="">Constraint_UNDEF</a>, <a href="shared_pseudocode.html#enum_Constraint_NOP" title="">Constraint_NOP</a>};
+    case c of
+        when <a href="shared_pseudocode.html#enum_Constraint_UNKNOWN" title="">Constraint_UNKNOWN</a> =&gt;    rt_unknown = TRUE;    // store UNKNOWN value
+        when <a href="shared_pseudocode.html#enum_Constraint_UNDEF" title="">Constraint_UNDEF</a> =&gt;      EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>);
+        when <a href="shared_pseudocode.html#enum_Constraint_NOP" title="">Constraint_NOP</a> =&gt;        EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_NOP" title="">Decode_NOP</a>);
+    end;
+end;
+if s == n &amp;&amp; n != 31 then
+    let c : <a href="shared_pseudocode.html#type_Constraint" title="">Constraint</a> = ConstrainUnpredictable(<a href="shared_pseudocode.html#enum_Unpredictable_BASEOVERLAP" title="">Unpredictable_BASEOVERLAP</a>);
+    assert c IN {<a href="shared_pseudocode.html#enum_Constraint_UNKNOWN" title="">Constraint_UNKNOWN</a>, <a href="shared_pseudocode.html#enum_Constraint_UNDEF" title="">Constraint_UNDEF</a>, <a href="shared_pseudocode.html#enum_Constraint_NOP" title="">Constraint_NOP</a>};
+    case c of
+        when <a href="shared_pseudocode.html#enum_Constraint_UNKNOWN" title="">Constraint_UNKNOWN</a> =&gt;    rn_unknown = TRUE;    // address is UNKNOWN
+        when <a href="shared_pseudocode.html#enum_Constraint_UNDEF" title="">Constraint_UNDEF</a> =&gt;      EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>);
+        when <a href="shared_pseudocode.html#enum_Constraint_NOP" title="">Constraint_NOP</a> =&gt;        EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_NOP" title="">Decode_NOP</a>);
+    end;
+end;</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Ws&gt;</td><td><a id="WsOrWZR__4"/>
+        
+          <p class="aml">Is the 32-bit name of the general-purpose register into which the status result of the store exclusive is written, encoded in the "Rs" field. The value returned is:</p>
+          <dl>
+            <dt>0</dt><dd>If the operation updates memory.</dd>
+            <dt>1</dt><dd>If the operation fails to update memory.</dd>
+          </dl>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Wt&gt;</td><td><a id="WtOrWZR__4"/>
+        
+          <p class="aml">Is the 32-bit name of the general-purpose register to be transferred, encoded in the "Rt" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Xn|SP&gt;</td><td><a id="XnSP_option"/>
+        
+          <p class="aml">Is the 64-bit name of the general-purpose base register or stack pointer, encoded in the "Rn" field.</p>
+        
+      </td></tr></table></div><div class="syntax-notes">
+      <p class="aml">Aborts and alignment</p>
+      <p class="aml">If a synchronous Data Abort exception is generated by the execution of this instruction:</p>
+      <ul>
+        <li>
+          Memory is not updated.
+        </li>
+        <li>
+          
+            &lt;Ws&gt; is not updated.
+        </li>
+      </ul>
+      <p class="aml">A non halfword-aligned memory address causes an Alignment fault Data Abort exception to
+be generated, subject to the following rules:</p>
+      <ul>
+        <li>
+          If AArch64_ExclusiveMonitorsPass() returns TRUE, the exception
+  is generated.
+        </li>
+        <li>
+          Otherwise, it is <span class="arm-defined-word">IMPLEMENTATION DEFINED</span> whether the exception is generated.
+        </li>
+      </ul>
+      <p class="aml">If AArch64_ExclusiveMonitorsPass() returns FALSE and the
+memory address, if accessed, would generate a synchronous Data Abort exception, it is
+<span class="arm-defined-word">IMPLEMENTATION DEFINED</span> whether the exception is generated.</p>
+    </div>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">var address : bits(64);
+var data : bits(16);
+
+let privileged : boolean = PSTATE.EL != <a href="shared_pseudocode.html#global_EL0" title="">EL0</a>;
+let accdesc : <a href="shared_pseudocode.html#type_AccessDescriptor" title="">AccessDescriptor</a> = CreateAccDescExLDST(MemOp_STORE, acqrel,
+                                                     tagchecked, privileged, t);
+
+if n == 31 then
+    CheckSPAlignment();
+    address = <a href="shared_pseudocode.html#accessor_SP_1" title="">SP</a>{64}();
+elsif rn_unknown then
+    address = ARBITRARY : bits(64);
+else
+    address = <a href="shared_pseudocode.html#accessor_X_2" title="">X</a>{64}(n);
+end;
+
+if rt_unknown then
+    data = ARBITRARY : bits(16);
+else
+    data = <a href="shared_pseudocode.html#accessor_X_2" title="">X</a>{16}(t);
+end;
+var status : bit = '1';
+// Check whether the Exclusives monitors are set to include the
+// physical memory locations corresponding to virtual address
+// range [address, address+dbytes-1].
+// If AArch64_ExclusiveMonitorsPass() returns FALSE and the memory address,
+// if accessed, would generate a synchronous Data Abort exception, it is
+// IMPLEMENTATION DEFINED whether the exception is generated.
+// It is a limitation of this model that synchronous Data Aborts are never
+// generated in this case, as Mem is not called.
+
+// If FEAT_SPE is implemented, it is also IMPLEMENTATION DEFINED whether or not the
+// physical address packet is output when permitted and when
+// AArch64_ExclusiveMonitorPass() returns FALSE for a Store Exclusive instruction.
+// This behavior is not reflected here due to the previously stated limitation.
+if <a href="shared_pseudocode.html#func_AArch64_ExclusiveMonitorsPass_3" title="">AArch64_ExclusiveMonitorsPass</a>(address, 2, accdesc) then
+    // This atomic write will be rejected if it does not refer
+    // to the same physical locations after address translation.
+    <a href="shared_pseudocode.html#accessor_Mem_3" title="">Mem</a>{16}(address, accdesc) = data;
+    status = <a href="shared_pseudocode.html#func_ExclusiveMonitorsStatus_0" title="">ExclusiveMonitorsStatus</a>();
+end;
+<a href="shared_pseudocode.html#accessor_X_2" title="">X</a>{32}(s) = ZeroExtend{32}(status);</p>
+    </div>
+  <h3>Operational information</h3>
+    
+      
+        <p class="aml">This instruction is a data-independent-time instruction as described in <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_BEICCDDAB3">About PSTATE.DIT</a>.</p>
+      
+    
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>

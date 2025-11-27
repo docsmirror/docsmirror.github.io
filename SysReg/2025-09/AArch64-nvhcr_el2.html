@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ext="http://exslt.org/common">
+  <head>
+    <title>NVHCR_EL2</title>
+    <link href="insn.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h1 class="register-section">NVHCR_EL2, Nested Virtual Hypervisor Configuration Register</h1><p>The NVHCR_EL2 characteristics are:</p><h2>Purpose</h2>
+        <p>Provides storage for a virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a> under nested virtualization. Except for the TGE bit, all bits in this register are simply stateful and have no effect on PE behavior.</p>
+      <h2>Configuration</h2><p>This register is present only when FEAT_NV3 is implemented and FEAT_AA64 is implemented. Otherwise, direct accesses to NVHCR_EL2 are <span class="arm-defined-word">UNDEFINED</span>.</p><h2>Attributes</h2>
+        <p>NVHCR_EL2 is a 64-bit register.</p>
+      <h2>Field descriptions</h2><table class="regdiagram" id="fieldset_0"><thead><tr><td>63</td><td>62</td><td>61</td><td>60</td><td>59</td><td>58</td><td>57</td><td>56</td><td>55</td><td>54</td><td>53</td><td>52</td><td>51</td><td>50</td><td>49</td><td>48</td><td>47</td><td>46</td><td>45</td><td>44</td><td>43</td><td>42</td><td>41</td><td>40</td><td>39</td><td>38</td><td>37</td><td>36</td><td>35</td><td>34</td><td>33</td><td>32</td></tr></thead><tfoot><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></tfoot><tbody><tr class="firstrow"><td class="lr" colspan="3"><a href="#fieldset_0-63_61">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-60_60-1">TWEDEL</a></td><td class="lr" colspan="1"><a href="#fieldset_0-59_59-1">TWEDEn</a></td><td class="lr" colspan="1"><a href="#fieldset_0-58_58-1">TID5</a></td><td class="lr" colspan="1"><a href="#fieldset_0-57_57-1">DCT</a></td><td class="lr" colspan="1"><a href="#fieldset_0-56_56-1">ATA</a></td><td class="lr" colspan="1"><a href="#fieldset_0-55_55-1">TTTLBOS</a></td><td class="lr" colspan="1"><a href="#fieldset_0-54_54-1">TTTLBIS</a></td><td class="lr" colspan="1"><a href="#fieldset_0-53_53-1">EnSCXT</a></td><td class="lr" colspan="1"><a href="#fieldset_0-52_52-1">TOCU</a></td><td class="lr" colspan="1"><a href="#fieldset_0-51_51-1">AMVOFFEN</a></td><td class="lr" colspan="1"><a href="#fieldset_0-50_50-1">TICAB</a></td><td class="lr" colspan="1"><a href="#fieldset_0-49_49-1">TID4</a></td><td class="lr" colspan="1"><a href="#fieldset_0-48_48-1">GPF</a></td><td class="lr" colspan="1"><a href="#fieldset_0-47_47-1">FIEN</a></td><td class="lr" colspan="1"><a href="#fieldset_0-46_46-1">FWB</a></td><td class="lr" colspan="1"><a href="#fieldset_0-45_45-1">NV2</a></td><td class="lr" colspan="1"><a href="#fieldset_0-44_44-1">AT</a></td><td class="lr" colspan="1"><a href="#fieldset_0-43_43-1">NV1</a></td><td class="lr" colspan="1"><a href="#fieldset_0-42_42-1">NV</a></td><td class="lr" colspan="1"><a href="#fieldset_0-41_41-1">API</a></td><td class="lr" colspan="1"><a href="#fieldset_0-40_40-1">APK</a></td><td class="lr" colspan="2"><a href="#fieldset_0-39_38">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-37_37-1">TEA</a></td><td class="lr" colspan="1"><a href="#fieldset_0-36_36-1">TERR</a></td><td class="lr" colspan="1"><a href="#fieldset_0-35_35-1">TLOR</a></td><td class="lr" colspan="1"><a href="#fieldset_0-34_34-1">E2H</a></td><td class="lr" colspan="1"><a href="#fieldset_0-33_33">ID</a></td><td class="lr" colspan="1"><a href="#fieldset_0-32_32">CD</a></td></tr><tr class="firstrow"><td class="lr" colspan="1"><a href="#fieldset_0-31_31-1">RW</a></td><td class="lr" colspan="1"><a href="#fieldset_0-30_30">TVRM</a></td><td class="lr" colspan="1"><a href="#fieldset_0-29_29-1">HCD</a></td><td class="lr" colspan="1"><a href="#fieldset_0-28_28">TDZ</a></td><td class="lr" colspan="1"><a href="#fieldset_0-27_27">TGE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-26_26">TVM</a></td><td class="lr" colspan="1"><a href="#fieldset_0-25_25">TTLB</a></td><td class="lr" colspan="1"><a href="#fieldset_0-24_24">TPU</a></td><td class="lr" colspan="1"><a href="#fieldset_0-23_23">TPCP</a></td><td class="lr" colspan="1"><a href="#fieldset_0-22_22">TSW</a></td><td class="lr" colspan="1"><a href="#fieldset_0-21_21">TACR</a></td><td class="lr" colspan="1"><a href="#fieldset_0-20_20">TIDCP</a></td><td class="lr" colspan="1"><a href="#fieldset_0-19_19">TSC</a></td><td class="lr" colspan="1"><a href="#fieldset_0-18_18">TID3</a></td><td class="lr" colspan="1"><a href="#fieldset_0-17_17">TID2</a></td><td class="lr" colspan="1"><a href="#fieldset_0-16_16">TID1</a></td><td class="lr" colspan="1"><a href="#fieldset_0-15_15-1">TID0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-14_14">TWE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-13_13">TWI</a></td><td class="lr" colspan="1"><a href="#fieldset_0-12_12">DC</a></td><td class="lr" colspan="1"><a href="#fieldset_0-11_11">RES0</a></td><td class="lr" colspan="1"><a href="#fieldset_0-10_10">BSU</a></td><td class="lr" colspan="1"><a href="#fieldset_0-9_9">FB</a></td><td class="lr" colspan="1"><a href="#fieldset_0-8_8">VSE</a></td><td class="lr" colspan="1"><a href="#fieldset_0-7_7">VI</a></td><td class="lr" colspan="1"><a href="#fieldset_0-6_6">VF</a></td><td class="lr" colspan="1"><a href="#fieldset_0-5_5">AMO</a></td><td class="lr" colspan="1"><a href="#fieldset_0-4_4">IMO</a></td><td class="lr" colspan="1"><a href="#fieldset_0-3_3">FMO</a></td><td class="lr" colspan="1"><a href="#fieldset_0-2_2">PTW</a></td><td class="lr" colspan="1"><a href="#fieldset_0-1_1">SWIO</a></td><td class="lr" colspan="1"><a href="#fieldset_0-0_0">VM</a></td></tr></tbody></table><h4 id="fieldset_0-63_61">Bits [63:61]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-60_60-1">TWEDEL, bit [60]<span class="condition"><br/>When FEAT_TWED is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TWEDEL under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-60_60-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-59_59-1">TWEDEn, bit [59]<span class="condition"><br/>When FEAT_TWED is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TWEDEn under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-59_59-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-58_58-1">TID5, bit [58]<span class="condition"><br/>When FEAT_MTE2 is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TID5 under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-58_58-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-57_57-1">DCT, bit [57]<span class="condition"><br/>When FEAT_MTE2 is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.DCT under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-57_57-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-56_56-1">ATA, bit [56]<span class="condition"><br/>When FEAT_MTE2 is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.ATA under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-56_56-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-55_55-1">TTTLBOS, bit [55]<span class="condition"><br/>When FEAT_EVT is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TTLBOS under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-55_55-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-54_54-1">TTTLBIS, bit [54]<span class="condition"><br/>When FEAT_EVT is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TTLBIS under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-54_54-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-53_53-1">EnSCXT, bit [53]<span class="condition"><br/>When FEAT_CSV2_2 is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.EnSCXT under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-53_53-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-52_52-1">TOCU, bit [52]<span class="condition"><br/>When FEAT_EVT is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TOCU under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-52_52-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-51_51-1">AMVOFFEN, bit [51]<span class="condition"><br/>When FEAT_AMUv1p1 is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.AMVOFFEN under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-51_51-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-50_50-1">TICAB, bit [50]<span class="condition"><br/>When FEAT_EVT is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TICAB under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-50_50-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-49_49-1">TID4, bit [49]<span class="condition"><br/>When FEAT_EVT is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TID4 under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-49_49-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-48_48-1">GPF, bit [48]<span class="condition"><br/>When FEAT_RME is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.GPF under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-48_48-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-47_47-1">FIEN, bit [47]<span class="condition"><br/>When FEAT_RASv1p1 is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.FIEN under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-47_47-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-46_46-1">FWB, bit [46]<span class="condition"><br/>When FEAT_S2FWB is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.FWB under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-46_46-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-45_45-1">NV2, bit [45]<span class="condition"><br/>When FEAT_NV2 is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.NV2 under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-45_45-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-44_44-1">AT, bit [44]<span class="condition"><br/>When FEAT_NV is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.AT under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-44_44-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-43_43-1">NV1, bit [43]<span class="condition"><br/>When FEAT_NV is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.NV1 under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-43_43-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-42_42-1">NV, bit [42]<span class="condition"><br/>When FEAT_NV is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.NV under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-42_42-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-41_41-1">API, bit [41]<span class="condition"><br/>When FEAT_PAuth is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.API under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-41_41-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-40_40-1">APK, bit [40]<span class="condition"><br/>When FEAT_PAuth is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.APK under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-40_40-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-39_38">Bits [39:38]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-37_37-1">TEA, bit [37]<span class="condition"><br/>When FEAT_RAS is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TEA under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-37_37-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-36_36-1">TERR, bit [36]<span class="condition"><br/>When FEAT_RAS is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TERR under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-36_36-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-35_35-1">TLOR, bit [35]<span class="condition"><br/>When FEAT_LOR is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TLOR under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-35_35-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-34_34-1">E2H, bit [34]<span class="condition"><br/>When FEAT_VHE is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.E2H under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-34_34-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-33_33">ID, bit [33]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.ID under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-32_32">CD, bit [32]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.CD under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-31_31-1">RW, bit [31]<span class="condition"><br/>When FEAT_AA32EL1 is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.RW under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-31_31-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-30_30">TVRM, bit [30]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TVRM under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-29_29-1">HCD, bit [29]<span class="condition"><br/>When EL3 is not implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.HCD under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-29_29-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-28_28">TDZ, bit [28]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TDZ under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-27_27">TGE, bit [27]</h4><div class="field">
+      <p>Guest TGE control bit.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-26_26">TVM, bit [26]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TVM under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-25_25">TTLB, bit [25]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TTLB under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-24_24">TPU, bit [24]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TPU under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-23_23">TPCP, bit [23]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TPCP under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-22_22">TSW, bit [22]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TSW under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-21_21">TACR, bit [21]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TACR under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-20_20">TIDCP, bit [20]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TIDCP under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-19_19">TSC, bit [19]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TSC under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-18_18">TID3, bit [18]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TID3 under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-17_17">TID2, bit [17]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TID2 under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-16_16">TID1, bit [16]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TID1 under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-15_15-1">TID0, bit [15]<span class="condition"><br/>When FEAT_AA32 is implemented:
+                        </span></h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TID0 under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-15_15-2"><span class="condition"><br/>Otherwise:
+                        </span></h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-14_14">TWE, bit [14]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TWE under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-13_13">TWI, bit [13]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.TWI under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-12_12">DC, bit [12]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.DC under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-11_11">Bit [11]</h4><div class="field">
+      <p>Reserved, <span class="arm-defined-word">RES0</span>.</p>
+    </div><h4 id="fieldset_0-10_10">BSU, bit [10]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.BSU under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-9_9">FB, bit [9]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.FB under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-8_8">VSE, bit [8]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.VSE under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-7_7">VI, bit [7]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.VI under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-6_6">VF, bit [6]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.VF under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-5_5">AMO, bit [5]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.AMO under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-4_4">IMO, bit [4]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.IMO under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-3_3">FMO, bit [3]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.FMO under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-2_2">PTW, bit [2]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.PTW under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-1_1">SWIO, bit [1]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.SWIO under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><h4 id="fieldset_0-0_0">VM, bit [0]</h4><div class="field">
+      <p>Storage for the virtual view of <a href="AArch64-hcr_el2.html">HCR_EL2</a>.VM under nested virtualization.</p>
+    <p>The reset behavior of this field is:</p><ul><li>On a Warm reset, 
+      this field resets
+       to an architecturally <span class="arm-defined-word">UNKNOWN</span> value.</li></ul></div><div class="access_mechanisms"><h2>Accessing NVHCR_EL2</h2><p>Accesses to this register use the following encodings in the System register encoding space:</p><div><h4 class="assembler">MRS &lt;Xt&gt;, NVHCR_EL2</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b100</td><td>0b0001</td><td>0b0101</td><td>0b000</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_NV3) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EffectiveHCR_EL2_NVx() IN {'1x1'} then
+        X{64}(t) = NVMem(0x078);
+    elsif EffectiveHCR_EL2_NVx() IN {'xx1'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; SCR2_EL3().NV3En == '0' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_SCR2) &amp;&amp; SCR2_EL3().NV3En == '0' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    else
+        X{64}(t) = NVHCR_EL2();
+    end;
+elsif PSTATE.EL == EL3 then
+    X{64}(t) = NVHCR_EL2();
+end;
+                </p><div><h4 class="assembler">MSR NVHCR_EL2, &lt;Xt&gt;</h4></div><table class="access_instructions"><tr><th>op0</th><th>op1</th><th>CRn</th><th>CRm</th><th>op2</th></tr><tr><td>0b11</td><td>0b100</td><td>0b0001</td><td>0b0101</td><td>0b000</td></tr></table><p class="pseudocode">
+if !(IsFeatureImplemented(FEAT_NV3) &amp;&amp; IsFeatureImplemented(FEAT_AA64)) then
+    Undefined();
+elsif PSTATE.EL == EL0 then
+    Undefined();
+elsif PSTATE.EL == EL1 then
+    if EffectiveHCR_EL2_NVx() IN {'1x1'} then
+        X{64}(t) = NVMem(0x078);
+    elsif EffectiveHCR_EL2_NVx() IN {'xx1'} then
+        AArch64_SystemAccessTrap(EL2, 0x18);
+    else
+        Undefined();
+    end;
+elsif PSTATE.EL == EL2 then
+    if HaveEL(EL3) &amp;&amp; EL3SDDUndefPriority() &amp;&amp; SCR2_EL3().NV3En == '0' then
+        Undefined();
+    elsif HaveEL(EL3) &amp;&amp; IsFeatureImplemented(FEAT_SCR2) &amp;&amp; SCR2_EL3().NV3En == '0' then
+        if EL3SDDUndef() then
+            Undefined();
+        else
+            AArch64_SystemAccessTrap(EL3, 0x18);
+        end;
+    else
+        NVHCR_EL2() = X{64}(t);
+    end;
+elsif PSTATE.EL == EL3 then
+    NVHCR_EL2() = X{64}(t);
+end;
+                </p></div><hr class="bottom_line"/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="AArch32-regindex.html">AArch32 Registers</a></div></td><td><div class="topbar"><a href="AArch64-regindex.html">AArch64 Registers</a></div></td><td><div class="topbar"><a href="AArch32-sysindex.html">AArch32 Instructions</a></div></td><td><div class="topbar"><a href="AArch64-sysindex.html">AArch64 Instructions</a></div></td><td><div class="topbar"><a href="enc_index.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="ext_alpha_index.html">External Registers</a></div></td><td><div class="topbar"><a href="ext_enc_index.html">External Registers by Offset</a></div></td><td><div class="topbar"><a href="func_index.html">Registers by Functional Group</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">2025-10-24 11:39:28, 2025-09_rel_asl1</p><p class="copyconf">Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved. This document is Non-Confidential.</p></body>
+</html>

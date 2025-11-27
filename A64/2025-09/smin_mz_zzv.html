@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="insn.css"/><meta name="generator" content="iform.xsl"/><title>SMIN (multiple and single vector) -- A64</title></head><body><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><hr/><h2 class="instruction-section">SMIN (multiple and single vector)</h2><p>Multi-vector signed minimum by vector</p>
+      <p class="aml">This instruction determines the signed minimum of elements of the second source vector and the corresponding elements
+of the two or four first source vectors and destructively places the results in the
+corresponding elements of the two or four first source vectors.</p>
+      <p class="aml">This instruction is unpredicated.</p>
+    
+    <p class="desc">
+      It has encodings from 2 classes:
+      <a href="#iclass_two_registers">Two registers</a>
+       and 
+      <a href="#iclass_four_registers">Four registers</a>
+    </p>
+    <h3 class="classheading"><a id="iclass_two_registers"/>Two registers<span style="font-size:smaller;"><br/>(FEAT_SME2)
+          </span></h3><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr">1</td><td class="l">1</td><td class="r">0</td><td class="l">0</td><td>0</td><td>0</td><td class="r">0</td><td class="lr">1</td><td colspan="2" class="lr">size</td><td class="l">1</td><td class="r">0</td><td colspan="4" class="lr">Zm</td><td class="l">1</td><td>0</td><td>1</td><td>0</td><td class="r">0</td><td class="lr">0</td><td class="l">0</td><td class="r">0</td><td class="l">0</td><td class="r">0</td><td class="lr">1</td><td colspan="4" class="lr">Zdn</td><td class="lr">0</td></tr><tr class="secondrow"><td/><td colspan="2"/><td colspan="4"/><td/><td colspan="2"/><td colspan="2"/><td colspan="4"/><td colspan="5"/><td/><td colspan="2"/><td colspan="2"/><td class="droppedname">op</td><td colspan="4"/><td class="droppedname">U</td></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="smin_mz_zzv_2x1"/><p class="asm-code">SMIN  { <a href="#Zdn1" title="For the &quot;Two registers&quot; variant: is the name of the first scalable vector register of the destination and first source multi-vector group, encoded as &quot;Zdn&quot; times 2.">&lt;Zdn1&gt;</a>.<a href="#T__3" title="Is the size specifier, ">&lt;T&gt;</a>-<a href="#Zdn2" title="Is the name of the second scalable vector register of the destination and first source multi-vector group, encoded as &quot;Zdn&quot; times 2 plus 1.">&lt;Zdn2&gt;</a>.<a href="#T__3" title="Is the size specifier, ">&lt;T&gt;</a> }, { <a href="#Zdn1" title="For the &quot;Two registers&quot; variant: is the name of the first scalable vector register of the destination and first source multi-vector group, encoded as &quot;Zdn&quot; times 2.">&lt;Zdn1&gt;</a>.<a href="#T__3" title="Is the size specifier, ">&lt;T&gt;</a>-<a href="#Zdn2" title="Is the name of the second scalable vector register of the destination and first source multi-vector group, encoded as &quot;Zdn&quot; times 2 plus 1.">&lt;Zdn2&gt;</a>.<a href="#T__3" title="Is the size specifier, ">&lt;T&gt;</a> }, <a href="#Zm__2" title="For the &quot;Double-precision&quot; variant: is the name of the second source scalable vector register Z0-Z15, encoded in the &quot;Zm&quot; field.">&lt;Zm&gt;</a>.<a href="#T__3" title="Is the size specifier, ">&lt;T&gt;</a></p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_SME2) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+let esize : integer{} = 8 &lt;&lt; UInt(size);
+let dn : integer = UInt(Zdn::'0');
+let m : integer = UInt('0'::Zm);
+let nreg : integer{} = 2;
+let unsigned : boolean = FALSE;</p>
+    <h3 class="classheading"><a id="iclass_four_registers"/>Four registers<span style="font-size:smaller;"><br/>(FEAT_SME2)
+          </span></h3><div class="regdiagram-32"><table class="regdiagram"><thead><tr><td>31</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>25</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr></thead><tbody><tr class="firstrow"><td class="lr">1</td><td class="l">1</td><td class="r">0</td><td class="l">0</td><td>0</td><td>0</td><td class="r">0</td><td class="lr">1</td><td colspan="2" class="lr">size</td><td class="l">1</td><td class="r">0</td><td colspan="4" class="lr">Zm</td><td class="l">1</td><td>0</td><td>1</td><td>0</td><td class="r">1</td><td class="lr">0</td><td class="l">0</td><td class="r">0</td><td class="l">0</td><td class="r">0</td><td class="lr">1</td><td colspan="3" class="lr">Zdn</td><td class="lr">0</td><td class="lr">0</td></tr><tr class="secondrow"><td/><td colspan="2"/><td colspan="4"/><td/><td colspan="2"/><td colspan="2"/><td colspan="4"/><td colspan="5"/><td/><td colspan="2"/><td colspan="2"/><td class="droppedname">op</td><td colspan="3"/><td/><td class="droppedname">U</td></tr></tbody></table></div><div class="encoding"><h4 class="encoding">Encoding</h4><a id="smin_mz_zzv_4x1"/><p class="asm-code">SMIN  { <a href="#Zdn1__2" title="For the &quot;Four registers&quot; variant: is the name of the first scalable vector register of the destination and first source multi-vector group, encoded as &quot;Zdn&quot; times 4.">&lt;Zdn1&gt;</a>.<a href="#T__3" title="Is the size specifier, ">&lt;T&gt;</a>-<a href="#Zdn4" title="Is the name of the fourth scalable vector register of the destination and first source multi-vector group, encoded as &quot;Zdn&quot; times 4 plus 3.">&lt;Zdn4&gt;</a>.<a href="#T__3" title="Is the size specifier, ">&lt;T&gt;</a> }, { <a href="#Zdn1__2" title="For the &quot;Four registers&quot; variant: is the name of the first scalable vector register of the destination and first source multi-vector group, encoded as &quot;Zdn&quot; times 4.">&lt;Zdn1&gt;</a>.<a href="#T__3" title="Is the size specifier, ">&lt;T&gt;</a>-<a href="#Zdn4" title="Is the name of the fourth scalable vector register of the destination and first source multi-vector group, encoded as &quot;Zdn&quot; times 4 plus 3.">&lt;Zdn4&gt;</a>.<a href="#T__3" title="Is the size specifier, ">&lt;T&gt;</a> }, <a href="#Zm__2" title="For the &quot;Double-precision&quot; variant: is the name of the second source scalable vector register Z0-Z15, encoded in the &quot;Zm&quot; field.">&lt;Zm&gt;</a>.<a href="#T__3" title="Is the size specifier, ">&lt;T&gt;</a></p></div><h4>Decode for this encoding</h4><p class="pseudocode">if !IsFeatureImplemented(FEAT_SME2) then EndOfDecode(<a href="shared_pseudocode.html#enum_Decode_UNDEF" title="">Decode_UNDEF</a>); end;
+let esize : integer{} = 8 &lt;&lt; UInt(size);
+let dn : integer = UInt(Zdn::'00');
+let m : integer = UInt('0'::Zm);
+let nreg : integer{} = 4;
+let unsigned : boolean = FALSE;</p>
+  <div class="encoding-notes"/><h3 class="explanations">Assembler Symbols</h3><div class="explanations"><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zdn1&gt;</td><td><a id="Zdn1"/>
+        
+          <p class="aml">For the "Two registers" variant: is the name of the first scalable vector register of the destination and first source multi-vector group, encoded as "Zdn" times 2.</p>
+        
+      </td></tr><tr><td/><td><a id="Zdn1__2"/>
+        
+          <p class="aml">For the "Four registers" variant: is the name of the first scalable vector register of the destination and first source multi-vector group, encoded as "Zdn" times 4.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;T&gt;</td><td><a id="T__3"/>
+        <p>Is the size specifier, 
+          encoded in
+          <q>size</q>:
+            </p>
+        <table class="valuetable">
+          
+            <thead>
+              <tr>
+                <th class="bitfield">size</th>
+                <th class="symbol">&lt;T&gt;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bitfield">00</td>
+                <td class="symbol">B</td>
+              </tr>
+              <tr>
+                <td class="bitfield">01</td>
+                <td class="symbol">H</td>
+              </tr>
+              <tr>
+                <td class="bitfield">10</td>
+                <td class="symbol">S</td>
+              </tr>
+              <tr>
+                <td class="bitfield">11</td>
+                <td class="symbol">D</td>
+              </tr>
+            </tbody>
+          
+        </table>
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zdn2&gt;</td><td><a id="Zdn2"/>
+        
+          <p class="aml">Is the name of the second scalable vector register of the destination and first source multi-vector group, encoded as "Zdn" times 2 plus 1.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zm&gt;</td><td><a id="Zm__2"/>
+        
+          <p class="aml">Is the name of the second source scalable vector register Z0-Z15, encoded in the "Zm" field.</p>
+        
+      </td></tr></table><table><col class="asyn-l"/><col class="asyn-r"/><tr><td>&lt;Zdn4&gt;</td><td><a id="Zdn4"/>
+        
+          <p class="aml">Is the name of the fourth scalable vector register of the destination and first source multi-vector group, encoded as "Zdn" times 4 plus 3.</p>
+        
+      </td></tr></table></div><div class="syntax-notes"/>
+    <div class="ps"><a id=""/><h3 class="pseudocode">Operation</h3>
+      <p class="pseudocode">CheckStreamingSVEEnabled();
+let VL : integer{} = CurrentVL();
+let elements : integer = VL DIV esize;
+var results : array [[4]] of bits(VL);
+
+for r = 0 to nreg-1 do
+    let operand1 : bits(VL) = Z{}(dn+r);
+    let operand2 : bits(VL) = Z{}(m);
+    for e = 0 to elements-1 do
+        let op1elt : bits(esize) = operand1[e*:esize];
+        let element1 : integer = if unsigned then UInt(op1elt) else SInt(op1elt);
+        let op2elt : bits(esize) = operand2[e*:esize];
+        let element2 : integer = if unsigned then UInt(op2elt) else SInt(op2elt);
+        let res : integer = Min(element1, element2);
+        results[[r]][e*:esize] = res[esize-1:0];
+    end;
+end;
+
+for r = 0 to nreg-1 do
+    <a href="shared_pseudocode.html#accessor_Z_2" title="">Z</a>{VL}(dn+r) = results[[r]];
+end;</p>
+    </div>
+  <h3>Operational information</h3>
+    
+      
+        <p class="aml">This instruction is a data-independent-time instruction as described in <a class="armarm-xref" title="Reference to Armv8 ARM section" data-linkend="ARMARM_BEICCDDAB3">About PSTATE.DIT</a>.</p>
+      
+    
+  <hr/><table style="margin: 0 auto;"><tr><td><div class="topbar"><a href="index.html">Base Instructions</a></div></td><td><div class="topbar"><a href="fpsimdindex.html">SIMD&amp;FP Instructions</a></div></td><td><div class="topbar"><a href="sveindex.html">SVE Instructions</a></div></td><td><div class="topbar"><a href="mortlachindex.html">SME Instructions</a></div></td><td><div class="topbar"><a href="encodingindex.html">Index by Encoding</a></div></td><td><div class="topbar"><a href="shared_pseudocode.html">Shared Pseudocode</a></div></td><td><div class="topbar"><a href="notice.html">Proprietary Notice</a></div></td></tr></table><p class="versions">
+      2025-09_rel_asl1
+
+      2025-10-24 12:15:02
+    </p><p class="copyconf">
+      Copyright © 2010-2025 Arm Limited or its affiliates. All rights reserved.
+      This document is Non-Confidential.
+    </p></body></html>
